@@ -1,15 +1,31 @@
 ﻿using System;
 using Azure.Identity;
 using Azure.Core;
-
-using System.Diagnostics;
 using System.Management.Automation;
+using System.IdentityModel.Tokens.Jwt;
+
 
 namespace azmi
 {
-    [Cmdlet(VerbsCommon.Get, "azmiToken")]
-    public class GetProcCommand : Cmdlet
+    //
+    // Get-AzmiToken
+    //
+    //   Returns Azure access token for a managed identity
+    //
+
+
+    [Cmdlet(VerbsCommon.Get, "AzmiToken")]
+    public class GetAzmiTokenCommand : Cmdlet
     {
+
+        //
+        // Arguments properties
+        //
+
+        private string identity;
+        private string endpoint = "management";
+        private bool jwtformat;
+
         ///
         /// Argument: Identity
         ///
@@ -19,7 +35,6 @@ namespace azmi
             get { return identity; }
             set { identity = value; }
         }
-        private string identity;
 
         ///
         /// Argument: Endpoint
@@ -31,8 +46,22 @@ namespace azmi
             get { return endpoint; }
             set { endpoint = value; }
         }
-        private string endpoint = "management";
+        ///
+        /// Argument: JWTformat
+        ///
+        [Parameter(Position = 2)]
+        public SwitchParameter JWTformat
+        {
+            get { return jwtformat; }
+            set { jwtformat = value; }
+        }
 
+
+        //
+        //
+        //  **** Cmdlet start ****
+        //
+        //
 
         protected override void ProcessRecord()
         {
@@ -41,7 +70,22 @@ namespace azmi
             var Scope = new String[] { $"https://{endpoint}.azure.com" };
             var Request = new TokenRequestContext(Scope);
             var Token = Cred.GetToken(Request);
-            WriteObject(Token.Token);
+            if (jwtformat)
+            {
+                WriteObject(Decode_JWT(Token.Token));
+            }
+            else
+            {
+                WriteObject(Token.Token);
+            }
+        }
+
+        private string Decode_JWT(string tokenEncoded)
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var tokenDecoded = handler.ReadJwtToken(tokenEncoded);
+            return tokenDecoded.ToString(); // decoded JSON Web Token
+
         }
     }
 }
