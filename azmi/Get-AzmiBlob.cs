@@ -69,6 +69,7 @@ namespace azmi
             var blobClient = new BlobClient(new Uri(blob), cred);
             // Download
             blobClient.DownloadTo(file);
+            // TODO: It works only with absolute path?
         }
     }
 }
