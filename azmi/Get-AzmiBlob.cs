@@ -67,6 +67,7 @@ namespace azmi
             // Connection
             var cred = new ManagedIdentityCredential(identity);
             var blobClient = new BlobClient(new Uri(blob), cred);
+            // Download
             blobClient.DownloadTo(file);
         }
     }

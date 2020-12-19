@@ -66,7 +66,6 @@ namespace azmi
         protected override void ProcessRecord()
         {
             var Cred = new ManagedIdentityCredential(identity);
-            // If no process names are passed to the cmdlet, get all processes.
             var Scope = new String[] { $"https://{endpoint}.azure.com" };
             var Request = new TokenRequestContext(Scope);
             var Token = Cred.GetToken(Request);
