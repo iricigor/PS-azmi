@@ -25,3 +25,11 @@ Project is based on https://github.com/SRE-PRG/azmitool
 ## Pipelines
 
 [![Build status](https://dev.azure.com/iiric/PS-azmi/_apis/build/status/PS-azmi-CI)](https://dev.azure.com/iiric/PS-azmi/_build/latest?definitionId=37)
+
+## Alternate naming idea _(using 2 parameter sets)_
+- `Get-AzmiBlob` - list all blobs
+- `Get-AzmiBlobContent` -Blob -File
+- `Get-AzmiBlobContent` -Container -Directory
+- `Set-AzmiBlobContent` -Blob -File
+- `Set-AzmiBlobContent` -Container -Directory
+
