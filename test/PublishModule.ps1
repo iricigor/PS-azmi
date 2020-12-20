@@ -31,8 +31,8 @@ $azmiPath = Join-Path $dirs 'azmi.dll'
 
 
 # Import and check module
-Write-Output "Importing $path"
-Import-Module $path
+Write-Output "Importing $azmiPath"
+Import-Module $azmiPath
 Get-Command -Module azmi | Select Name, ParameterSets
 
 
