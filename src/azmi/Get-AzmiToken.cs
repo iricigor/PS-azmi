@@ -49,7 +49,7 @@ namespace azmi
         ///
         /// Argument: JWTformat
         ///
-        [Parameter(Position = 2)]
+        [Parameter()]
         public SwitchParameter JWTformat
         {
             get { return jwtformat; }
@@ -69,12 +69,9 @@ namespace azmi
             var Scope = new String[] { $"https://{endpoint}.azure.com" };
             var Request = new TokenRequestContext(Scope);
             var Token = Cred.GetToken(Request);
-            if (jwtformat)
-            {
+            if (jwtformat) {
                 WriteObject(Decode_JWT(Token.Token));
-            }
-            else
-            {
+            } else {
                 WriteObject(Token.Token);
             }
         }
