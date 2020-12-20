@@ -1,58 +1,39 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Azure.Identity;
 using System.Management.Automation;
 using Azure.Storage.Blobs;
 
-
 namespace azmi
 {
-
     //
     // Get-AzmiBlob
     //
-    //   Downloads a blob from Azure storage account to local file using managed identity
+    //   Lists blobs from Azure storage account container using managed identity
     //
 
     [Cmdlet(VerbsCommon.Get, "AzmiBlob")]
-    public class GetAzmiBlobCommand : Cmdlet
+    public class GetAzmiBlob : Cmdlet
     {
+
         //
-        // Arguments properties
+        // Arguments private properties
         //
 
         private string identity;
-        private string blob;
-        private string file;
+        private string container;
 
-        ///
-        /// Argument: Identity
-        ///
-        [Parameter]
-        public string Identity
-        {
-            get { return identity; }
-            set { identity = value; }
-        }
+        //
+        // Arguments Definitions
+        //
 
-        ///
-        /// Argument: File
-        ///
-        [Parameter]
-        public string Blob
-        {
-            get { return blob; }
-            set { blob = value; }
-        }
 
-        ///
-        /// Argument: Identity
-        ///
-        [Parameter]
-        public string File
-        {
-            get { return file; }
-            set { file = value; }
-        }
+        [Parameter(Mandatory = false)]
+        public string Identity { get { return identity; } set { identity = value; } }
+
+        [Parameter(Mandatory = true, Position = 0)]
+        public string Container { get { return container; } set { container = value; } }
 
 
         //
@@ -64,12 +45,18 @@ namespace azmi
 
         protected override void ProcessRecord()
         {
-            // Connection
             var cred = new ManagedIdentityCredential(identity);
-            var blobClient = new BlobClient(new Uri(blob), cred);
-            // Download
-            blobClient.DownloadTo(file);
-            // TODO: It works only with absolute path?
+            var containerClient = new BlobContainerClient(new Uri(container), cred);
+            if (containerClient.Exists()) {
+                WriteVerbose("Trying to read container...");
+                List<string> blobsListing = containerClient.GetBlobs().Select(i => i.Name).ToList();
+                WriteVerbose($"Obtained {blobsListing.Count} blobs");
+                WriteObject(blobsListing);
+            } else {
+                WriteVerbose($"Container {container} does not exist or cannot be accessed.");
+                // switch to error
+                // https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/adding-non-terminating-error-reporting-to-your-cmdlet?view=powershell-7.1#reporting-nonterminating-errors
+            }
         }
     }
 }
