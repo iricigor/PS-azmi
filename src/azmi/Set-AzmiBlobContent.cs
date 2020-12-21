@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System;
 using System.IO;
 using Azure.Identity;
 using System.Management.Automation;
@@ -10,16 +15,10 @@ using System.Threading.Tasks;
 
 namespace azmi
 {
-
-    //
-    // Get-AzmiBlobContent
-    //
-    //   Downloads blob/blobs from Azure storage account to local file/directory using managed identity
-    //
-
-    [Cmdlet(VerbsCommon.Get, "AzmiBlobContent")]
-    public class GetAzmiBlobContent : PSCmdlet
+    [Cmdlet(VerbsCommon.Set, "AzmiBlobContent")]
+    public class SetAzmiBlobContent : PSCmdlet
     {
+
         //
         // Arguments private properties
         //
@@ -35,7 +34,7 @@ namespace azmi
         //
 
         [Parameter(Mandatory = false)]
-        public string Identity {get { return identity; } set { identity = value; }}
+        public string Identity { get { return identity; } set { identity = value; } }
 
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = "Single")]
         public string Blob { get { return blob; } set { blob = value; } }
@@ -60,11 +59,16 @@ namespace azmi
         protected override void ProcessRecord()
         {
 
-            if (ParameterSetName == "Single") {
+            if (ParameterSetName == "Single")
+            {
                 ProcessSingle();
-            } else if (ParameterSetName == "Multi") {
+            }
+            else if (ParameterSetName == "Multi")
+            {
                 ProcessMulti();
-            } else {
+            }
+            else
+            {
                 throw new ArgumentException("Bad ParameterSet Name");
             }
         }
@@ -78,10 +82,10 @@ namespace azmi
             // Fix path
             file ??= blob.Split('/').Last();
             file = Path.GetFullPath(file, SessionState.Path.CurrentLocation.Path);
-            WriteVerbose($"Using destination: '{file}'");
+            WriteVerbose($"Using source: '{file}'");
             // Download
-            blobClient.DownloadTo(file);
-            WriteVerbose("Download completed");
+            blobClient.Upload(file);
+            WriteVerbose("Upload completed");
         }
 
         private void ProcessMulti()
@@ -91,31 +95,23 @@ namespace azmi
             var cred = new ManagedIdentityCredential(identity);
             var containerClient = new BlobContainerClient(new Uri(container), cred);
 
-            // get list of blobs
-            WriteVerbose("Obtaining list of blobs...");
-            List<string> blobListing = containerClient.GetBlobs().Select(i => i.Name).ToList();
-            WriteVerbose($"Obtained {blobListing.Count} blobs");
-
             // fix path
             directory ??= container.Split('/').Last();
             directory = Path.GetFullPath(directory, SessionState.Path.CurrentLocation.Path);
-            WriteVerbose($"Using destination: '{directory}'");
-            System.IO.Directory.CreateDirectory(directory);
+            WriteVerbose($"Using source: '{directory}'");
 
-            //Task.WhenAll(blobListing.Select(async blob => {
-            //    BlobClient blobClient = containerClient.GetBlobClient(blob);
-            //    string filePath = Path.Combine(directory, blob);
-            //    await blobClient.DownloadToAsync(filePath);
-            //}));
+            // get list of blobs
+            WriteVerbose("Obtaining list of files...");
+            var fileList = System.IO.Directory.EnumerateFiles(directory, "*", SearchOption.AllDirectories);
+            WriteVerbose($"Obtained {fileList.Count()} files");
 
-            Parallel.ForEach(blobListing, blobItem =>
+            Parallel.ForEach(fileList, file =>
             {
-                BlobClient blobClient = containerClient.GetBlobClient(blobItem);
-                string filePath = Path.Combine(directory, blobItem);
-                string absolutePath = Path.GetFullPath(filePath);
-                blobClient.DownloadTo(filePath);
+                var blobPath = file.Substring(directory.Length).TrimStart(Path.DirectorySeparatorChar);
+                BlobClient blobClient = containerClient.GetBlobClient(blobPath);
+                blobClient.Upload(file);
             });
-            WriteVerbose("Download completed");
+            WriteVerbose("Upload completed");
         }
     }
 }
