@@ -31,4 +31,4 @@ Project is based on a `azmi` Linux CLI project - https://github.com/SRE-PRG/azmi
 
 ## Pipelines
 
-[![Build status](https://dev.azure.com/iiric/PS-azmi/_apis/build/status/PS-azmi-CI)](https://dev.azure.com/iiric/PS-azmi/_build/latest?definitionId=37)
+[![Build status](https://dev.azure.com/iiric/azmi/_apis/build/status/PS-azmi%20Unit%20tests)](https://dev.azure.com/iiric/azmi/_build/latest?definitionId=39)
