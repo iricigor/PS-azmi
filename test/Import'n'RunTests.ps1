@@ -1,6 +1,6 @@
 $modulePath = './publish/azmi.dll'
 
-if (get-item $modulePath) {
+if (get-item $modulePath -ea 0) {
 	Write-Output "Import azmi module"
 	Import-Module $modulePath -Force
 } else {
