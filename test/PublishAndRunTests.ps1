@@ -6,5 +6,5 @@ if (!(Get-Module 'Pester' -List | ? Version -ge 5.0.0)) {
 }
 
 
-Write-Output "Invoke Pester tests"
-Invoke-Pester -CI
+Write-Output "Run basic test"
+Get-Command -Module azmi

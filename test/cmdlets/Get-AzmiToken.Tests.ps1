@@ -43,6 +43,7 @@ Describe 'Basic tests'  {
 Describe 'Identity argument'  {
 
     It 'It works with proper ID' {
+        # add ID as pipeline variable first
         # Get-AzmiToken  | Should -Not -BeNullOrEmpty
     }
 
