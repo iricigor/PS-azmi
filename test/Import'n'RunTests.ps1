@@ -11,8 +11,8 @@ if (get-item $modulePath -ea 0) {
 
 
 if (!(Get-Module 'Pester' -List | ? Version -ge 5.0.0)) {
-	Write-Output "Import Pester 5 module"
-	Install-Module 'Pester' -RequiredVersion 5.0.0
+	Write-Output "Install Pester 5 module"
+	Install-Module 'Pester' -MinimumVersion 5.0.0 -Scope CurrentUser -Force
 }
 
 
