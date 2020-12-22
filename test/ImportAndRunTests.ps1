@@ -17,4 +17,4 @@ if (!(Get-Module 'Pester' -List | ? Version -ge 5.0.0)) {
 
 
 Write-Output "Invoke Pester tests"
-Invoke-Pester 'test/Azmi.Module.Tests.ps1', 'test/cmdlets/*' -Path -CI
+Invoke-Pester -Path  'test/Azmi.Module.Tests.ps1', 'test/cmdlets/*' -CI
