@@ -35,7 +35,7 @@ Describe 'Basic tests'  {
     }
 
     It 'It accepts JWTformat switch' {
-        Get-AzmiToken -JWTformat | Should -Contain $managedIdentityName
+        (Get-AzmiToken -JWTformat).ToString() | Should -Contain $managedIdentityName
     }
 
 }
