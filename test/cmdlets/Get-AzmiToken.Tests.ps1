@@ -21,7 +21,9 @@ BeforeAll {
 
 Describe 'Verify required variables'  {
     # in order to avoid weird failures later, we first test if we have required variables
-    $MSI | Should  -Not -BeNullOrEmpty
+    It 'Has IDENTITY_CLIENT_ID defined' {
+        $MSI | Should  -Not -BeNullOrEmpty
+    }
 }
 
 Describe 'Function import verifications'  {
