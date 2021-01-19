@@ -44,6 +44,10 @@ Describe 'Basic tests'  {
         Get-AzmiToken | Should -Not -BeNullOrEmpty
     }
 
+    It 'It supports Verbose switch' {
+        Get-AzmiToken -Verbose | Should -Not -BeNullOrEmpty
+    }
+
     It 'It accepts JWTformat switch' {
         Get-AzmiToken -JWTformat | Should -Not -BeNullOrEmpty
     }
