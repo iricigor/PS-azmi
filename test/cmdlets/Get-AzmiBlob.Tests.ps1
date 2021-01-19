@@ -30,8 +30,15 @@ BeforeAll {
 
 Describe 'Verify required variables'  {
     # in order to avoid weird failures later, we first test if we have required variables
-    $MSI | Should  -Not -BeNullOrEmpty
-    $STORAGEACCOUNTNAME | Should  -Not -BeNullOrEmpty
+
+    It 'Has IDENTITY_CLIENT_ID defined' {
+        $MSI | Should  -Not -BeNullOrEmpty
+    }
+
+    It 'Has STORAGE_ACCOUNT_NAME defined' {
+        $STORAGEACCOUNTNAME | Should  -Not -BeNullOrEmpty
+    }
+
 }
 
 
@@ -69,7 +76,6 @@ Describe 'Identity argument'  {
     It 'It fails with fake ID' {
         {Get-AzmiToken -Container $CONTAINER_LB -Identity fakeIdentity}| Should -Throw
     }
-
 }
 
 Describe 'Container argument'  {
