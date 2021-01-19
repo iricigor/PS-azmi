@@ -28,6 +28,13 @@ BeforeAll {
 }
 
 
+Describe 'Verify required variables'  {
+    # in order to avoid weird failures later, we first test if we have required variables
+    $MSI | Should  -Not -BeNullOrEmpty
+    $STORAGEACCOUNTNAME | Should  -Not -BeNullOrEmpty
+}
+
+
 Describe 'Function import verifications'  {
 
     It 'Has function imported' {
@@ -78,5 +85,25 @@ Describe 'Container argument'  {
     It 'It fails with wrong container url' {
         {Get-AzmiBlob -Container 'random_text'}| Should -Throw
     }
+
+}
+
+Describe 'Verify return values'  {
+
+    It 'It returns 5 blobs' {
+        Get-AzmiBlob -Container $CONTAINER_LB | Should  -HaveCount 5
+    }
+
+    # return objects should be
+    # server1-file1
+    # server1-file2
+    # server1-file3
+    # server2-file1
+    # server2-file2
+
+    It 'It returns 5 blobs' {
+        Get-AzmiBlob -Container $CONTAINER_LB | Should  -HaveCount 5
+    }
+
 
 }
