@@ -101,8 +101,9 @@ Describe 'Verify return values'  {
     # server2-file1
     # server2-file2
 
-    It 'It returns 5 blobs' {
-        Get-AzmiBlob -Container $CONTAINER_LB | Should  -HaveCount 5
+    It 'Verify proper blob names' {
+        $BlobNames = Get-AzmiBlob -Container $CONTAINER_LB
+        $BlobNames | % {$_ | Should -Match 'server\d-file\d'}
     }
 
 
