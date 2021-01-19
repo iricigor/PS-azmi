@@ -36,7 +36,7 @@ Describe 'Function import verifications'  {
 Describe 'Basic tests'  {
 
     It 'It returns something' {
-        Get-AzmiToken  | Should -Not -BeNullOrEmpty
+        Get-AzmiToken | Should -Not -BeNullOrEmpty
     }
 
     It 'It accepts JWTformat switch' {
@@ -52,7 +52,6 @@ Describe 'Basic tests'  {
 Describe 'Identity argument'  {
 
     It 'It works with proper ID' {
-        # add ID as pipeline variable first
         Get-AzmiToken -Identity $MSI | Should -Not -BeNullOrEmpty
     }
 
