@@ -51,7 +51,7 @@ namespace azmi
                 WriteVerbose("Trying to read container...");
                 List<string> blobsListing = containerClient.GetBlobs().Select(i => i.Name).ToList();
                 WriteVerbose($"Obtained {blobsListing.Count} blobs");
-                WriteObject(blobsListing.ToArray());
+                blobsListing.ForEach(b => WriteObject(b));
             } else {
                 WriteVerbose($"Container {container} does not exist or cannot be accessed.");
                 // switch to error
