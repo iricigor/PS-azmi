@@ -4,6 +4,8 @@ BeforeAll {
     $commandName = 'Get-AzmiToken'
     $managedIdentityName = 'azmitest'
 
+    # import environment variables
+    $MSI = $Env:IDENTITY_CLIENT_ID
 
     if (!(Get-Module $moduleName)) {
         throw "You must import module before running tests."
@@ -44,7 +46,7 @@ Describe 'Identity argument'  {
 
     It 'It works with proper ID' {
         # add ID as pipeline variable first
-        # Get-AzmiToken  | Should -Not -BeNullOrEmpty
+        Get-AzmiToken -Identity $MSI | Should -Not -BeNullOrEmpty
     }
 
     It 'It fails with fake ID' {

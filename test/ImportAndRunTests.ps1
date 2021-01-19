@@ -1,3 +1,4 @@
+# module can be compiled (published) in previous step or even on different machine
 $modulePath = './publish/azmi.dll'
 
 if (get-item $modulePath -ea 0) {
