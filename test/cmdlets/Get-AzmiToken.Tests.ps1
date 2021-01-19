@@ -1,3 +1,10 @@
+    #
+    # Pester tests for Get-AzmiToken.cs
+    #
+    #   Returns Azure access token for a managed identity
+    #
+
+
 BeforeAll {
 
     $moduleName = 'azmi'
@@ -36,7 +43,7 @@ Describe 'Basic tests'  {
         Get-AzmiToken -JWTformat | Should -Not -BeNullOrEmpty
     }
 
-    It 'It accepts JWTformat switch' {
+    It 'In JWT you can see identity' {
         (Get-AzmiToken -JWTformat).Contains($managedIdentityName) | Should -Be $true
     }
 
