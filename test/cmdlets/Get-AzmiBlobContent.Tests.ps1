@@ -66,8 +66,12 @@ Describe 'Basic tests'  {
         {Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File $testFile -Verbose} | Should -Not -Throw
     }
 
-    It 'Fails on no access blob' {
+    It 'Fails on no access blob with single file' {
         {Get-AzmiBlobContent -Blob "$CONTAINER_NA/file1" -File $testFile} | Should -Throw
+    }
+
+    It 'Fails on no access blob with multiple files' {
+        {Get-AzmiBlobContent -Container "$CONTAINER_NA" -Directory $testDir} | Should -Throw
     }
 }
 
@@ -95,7 +99,7 @@ Describe 'Downloads single file properly'  {
         New-Item $testDir -ItemType Directory -Force | Out-Null
         Set-Location $testDir
         Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File 'test.txt'
-        "$testDir\test.txt" | Should -Exist
+        Join-Path $testDir 'test.txt' | Should -Exist
         Set-Location -Path '-'
     }
 }
@@ -110,6 +114,23 @@ Describe 'Downloads multiple files properly'  {
     It 'Creates two files' {
         Get-AzmiBlobContent -Container $CONTAINER_RO -Directory $testDir
         Get-ChildItem $testDir | Should -HaveCount 2
+    }
+
+    It 'Files should have proper content' {
+        Get-AzmiBlobContent -Container $CONTAINER_RO -Directory $testDir
+        Get-Content (Join-Path $testDir 'file1')  | Should -FileContentMatch 'Ahoj!'
+        Get-Content (Join-Path $testDir 'file2')  | Should -FileContentMatch 'Ahoj!'
+    }
+
+    It 'Creates directory under current location' {
+        New-Item $testDir -ItemType Directory -Force | Out-Null
+        Set-Location $testDir
+        Get-AzmiBlobContent -Container $CONTAINER_RO -Directory 'testDir'
+        $newDir = Join-Path $testDir 'testDir'
+
+        $newDir | Should -Exist
+        Get-ChildItem $newDir | Should -HaveCount 2
+        Set-Location -Path '-'
     }
 
 }
