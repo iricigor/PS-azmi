@@ -71,7 +71,7 @@ Describe 'Basic tests'  {
     }
 }
 
-Describe 'Downloads file properly'  {
+Describe 'Downloads single file properly'  {
 
     It 'Test drive should exist' {
         Get-Item 'TestDrive:/' | Should -Not -BeNullOrEmpty
@@ -100,3 +100,16 @@ Describe 'Downloads file properly'  {
     }
 }
 
+
+Describe 'Downloads multiple files properly'  {
+
+    It 'Directory is empty initially' {
+        Get-ChildItem $testDir | Should -BeNullOrEmpty
+    }
+
+    It 'Creates two files' {
+        Get-AzmiBlobContent -Container $CONTAINER_RO -Directory $testDir
+        Get-ChildItem $testDir | Should -HaveCount 3
+    }
+
+}
