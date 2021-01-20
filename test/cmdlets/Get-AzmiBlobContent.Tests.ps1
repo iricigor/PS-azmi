@@ -58,12 +58,32 @@ Describe 'Function import verifications'  {
 Describe 'Basic tests'  {
 
     It 'It returns something' {
-        Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File $testFile | Should -Not -Throw
-        # https://azmitest5.blob.core.windows.net/azmi-ro/file1
+        {Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File $testFile} | Should -Not -Throw
     }
 
     It 'It supports Verbose switch' {
-        Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File $testFile -Verbose | Should -Not -Throw
+        {Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File $testFile -Verbose} | Should -Not -Throw
+    }
+
+    It 'Fails on no access blob' {
+        {Get-AzmiBlobContent -Blob "$CONTAINER_NA/file1" -File $testFile} | Should -Throw
+    }
+}
+
+Describe 'Downloads file properly'  {
+
+    It 'File should not exist initially' {
+        $testFile | Should -Not -Exist
+    }
+
+    It 'File exists' {
+        Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File $testFile
+        $testFile | Should -Exist
+    }
+
+    It 'File should contain Ahoj' {
+        Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File $testFile
+        $testFile | Should -FileContentMatch 'Ahoj!'
     }
 }
 
