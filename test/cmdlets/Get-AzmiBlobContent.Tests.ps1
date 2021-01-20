@@ -10,8 +10,8 @@ BeforeAll {
     $moduleName = 'azmi'
     $commandName = 'Get-AzmiBlobContent'
     $managedIdentityName = 'azmitest'
-    $testFile = 'TestDrive:/test.txt'
-    $testDir = 'TestDrive:/testDir'
+    $testFile = Join-Path $TestDrive 'test.txt'
+    $testDir = Join-Path $TestDrive 'testDir'
 
     # import environment variables
     $MSI = $Env:IDENTITY_CLIENT_ID
@@ -96,6 +96,7 @@ Describe 'Downloads file properly'  {
         Set-Location $testDir
         Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File 'test.txt'
         "$testDir\test.txt" | Should -Exist
+        Set-Location -Path '-'
     }
 }
 
