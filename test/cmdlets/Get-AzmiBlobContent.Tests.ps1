@@ -103,13 +103,13 @@ Describe 'Downloads single file properly'  {
 
 Describe 'Downloads multiple files properly'  {
 
-    It 'Directory is empty initially' {
-        Get-ChildItem $testDir | Should -BeNullOrEmpty
+    It 'Directory is empty or not existing initially' {
+        Get-ChildItem $testDir -ea 0 | Should -BeNullOrEmpty
     }
 
     It 'Creates two files' {
         Get-AzmiBlobContent -Container $CONTAINER_RO -Directory $testDir
-        Get-ChildItem $testDir | Should -HaveCount 3
+        Get-ChildItem $testDir | Should -HaveCount 2
     }
 
 }
