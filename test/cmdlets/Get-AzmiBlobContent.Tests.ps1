@@ -10,7 +10,8 @@ BeforeAll {
     $moduleName = 'azmi'
     $commandName = 'Get-AzmiBlobContent'
     $managedIdentityName = 'azmitest'
-    $testFile = "TestDrive:\test.txt"
+    $testFile = 'TestDrive:/test.txt'
+    $testDir = 'TestDrive:/testDir'
 
     # import environment variables
     $MSI = $Env:IDENTITY_CLIENT_ID
@@ -72,6 +73,10 @@ Describe 'Basic tests'  {
 
 Describe 'Downloads file properly'  {
 
+    It 'Test drive should exist' {
+        Get-Item 'TestDrive:/' | Should -Not -BeNullOrEmpty
+    }
+
     It 'File should not exist initially' {
         $testFile | Should -Not -Exist
     }
@@ -84,6 +89,13 @@ Describe 'Downloads file properly'  {
     It 'File should contain Ahoj' {
         Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File $testFile
         $testFile | Should -FileContentMatch 'Ahoj!'
+    }
+
+    It 'Creates file in current directory' {
+        New-Item $testDir -ItemType Directory -Force | Out-Null
+        Set-Location $testDir
+        Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File 'test.txt'
+        "$testDir\test.txt" | Should -Exist
     }
 }
 
