@@ -115,6 +115,4 @@ Describe 'Verify return values'  {
         $BlobNames = Get-AzmiBlob -Container $CONTAINER_LB
         $BlobNames | % {$_ | Should -Match 'server\d-file\d'}
     }
-
-
 }
