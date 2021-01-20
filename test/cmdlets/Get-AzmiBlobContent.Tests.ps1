@@ -55,14 +55,15 @@ Describe 'Function import verifications'  {
 }
 
 
-#Describe 'Basic tests'  {
+Describe 'Basic tests'  {
 
-#    It 'It returns something' {
-#        Get-AzmiBlobContent  -Container $CONTAINER_LB | Should -Not -BeNullOrEmpty
-#    }
+    It 'It returns something' {
+        Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File $testFile | Should -Not -Throw
+        # https://azmitest5.blob.core.windows.net/azmi-ro/file1
+    }
 
-#    It 'It supports Verbose switch' {
-#        Get-AzmiBlob  -Container $CONTAINER_LB -Verbose | Should -Not -BeNullOrEmpty
-#    }
-#}
+    It 'It supports Verbose switch' {
+        Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File $testFile -Verbose | Should -Not -Throw
+    }
+}
 
