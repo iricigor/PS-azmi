@@ -117,7 +117,7 @@ Describe 'Downloads multiple files properly'  {
     }
 
     It 'Files should have proper content' {
-        Get-AzmiBlobContent -Container $CONTAINER_RO -Directory $testDir
+        Get-AzmiBlobContent -Container $CONTAINER_RO -Directory $testDir -Verbose
         Get-Content (Join-Path $testDir 'file1')  | Should -FileContentMatch 'Ahoj!'
         Get-Content (Join-Path $testDir 'file2')  | Should -FileContentMatch 'Ahoj!'
     }
