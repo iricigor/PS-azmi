@@ -59,4 +59,28 @@ Describe 'Basic tests'  {
     It 'It supports Verbose switch' {
         Get-AzmiKeyVaultSecret  -Secret $Secret1 -Verbose | Should -Not -BeNullOrEmpty
     }
+
+    It 'It fails on non-existing secret' {
+        {Get-AzmiKeyVaultSecret -Secret 'non-existing'} | Should -Throw
+    }
+
+    It 'It fails on missing secret in existing KV' {
+        {Get-AzmiKeyVaultSecret -Secret "$KV_RO/secrets/missingsecret"} | Should -Throw
+    }
+
+    It 'It fails on wrongly formatted URL' { # missing URL part /secrets/
+        {Get-AzmiKeyVaultSecret -Secret "$KV_RO/secret1"} | Should -Throw
+    }
+
+}
+
+Describe 'Content tests'  {
+
+    It 'It returns proper value' {
+        Get-AzmiKeyVaultSecret -Secret $Secret1 | Should -Be 'version2'
+    }
+
+    # add test for previous version which should return 'version1'
+
+
 }
