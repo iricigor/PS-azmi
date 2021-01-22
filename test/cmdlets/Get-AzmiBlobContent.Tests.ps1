@@ -121,8 +121,8 @@ Describe 'Downloads multiple files properly'  {
         $file1 = Join-Path $testDir 'file1'
         $file2 = Join-Path $testDir 'file2'
         Write-Verbose "Checking '$file1' and '$file2'"
-        Get-Content $file1 | Should -FileContentMatch 'Ahoj!'
-        Get-Content $file2 | Should -FileContentMatch 'Ahoj!'
+        $file1 | Should -FileContentMatch 'Ahoj!'
+        $file2 | Should -FileContentMatch 'Ahoj!'
     }
 
     #It 'Creates directory under current location' {
