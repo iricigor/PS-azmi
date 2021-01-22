@@ -50,7 +50,7 @@ namespace azmi
             var secretClient = new SecretClient(keyVault, cred);
 
             WriteVerbose($"Obtaining secret {secretName}...");
-            WriteObject(secretClient.GetSecret(secretName, secretVersion).Value);
+            WriteObject(secretClient.GetSecret(secretName, secretVersion).Value.Value);
         }
 
         // for multiple secrets see here
