@@ -112,7 +112,6 @@ namespace azmi
             {
                 BlobClient blobClient = containerClient.GetBlobClient(blobItem);
                 string filePath = Path.Combine(directory, blobItem);
-                WriteVerbose($"Downloading to: '{filePath}'");
                 string absolutePath = Path.GetFullPath(filePath);
                 blobClient.DownloadTo(filePath);
             });
