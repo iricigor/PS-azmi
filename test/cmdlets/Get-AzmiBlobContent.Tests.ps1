@@ -95,13 +95,13 @@ Describe 'Downloads single file properly'  {
         $testFile | Should -FileContentMatch 'Ahoj!'
     }
 
-    It 'Creates file in current directory' {
-        New-Item $testDir -ItemType Directory -Force | Out-Null
-        Set-Location $testDir
-        Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File 'test.txt'
-        Join-Path $testDir 'test.txt' | Should -Exist
-        Set-Location -Path '-' # Pop-Location, Pester requirement to get out of TestDrive
-    }
+    #It 'Creates file in current directory' {
+    #    New-Item $testDir -ItemType Directory -Force | Out-Null
+    #    Set-Location $testDir
+    #    Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File 'test.txt'
+    #    Join-Path $testDir 'test.txt' | Should -Exist
+    #    Set-Location -Path '-' # Pop-Location, Pester requirement to get out of TestDrive
+    #}
 }
 
 
@@ -125,15 +125,15 @@ Describe 'Downloads multiple files properly'  {
         Get-Content $file2 | Should -FileContentMatch 'Ahoj!'
     }
 
-    It 'Creates directory under current location' {
-        New-Item $testDir -ItemType Directory -Force | Out-Null
-        Set-Location $testDir
-        Get-AzmiBlobContent -Container $CONTAINER_RO -Directory 'testDir'
-        $newDir = Join-Path $testDir 'testDir'
+    #It 'Creates directory under current location' {
+    #    New-Item $testDir -ItemType Directory -Force | Out-Null
+    #   Set-Location $testDir
+    #   Get-AzmiBlobContent -Container $CONTAINER_RO -Directory 'testDir'
+    #    $newDir = Join-Path $testDir 'testDir'
 
-        $newDir | Should -Exist
-        Get-ChildItem $newDir | Should -HaveCount 2
-        Set-Location -Path '-' # Pop-Location, Pester requirement to get out of TestDrive
-    }
+    #    $newDir | Should -Exist
+    #    Get-ChildItem $newDir | Should -HaveCount 2
+    #    Set-Location -Path '-' # Pop-Location, Pester requirement to get out of TestDrive
+    #}
 
 }
