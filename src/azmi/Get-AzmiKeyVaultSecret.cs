@@ -44,8 +44,9 @@ namespace azmi
             var cred = new ManagedIdentityCredential(identity);
             WriteVerbose($"Parsing secret... '{secret}'");
             (Uri keyVault, string secretName, string secretVersion) = ParseSecret(secret);
-            WriteVerbose($"Parsing secret done");
+            WriteVerbose($"Obtaining KV client for '{keyVault}' using '{identity}'...");
             var secretClient = new SecretClient(keyVault, cred);
+            WriteVerbose($"Obtaining secret {secretName}...");
             WriteObject(secretClient.GetSecret(secretName, secretVersion));
         }
 
@@ -67,7 +68,7 @@ namespace azmi
             //if (t != secret) { throw new Exception(); };
 
             // return values
-            return (new Uri(kv), p[2], (p.Length < 3) ? null : p[3]);
+            return (new Uri(kv), p[2], (p.Length < 4) ? null : p[3]);
         }
     }
 }
