@@ -116,13 +116,9 @@ Describe 'Downloads multiple files properly'  {
         Get-ChildItem $testDir | Should -HaveCount 2
     }
 
-    It 'Files should have proper content' {
+    It 'File should have proper content' {
         Get-AzmiBlobContent -Container $CONTAINER_RO -Directory $testDir -Verbose
-        $file1 = Join-Path $testDir 'file1'
-        $file2 = Join-Path $testDir 'file2'
-        Write-Verbose "Checking '$file1' and '$file2'"
-        $file1 | Should -FileContentMatch 'Ahoj!'
-        $file2 | Should -FileContentMatch 'Ahoj!'
+        Join-Path $testDir 'file1' | Should -FileContentMatch 'Ahoj!'
     }
 
     #It 'Creates directory under current location' {

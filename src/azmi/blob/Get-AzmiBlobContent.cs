@@ -86,7 +86,7 @@ namespace azmi
 
         private void ProcessMulti()
         {
-            WriteVerbose("Starting to process a container");
+            WriteVerbose($"Starting to process a container {container}");
             // Connection
             var cred = new ManagedIdentityCredential(identity);
             var containerClient = new BlobContainerClient(new Uri(container), cred);
