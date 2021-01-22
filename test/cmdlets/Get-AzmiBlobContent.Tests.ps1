@@ -106,7 +106,6 @@ Describe 'Downloads single file properly'  {
         set-location $testdir
         get-azmiblobcontent -blob "$container_ro/file1" -file 'test.txt'
         join-path $testdir 'test.txt' | should -exist
-        #set-location -path '-' # pop-location, pester requirement to get out of testdrive
     }
 }
 
@@ -135,7 +134,6 @@ Describe 'Downloads multiple files properly'  {
         $newDir | Should -Exist
 
         Get-ChildItem $newDir | Should -HaveCount 2
-        #Set-Location -Path '-' # Pop-Location, Pester requirement to get out of TestDrive
     }
 
 }
