@@ -42,7 +42,9 @@ namespace azmi
         protected override void ProcessRecord()
         {
             var cred = new ManagedIdentityCredential(identity);
+            WriteVerbose($"Parsing secret... '{secret}'");
             (Uri keyVault, string secretName, string secretVersion) = ParseSecret(secret);
+            WriteVerbose($"Parsing secret done");
             var secretClient = new SecretClient(keyVault, cred);
             WriteObject(secretClient.GetSecret(secretName, secretVersion));
         }

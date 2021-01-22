@@ -1,5 +1,5 @@
     #
-    # Pester tests for Get-AzmiBlobContent.cs
+    # Pester tests for Get-AzmiKeyVaultSecret.cs
     #
     #   Lists secrets from Azure Key Vault using managed identity
     #
