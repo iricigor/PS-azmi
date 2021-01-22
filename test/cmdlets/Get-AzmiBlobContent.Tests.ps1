@@ -27,8 +27,14 @@ BeforeAll {
     if (!(Get-Module $moduleName)) {
         throw "You must import module before running tests."
     }
+
+    # remember current location
+    $loc = Get-Location
 }
 
+AfterAll {
+    #Set-Location $loc
+}
 
 Describe 'Verify required variables'  {
     # in order to avoid weird failures later, we first test if we have required variables
@@ -95,13 +101,13 @@ Describe 'Downloads single file properly'  {
         $testFile | Should -FileContentMatch 'Ahoj!'
     }
 
-    #It 'Creates file in current directory' {
-    #    New-Item $testDir -ItemType Directory -Force | Out-Null
-    #    Set-Location $testDir
-    #    Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File 'test.txt'
-    #    Join-Path $testDir 'test.txt' | Should -Exist
-    #    Set-Location -Path '-' # Pop-Location, Pester requirement to get out of TestDrive
-    #}
+    It 'creates file in current directory' {
+        new-item $testdir -itemtype directory -force | out-null
+        set-location $testdir
+        get-azmiblobcontent -blob "$container_ro/file1" -file 'test.txt'
+        join-path $testdir 'test.txt' | should -exist
+        set-location -path '-' # pop-location, pester requirement to get out of testdrive
+    }
 }
 
 
@@ -121,15 +127,15 @@ Describe 'Downloads multiple files properly'  {
         Join-Path $testDir 'file1' | Should -FileContentMatch 'Ahoj!'
     }
 
-    #It 'Creates directory under current location' {
-    #    New-Item $testDir -ItemType Directory -Force | Out-Null
-    #   Set-Location $testDir
-    #   Get-AzmiBlobContent -Container $CONTAINER_RO -Directory 'testDir'
-    #    $newDir = Join-Path $testDir 'testDir'
+    It 'Creates directory under current location' {
+        New-Item $testDir -ItemType Directory -Force | Out-Null
+       Set-Location $testDir
+       Get-AzmiBlobContent -Container $CONTAINER_RO -Directory 'testDir'
+        $newDir = Join-Path $testDir 'testDir'
+        $newDir | Should -Exist
 
-    #    $newDir | Should -Exist
-    #    Get-ChildItem $newDir | Should -HaveCount 2
-    #    Set-Location -Path '-' # Pop-Location, Pester requirement to get out of TestDrive
-    #}
+        Get-ChildItem $newDir | Should -HaveCount 2
+        Set-Location -Path '-' # Pop-Location, Pester requirement to get out of TestDrive
+    }
 
 }
