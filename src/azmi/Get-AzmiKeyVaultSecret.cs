@@ -65,7 +65,7 @@ namespace azmi
             //if (t != secret) { throw new Exception(); };
 
             // return values
-            return (new Uri(kv), p[2], p[3]);
+            return (new Uri(kv), p[2], (p.Length < 3) ? null : p[3]);
         }
     }
 }
