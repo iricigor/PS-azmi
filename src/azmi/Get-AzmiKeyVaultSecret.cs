@@ -10,7 +10,7 @@ namespace azmi
     //
     // Get-AzmiBlobContent
     //
-    //   Downloads blob/blobs from Azure storage account to local file/directory using managed identity
+    //   Lists secrets from Azure Key Vault using managed identity
     //
 
     [Cmdlet(VerbsCommon.Get, "AzmiKeyVaultSecret")]

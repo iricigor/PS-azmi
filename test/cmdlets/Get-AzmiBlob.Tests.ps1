@@ -58,11 +58,11 @@ Describe 'Function import verifications'  {
 Describe 'Basic tests'  {
 
     It 'It returns something' {
-        Get-AzmiBlob  -Container $CONTAINER_LB | Should -Not -BeNullOrEmpty
+        Get-AzmiBlob -Container $CONTAINER_LB | Should -Not -BeNullOrEmpty
     }
 
     It 'It supports Verbose switch' {
-        Get-AzmiBlob  -Container $CONTAINER_LB -Verbose | Should -Not -BeNullOrEmpty
+        Get-AzmiBlob -Container $CONTAINER_LB -Verbose | Should -Not -BeNullOrEmpty
     }
 }
 

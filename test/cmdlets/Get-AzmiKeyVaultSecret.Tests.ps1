@@ -1,7 +1,7 @@
     #
     # Pester tests for Get-AzmiBlobContent.cs
     #
-    #   Downloads blob/blobs from Azure storage account to local file/directory using managed identity
+    #   Lists secrets from Azure Key Vault using managed identity
     #
 
 
