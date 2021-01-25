@@ -59,7 +59,7 @@ Describe 'Function import verifications'  {
 
         It "Function has $argName argument" {
             $P = (Get-Command $commandName -Module $moduleName).Parameters
-            $P.ContainsKey($argName) | Should -BeTrue
+            $P.$argName | Should -Not -BeNullOrEmpty
         }
     }
 }
