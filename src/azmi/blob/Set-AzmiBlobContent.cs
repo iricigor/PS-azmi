@@ -10,6 +10,13 @@ using Azure.Storage.Blobs;
 
 namespace azmi
 {
+    
+    //
+    // Set-AzmiBlobContent
+    //
+    //   Uploads local file/directory to Azure storage blob/container using managed identity
+    //
+
     [Cmdlet(VerbsCommon.Set, "AzmiBlobContent")]
     public class SetAzmiBlobContent : PSCmdlet
     {

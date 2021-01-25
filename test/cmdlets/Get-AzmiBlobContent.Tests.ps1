@@ -37,7 +37,7 @@ AfterAll {
 }
 
 Describe 'Verify required variables'  {
-    # in order to avoid weird failures later, we first test if we have required variables
+    # in order to avoid weird test failures later, we first test if we have required variables
 
     It 'Has IDENTITY_CLIENT_ID defined' {
         $MSI | Should  -Not -BeNullOrEmpty
