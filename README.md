@@ -9,7 +9,7 @@ Module is written in c# compiled with .NET 5.0. It is targeting PowerShell v.7.
 
 ## List of Commandlets
 
-The following commandlets are planned:
+The following commandlets are implemented or planned:
 - 🔑 Common
   - [x] **`Get-AzmiToken`** - Obtains Azure authentication token for use in commands outside of this module
 - 💾 Blob
@@ -28,15 +28,19 @@ The following commandlets are planned:
 
 Here is list of blob commands and their parameters.
 
-### Blob commands 💾
-
-  - [x] `Get-AzmiBlob` - list all blobs
-  - [x] `Get-AzmiBlobContent -Blob -File` - downloads single blob
-  - [x] `Get-AzmiBlobContent -Container -Directory` - downloads multiple blobs
-  - [x] `Set-AzmiBlobContent -Blob -File` - uploads single blob
-  - [x] `Set-AzmiBlobContent -Container -Directory` - uploads multiple blobs
-
 All commands support also argument `--Identity` (managed identity client ID), which can be skipped if VM has exactly one managed identity.
+
+### Storage Blob commands 💾
+
+  - [x] `Get-AzmiBlob` -Container - List all blobs
+  - [x] `Get-AzmiBlobContent -Blob -File` - Download single blob
+  - [x] `Get-AzmiBlobContent -Container -Directory` - Download multiple blobs
+  - [x] `Set-AzmiBlobContent -Blob -File` - Upload single blob
+  - [x] `Set-AzmiBlobContent -Container -Directory` - Upload multiple blobs
+
+### Key Vault Secret commands 🔐
+  - [x] **`Get-AzmiKeyVaultSecret`** - Secret - Get the secrets from Azure Key Vault
+  - [ ] **`Set-AzmiKeyVaultSecret`** - Create or update a secret in a Azure Key Vault
 
 ## Links
 
@@ -47,7 +51,7 @@ Project is based on a `azmi` Linux CLI project - https://github.com/SRE-PRG/azmi
 Testing this module presents a challenge, because traditional pipelines do not support managed identity.
 Therefore, it is required to have a private pipeline agent on a dedicated ADO pool for module integration testing.
 
-Integration tests -
-[![Build Status](https://dev.azure.com/iiric/azmi/_apis/build/status/PS-azmi%20integration%20tests?branchName=master)](https://dev.azure.com/iiric/azmi/_build/latest?definitionId=39&branchName=master)
-[![Test detailsBuild Status](https://img.shields.io/azure-devops/tests/iiric/azmi/39)](https://dev.azure.com/iiric/azmi/_build/latest?definitionId=39&branchName=master)
+|Test|Results|
+|-|-|
+| Integration tests | [![Build Status](https://dev.azure.com/iiric/azmi/_apis/build/status/PS-azmi%20integration%20tests?branchName=master)](https://dev.azure.com/iiric/azmi/_build/latest?definitionId=39&branchName=master) [![Test detailsBuild Status](https://img.shields.io/azure-devops/tests/iiric/azmi/39)](https://dev.azure.com/iiric/azmi/_build/latest?definitionId=39&branchName=master)
 
