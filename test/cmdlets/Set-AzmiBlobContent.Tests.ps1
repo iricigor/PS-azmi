@@ -12,6 +12,8 @@ BeforeAll {
     $managedIdentityName = 'azmitest'
     $testFile = Join-Path $TestDrive 'test.txt'
     $testDir = Join-Path $TestDrive 'testDir'
+    $testContent = (Get-Date -Format FileDateTimeUniversal) + (Get-Random -Maximum 1000)
+    Set-Content -Path $testFile -Value $testContent -Force | Out-Null
 
     # import environment variables
     $MSI = $Env:IDENTITY_CLIENT_ID
@@ -59,9 +61,29 @@ Describe 'Function import verifications'  {
 
         It "Function has $argName argument" {
             $P = (Get-Command $commandName -Module $moduleName).Parameters
-            $P.$argName | Should -Not -BeNullOrEmpty
+            $P.ContainsKey($argName) | Should -BeTrue
         }
     }
 }
 
 
+# testing class "setblob"
+# test "setblob fails on NA container" assert.Fail "azmi setblob --file $UPLOADFILE --blob ${CONTAINER_NA}/${UPLOADFILE}"
+# test "setblob fails on RO container" assert.Fail "azmi setblob --file $UPLOADFILE --blob ${CONTAINER_RO}/${UPLOADFILE}"
+# test "setblob OK on RW container" assert.Success "azmi setblob --file $UPLOADFILE --blob ${CONTAINER_RW}/${UPLOADFILE}"
+
+Describe 'Function import verifications'  {
+
+    It 'Fails to upload file on NA container' {
+        {Set-AzmiBlobContent -File $testFile -Blob "$CONTAINER_NA/test.txt"} | Should -Throw
+    }
+
+    It 'Fails to upload file on RO container' {
+        {Set-AzmiBlobContent -File $testFile -Blob "$CONTAINER_NA/test.txt"} | Should -Throw
+    }
+
+    It 'Successfully uploads file on RW container' {
+        Set-AzmiBlobContent -File $testFile -Blob "$CONTAINER_NA/test.txt" | Should -Not -Throw
+    }
+
+}
