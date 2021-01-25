@@ -102,10 +102,10 @@ Describe 'Downloads single file properly'  {
     }
 
     It 'creates file in current directory' {
-        new-item $testdir -itemtype directory -force | out-null
-        set-location $testdir
-        get-azmiblobcontent -blob "$container_ro/file1" -file 'test.txt'
-        join-path $testdir 'test.txt' | should -exist
+        New-Item $testdir -itemtype directory -force | Out-Null
+        Set-Location $testdir
+        Get-AzmiBlobContent -blob "$container_ro/file1" -file 'test.txt'
+        Join-Path $testdir 'test.txt' | should -exist
     }
 }
 
@@ -128,12 +128,24 @@ Describe 'Downloads multiple files properly'  {
 
     It 'Creates directory under current location' {
         New-Item $testDir -ItemType Directory -Force | Out-Null
-       Set-Location $testDir
-       Get-AzmiBlobContent -Container $CONTAINER_RO -Directory 'testDir'
+        Set-Location $testDir
+        Get-AzmiBlobContent -Container $CONTAINER_RO -Directory 'testDir'
         $newDir = Join-Path $testDir 'testDir'
         $newDir | Should -Exist
 
         Get-ChildItem $newDir | Should -HaveCount 2
     }
+}
+
+
+Describe 'Delete after copy works properly'  {
+
+    it 'Fails on RO container' {
+        {Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File $testFile -DeleteAfterCopy} | Should -Throw
+    }
+
+    #
+    # More tests are done in scope of Set-AzmiBlobContent commandlet tests
+    #
 
 }
