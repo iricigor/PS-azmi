@@ -55,9 +55,12 @@ Describe 'Function import verifications'  {
         Get-Command $commandName -Module $moduleName | Should -Not -BeNullOrEmpty
     }
 
-    It 'Function has identity argument' {
-        $P = (Get-Command $commandName -Module $moduleName).Parameters
-        $P.Identity | Should -Not -BeNullOrEmpty
+    foreach ($argName in @('Identity','DeleteAfterCopy')) {
+
+        It "Function has $argName argument" {
+            $P = (Get-Command $commandName -Module $moduleName).Parameters
+            $P.ContainsKey($argName) | Should -BeTrue
+        }
     }
 }
 
