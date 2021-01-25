@@ -55,12 +55,13 @@ Describe 'Function import verifications'  {
         Get-Command $commandName -Module $moduleName | Should -Not -BeNullOrEmpty
     }
 
-    foreach ($argName in @('Identity','DeleteAfterCopy')) {
-
-        It "Function has $argName argument" {
-            $P = (Get-Command $commandName -Module $moduleName).Parameters
-            $P.ContainsKey($argName) | Should -BeTrue
-        }
+    $testCases = @(
+        {argName = 'Identity'}
+        {argName = 'DeleteAfterCopy'}
+    )     
+    It "Function has $argName argument" -TestCases $testCases {
+        $P = (Get-Command $commandName -Module $moduleName).Parameters
+        $P.ContainsKey($argName) | Should -BeTrue
     }
 }
 

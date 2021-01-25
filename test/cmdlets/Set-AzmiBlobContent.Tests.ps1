@@ -11,6 +11,7 @@ BeforeAll {
     $commandName = 'Set-AzmiBlobContent'
     $managedIdentityName = 'azmitest'
     $testFile = Join-Path $TestDrive 'test.txt'
+    $testFile2 = Join-Path $TestDrive 'test2.txt'
     $testDir = Join-Path $TestDrive 'testDir'
     $testContent = (Get-Date -Format FileDateTimeUniversal) + (Get-Random -Maximum 1000)
     Set-Content -Path $testFile -Value $testContent -Force | Out-Null
@@ -57,12 +58,13 @@ Describe 'Function import verifications'  {
         Get-Command $commandName -Module $moduleName | Should -Not -BeNullOrEmpty
     }
 
-    foreach ($argName in @('Identity','DeleteAfterCopy')) {
-
-        It "Function has $argName argument" {
-            $P = (Get-Command $commandName -Module $moduleName).Parameters
-            $P.ContainsKey($argName) | Should -BeTrue
-        }
+    $testCases = @(
+        {argName = 'Identity'}
+        {argName = 'DeleteAfterCopy'}
+    )     
+    It "Function has $argName argument" -TestCases $testCases {
+        $P = (Get-Command $commandName -Module $moduleName).Parameters
+        $P.ContainsKey($argName) | Should -BeTrue
     }
 }
 
@@ -72,18 +74,23 @@ Describe 'Function import verifications'  {
 # test "setblob fails on RO container" assert.Fail "azmi setblob --file $UPLOADFILE --blob ${CONTAINER_RO}/${UPLOADFILE}"
 # test "setblob OK on RW container" assert.Success "azmi setblob --file $UPLOADFILE --blob ${CONTAINER_RW}/${UPLOADFILE}"
 
-Describe 'Function import verifications'  {
+Describe 'Single file upload against different containers'  {
 
     It 'Fails to upload file on NA container' {
         {Set-AzmiBlobContent -File $testFile -Blob "$CONTAINER_NA/test.txt"} | Should -Throw
     }
 
     It 'Fails to upload file on RO container' {
-        {Set-AzmiBlobContent -File $testFile -Blob "$CONTAINER_NA/test.txt"} | Should -Throw
+        {Set-AzmiBlobContent -File $testFile -Blob "$CONTAINER_RO/test.txt"} | Should -Throw
     }
 
     It 'Successfully uploads file on RW container' {
-        Set-AzmiBlobContent -File $testFile -Blob "$CONTAINER_NA/test.txt" | Should -Not -Throw
+        Set-AzmiBlobContent -File $testFile -Blob "$CONTAINER_RW/test.txt" | Should -Not -Throw
     }
+
+    It 'Successfully deletes uploaded file on RW container' {
+        Get-AzmiBlobContent -Blob "$CONTAINER_RW/test.txt" -File $testFile2 -DeleteAfterCopy | Should -Not -Throw
+    }
+
 
 }
