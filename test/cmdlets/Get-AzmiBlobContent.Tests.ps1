@@ -56,8 +56,8 @@ Describe 'Function import verifications'  {
     }
 
     $testCases = @(
-        {argName = 'Identity'}
-        {argName = 'DeleteAfterCopy'}
+        @{argName = 'Identity'}
+        @{argName = 'DeleteAfterCopy'}
     )     
     It "Function has $argName argument" -TestCases $testCases {
         $P = (Get-Command $commandName -Module $moduleName).Parameters

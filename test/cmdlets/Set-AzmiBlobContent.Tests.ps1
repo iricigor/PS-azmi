@@ -59,8 +59,8 @@ Describe 'Function import verifications'  {
     }
 
     $testCases = @(
-        {argName = 'Identity'}
-        {argName = 'DeleteAfterCopy'}
+        @{argName = 'Identity'}
+        @{argName = 'DeleteAfterCopy'}
     )     
     It "Function has $argName argument" -TestCases $testCases {
         $P = (Get-Command $commandName -Module $moduleName).Parameters
@@ -85,11 +85,11 @@ Describe 'Single file upload against different containers'  {
     }
 
     It 'Successfully uploads file on RW container' {
-        Set-AzmiBlobContent -File $testFile -Blob "$CONTAINER_RW/test.txt" | Should -Not -Throw
+        {Set-AzmiBlobContent -File $testFile -Blob "$CONTAINER_RW/test.txt"} | Should -Not -Throw
     }
 
     It 'Successfully deletes uploaded file on RW container' {
-        Get-AzmiBlobContent -Blob "$CONTAINER_RW/test.txt" -File $testFile2 -DeleteAfterCopy | Should -Not -Throw
+        {Get-AzmiBlobContent -Blob "$CONTAINER_RW/test.txt" -File $testFile2 -DeleteAfterCopy} | Should -Not -Throw
     }
 
 
