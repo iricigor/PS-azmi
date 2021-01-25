@@ -25,6 +25,7 @@ namespace azmi
         //
 
         private string identity;
+        private bool deleteAfterCopy;
         private string blob;
         private string file;
         private string container;
@@ -34,15 +35,22 @@ namespace azmi
         // Arguments Definitions
         //
 
+        // All Parameter Sets
         [Parameter(Mandatory = false)]
         public string Identity {get { return identity; } set { identity = value; }}
+        
+        [Parameter(Mandatory = false)]
+        public SwitchParameter DeleteAfterCopy {get { return deleteAfterCopy; } set { deleteAfterCopy = value; }}
 
+
+        // Single Blob & File Parameter Set
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = "Single")]
         public string Blob { get { return blob; } set { blob = value; } }
 
         [Parameter(Position = 1, Mandatory = false, ParameterSetName = "Single")]
         public string File { get { return file; } set { file = value; } }
 
+        // Multiple Blobs & Files (Container & Directory) Parameter Set
         [Parameter(Mandatory = true, ParameterSetName = "Multi")]
         public string Container { get { return container; } set { container = value; } }
 
@@ -81,6 +89,7 @@ namespace azmi
             WriteVerbose($"Using destination: '{file}'");
             // Download
             blobClient.DownloadTo(file);
+            if (deleteAfterCopy) {blobClient.Delete();}
             WriteVerbose("Download completed");
         }
 
@@ -114,6 +123,7 @@ namespace azmi
                 string filePath = Path.Combine(directory, blobItem);
                 string absolutePath = Path.GetFullPath(filePath);
                 blobClient.DownloadTo(filePath);
+                if (deleteAfterCopy) {blobClient.Delete();}
             });
             WriteVerbose("Download completed");
         }

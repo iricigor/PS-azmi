@@ -28,13 +28,15 @@ The following commandlets are implemented or planned:
 
 Here is list of blob commands and their parameters.
 
-All commands support also argument `--Identity` (managed identity client ID), which can be skipped if VM has exactly one managed identity.
+All commands support also argument `-Identity` (managed identity client ID), which can be skipped if VM has exactly one managed identity.
+
+All commands support also argument `-Verbose`, which will produce additional output about commandlet execution to verbose output stream.
 
 ### Storage Blob commands 💾
 
-  - [x] `Get-AzmiBlob` -Container - List all blobs
-  - [x] `Get-AzmiBlobContent -Blob -File` - Download single blob
-  - [x] `Get-AzmiBlobContent -Container -Directory` - Download multiple blobs
+  - [x] `Get-AzmiBlob -Container` - List all blobs
+  - [x] `Get-AzmiBlobContent -Blob -File -DeleteAfterCopy` - Download single blob
+  - [x] `Get-AzmiBlobContent -Container -Directory -DeleteAfterCopy` - Download multiple blobs
   - [x] `Set-AzmiBlobContent -Blob -File` - Upload single blob
   - [x] `Set-AzmiBlobContent -Container -Directory` - Upload multiple blobs
 
@@ -45,6 +47,10 @@ All commands support also argument `--Identity` (managed identity client ID), wh
 ## Links
 
 Project is based on a `azmi` Linux CLI project - https://github.com/SRE-PRG/azmitool
+
+How to write PowerShell commandlets_
+- https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/how-to-write-a-simple-cmdlet?view=powershell-7.1
+- 
 
 ## Testing Pipelines
 
