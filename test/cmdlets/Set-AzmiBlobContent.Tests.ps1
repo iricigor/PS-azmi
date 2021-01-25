@@ -87,9 +87,18 @@ Describe 'Single file upload against different containers'  {
         {Set-AzmiBlobContent -File $testFile -Blob "$CONTAINER_RW/test.txt"} | Should -Not -Throw
     }
 
-    It 'Successfully deletes uploaded file on RW container' {
+    It 'Verify content of uploaded file' {
+        Get-AzmiBlobContent -Blob "$CONTAINER_RW/test.txt" -File $testFile2 | Out-Null
+        $testFile2 | Should -FileContentMatch $testContent
+    }
+
+    It 'Successfully deletes uploaded file' {
         {Get-AzmiBlobContent -Blob "$CONTAINER_RW/test.txt" -File $testFile2 -DeleteAfterCopy} | Should -Not -Throw
     }
 
+    It 'Fails to download deleted file' {
+        # the same command as two tests above should now fail
+        {Get-AzmiBlobContent -Blob "$CONTAINER_RW/test.txt" -File $testFile2} | Should -Throw
+    }
 
 }
