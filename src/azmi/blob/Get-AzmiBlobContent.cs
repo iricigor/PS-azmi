@@ -38,7 +38,7 @@ namespace azmi
         // All Parameter Sets
         [Parameter(Mandatory = false)]
         public string Identity {get { return identity; } set { identity = value; }}
-        
+
         [Parameter(Mandatory = false)]
         public SwitchParameter DeleteAfterCopy {get { return deleteAfterCopy; } set { deleteAfterCopy = value; }}
 
@@ -122,6 +122,7 @@ namespace azmi
                 BlobClient blobClient = containerClient.GetBlobClient(blobItem);
                 string filePath = Path.Combine(directory, blobItem);
                 string absolutePath = Path.GetFullPath(filePath);
+                System.IO.File.Create(filePath).Dispose(); // required for missing sub-directories
                 blobClient.DownloadTo(filePath);
                 if (deleteAfterCopy) {blobClient.Delete();}
             });

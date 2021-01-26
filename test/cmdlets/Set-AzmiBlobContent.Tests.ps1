@@ -124,12 +124,12 @@ Describe 'Multiple files upload against different containers'  {
     }
 
     It 'Verify count of uploaded file' {
-        Get-AzmiBlob -Container $CONTAINER_RW | Should  -HaveCount 5
+        Get-AzmiBlob -Container $CONTAINER_RW | Should  -HaveCount 3
     }
 
     It 'Verify content of uploaded file' {
         $testFile3 | Should -Not -FileContentMatch $testContent
-        Get-AzmiBlobContent -Blob "$CONTAINER_RW/test1.txt" -File $testFile2
+        Get-AzmiBlobContent -Blob "$CONTAINER_RW/test1.txt" -File $testFile3
         $testFile3 | Should -FileContentMatch $testContent
     }
 
