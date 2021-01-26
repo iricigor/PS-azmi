@@ -1,11 +1,51 @@
 ﻿# PS-azmi
 
 ## Idea
-Create PowerShell module which will simplify operations against Azure cloud ☁ resources, like storage accounts and key vault.
+This PowerShell module simplifies operations against Azure cloud ☁ resources, like storage accounts and key vault.
 The biggest difference between these and other Azure commands is that these do not require additional commands for Azure authentication.
 Authentication is done transparently for the running session using Azure Managed Identity.
 
-Module is written in c# compiled with .NET 5.0. It is targeting PowerShell v.7.
+Your code can be absolutely free of any secrets, you do not even need to store user names!
+Read more about Azure Managed Identities at [MS Docs web site](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview).
+
+This PowerShell module is written in C# compiled with .NET 5.0. It is targeting PowerShell v.7.
+
+## How to use
+
+In order to use commands from this module you need to setup your environment.
+You would need a VM and some target resource that you want to access, like Storage Account or Key Vault.
+
+### Prepare the environment
+
+You can do assign access in two ways:
+1) System Assigned Managed Identity
+
+On target resource, just assign access to your VM. More info [here](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/tutorial-linux-vm-access-arm).
+
+2) Using User Assigned Managed Identity
+
+Create new managed identity and assign it to your VM.
+On target resource grant appropriate access rights to the identity.
+
+If you want to assign the same access to multiple VMs, this is the preferred method.
+
+### Install the module
+
+Then, inside your Azure VM install this module
+
+```PowerShell
+Install-Module PS-azmi
+# or
+git clone https://github.com/iricigor/PS-azmi
+Import-Module PS-azmi/azmi.dll
+```
+
+And that is all! Now you can use commands from the module, and authentication will be done transparently
+```PowerShell
+Get-AzmiToken -JWTFormat
+Get-AzmiBlob https://my-storage-account.blob.core.windows.net/my-container
+```
+
 
 ## List of Commandlets
 
@@ -48,9 +88,9 @@ All commands support also argument `-Verbose`, which will produce additional out
 
 Project is based on a `azmi` Linux CLI project - https://github.com/SRE-PRG/azmitool
 
-How to write PowerShell commandlets_
-- https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/how-to-write-a-simple-cmdlet?view=powershell-7.1
-- 
+Related documentation links:
+- How to write a PowerShell cmdlet at [MS Docs web site](https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/how-to-write-a-simple-cmdlet?view=powershell-7.1)
+- Azure Managed Identities at [MS Docs web site](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview).
 
 ## Testing Pipelines
 

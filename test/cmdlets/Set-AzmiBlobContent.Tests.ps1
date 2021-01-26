@@ -60,7 +60,7 @@ Describe 'Function import verifications'  {
 
     $testCases = @(
         @{argName = 'Identity'}
-    )     
+    )
     It "Function has $argName argument" -TestCases $testCases {
         $P = (Get-Command $commandName -Module $moduleName).Parameters
         $P.ContainsKey($argName) | Should -BeTrue
