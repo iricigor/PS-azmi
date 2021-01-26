@@ -10,11 +10,14 @@ BeforeAll {
     $moduleName = 'azmi'
     $commandName = 'Set-AzmiBlobContent'
     $managedIdentityName = 'azmitest'
-    $testFile = Join-Path $TestDrive 'test.txt'
-    $testFile2 = Join-Path $TestDrive 'test2.txt'
+
+    # prepare the environment on test drive
     $testDir = Join-Path $TestDrive 'testDir'
+    $testFile1 = Join-Path $testDir 'test.txt'
+    $testFile2 = Join-Path $testDir 'test2.txt'
     $testContent = (Get-Date -Format FileDateTimeUniversal) + (Get-Random -Maximum 1000)
-    Set-Content -Path $testFile -Value $testContent -Force | Out-Null
+    Set-Content -Path $testFile1 -Value $testContent -Force | Out-Null
+    Set-Content -Path $testFile2 -Value null -Force | Out-Null
 
     # import environment variables
     $MSI = $Env:IDENTITY_CLIENT_ID
@@ -68,26 +71,23 @@ Describe 'Function import verifications'  {
 }
 
 
-# testing class "setblob"
-# test "setblob fails on NA container" assert.Fail "azmi setblob --file $UPLOADFILE --blob ${CONTAINER_NA}/${UPLOADFILE}"
-# test "setblob fails on RO container" assert.Fail "azmi setblob --file $UPLOADFILE --blob ${CONTAINER_RO}/${UPLOADFILE}"
-# test "setblob OK on RW container" assert.Success "azmi setblob --file $UPLOADFILE --blob ${CONTAINER_RW}/${UPLOADFILE}"
-
 Describe 'Single file upload against different containers'  {
 
     It 'Fails to upload file on NA container' {
-        {Set-AzmiBlobContent -File $testFile -Blob "$CONTAINER_NA/test.txt"} | Should -Throw
+        {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_NA/test.txt"} | Should -Throw
     }
 
     It 'Fails to upload file on RO container' {
-        {Set-AzmiBlobContent -File $testFile -Blob "$CONTAINER_RO/test.txt"} | Should -Throw
+        {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_RO/test.txt"} | Should -Throw
     }
 
+    # TODO: Think of independant tests, these four tests should be a single test with multiple Asserts
     It 'Successfully uploads file on RW container' {
-        {Set-AzmiBlobContent -File $testFile -Blob "$CONTAINER_RW/test.txt"} | Should -Not -Throw
+        {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_RW/test.txt"} | Should -Not -Throw
     }
 
     It 'Verify content of uploaded file' {
+        $testFile2 | Should -Not -FileContentMatch $testContent
         Get-AzmiBlobContent -Blob "$CONTAINER_RW/test.txt" -File $testFile2 | Out-Null
         $testFile2 | Should -FileContentMatch $testContent
     }
@@ -102,3 +102,15 @@ Describe 'Single file upload against different containers'  {
     }
 
 }
+
+
+Describe 'Multiple files upload against different containers'  {
+
+    It 'Fails to upload directory to NA container' {
+        {Set-AzmiBlobContent -Directory $testDir -Container $CONTAINER_NA} | Should -Throw
+    }
+
+
+}
+
+
