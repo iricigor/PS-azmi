@@ -122,7 +122,7 @@ namespace azmi
                 BlobClient blobClient = containerClient.GetBlobClient(blobItem);
                 string filePath = Path.Combine(directory, blobItem);
                 string absolutePath = Path.GetFullPath(filePath);
-                System.IO.File.Create(filePath).Dispose(); // required for missing sub-directories
+                System.IO.Directory.CreateDirectory(Path.GetDirectoryName(filePath)); // required for missing sub-directories
                 blobClient.DownloadTo(filePath);
                 if (deleteAfterCopy) {blobClient.Delete();}
             });
