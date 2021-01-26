@@ -139,7 +139,7 @@ Describe 'Multiple files upload against different containers'  {
 
     It 'Fails to download deleted file' {
         # the same command as above should now fail
-        {Get-AzmiBlobContent -Container $CONTAINER_RW -Directory $subDir -DeleteAfterCopy} | Should -Throw
+        {Get-AzmiBlobContent -Blob "$CONTAINER_RW/test1.txt" -File $testFile3} | Should -Throw
     }
 
 
