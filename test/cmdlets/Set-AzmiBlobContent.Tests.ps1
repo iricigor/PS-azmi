@@ -16,6 +16,7 @@ BeforeAll {
     $testFile1 = Join-Path $testDir 'test.txt'
     $testFile2 = Join-Path $testDir 'test2.txt'
     $testContent = (Get-Date -Format FileDateTimeUniversal) + (Get-Random -Maximum 1000)
+    New-Item $testDir -ItemType Directory | Out-Null
     Set-Content -Path $testFile1 -Value $testContent -Force | Out-Null
     Set-Content -Path $testFile2 -Value null -Force | Out-Null
 
@@ -108,6 +109,14 @@ Describe 'Multiple files upload against different containers'  {
 
     It 'Fails to upload directory to NA container' {
         {Set-AzmiBlobContent -Directory $testDir -Container $CONTAINER_NA} | Should -Throw
+    }
+
+    It 'Fails to upload directory to RO container' {
+        {Set-AzmiBlobContent -Directory $testDir -Container $CONTAINER_RO} | Should -Throw
+    }
+
+    It 'Successfully uploads directory to RW container' {
+        {Set-AzmiBlobContent -Directory $testDir -Container $CONTAINER_RW} | Should -Not -Throw
     }
 
 
