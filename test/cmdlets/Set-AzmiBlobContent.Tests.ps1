@@ -13,12 +13,17 @@ BeforeAll {
 
     # prepare the environment on test drive
     $testDir = Join-Path $TestDrive 'testDir'
-    $testFile1 = Join-Path $testDir 'test.txt'
+    $subDir = Join-Path $testDir 'testSubDir'
+    $testFile1 = Join-Path $testDir 'test1.txt'
     $testFile2 = Join-Path $testDir 'test2.txt'
+    $testFile3 = Join-Path $subDir 'test3.txt'
     $testContent = (Get-Date -Format FileDateTimeUniversal) + (Get-Random -Maximum 1000)
+    # create directories and files
     New-Item $testDir -ItemType Directory | Out-Null
+    New-Item $subDir -ItemType Directory | Out-Null
     Set-Content -Path $testFile1 -Value $testContent -Force | Out-Null
     Set-Content -Path $testFile2 -Value null -Force | Out-Null
+    Set-Content -Path $testFile3 -Value null -Force | Out-Null
 
     # import environment variables
     $MSI = $Env:IDENTITY_CLIENT_ID
@@ -82,14 +87,14 @@ Describe 'Single file upload against different containers'  {
         {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_RO/test.txt"} | Should -Throw
     }
 
-    # TODO: Think of independant tests, these four tests should be a single test with multiple Asserts
+    # TODO: Think of independent tests, these four tests should be a single test with multiple Asserts
     It 'Successfully uploads file on RW container' {
         {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_RW/test.txt"} | Should -Not -Throw
     }
 
     It 'Verify content of uploaded file' {
         $testFile2 | Should -Not -FileContentMatch $testContent
-        Get-AzmiBlobContent -Blob "$CONTAINER_RW/test.txt" -File $testFile2 | Out-Null
+        Get-AzmiBlobContent -Blob "$CONTAINER_RW/test.txt" -File $testFile2
         $testFile2 | Should -FileContentMatch $testContent
     }
 
@@ -98,7 +103,6 @@ Describe 'Single file upload against different containers'  {
     }
 
     It 'Fails to download deleted file' {
-        # the same command as two tests above should now fail
         {Get-AzmiBlobContent -Blob "$CONTAINER_RW/test.txt" -File $testFile2} | Should -Throw
     }
 
@@ -117,6 +121,25 @@ Describe 'Multiple files upload against different containers'  {
 
     It 'Successfully uploads directory to RW container' {
         {Set-AzmiBlobContent -Directory $testDir -Container $CONTAINER_RW} | Should -Not -Throw
+    }
+
+    It 'Verify count of uploaded file' {
+        Get-AzmiBlob -Container $CONTAINER_RW | Should  -HaveCount 5
+    }
+
+    It 'Verify content of uploaded file' {
+        $testFile3 | Should -Not -FileContentMatch $testContent
+        Get-AzmiBlobContent -Blob "$CONTAINER_RW/test1.txt" -File $testFile2
+        $testFile3 | Should -FileContentMatch $testContent
+    }
+
+    It 'Successfully deletes multiple files' {
+        {Get-AzmiBlobContent -Container $CONTAINER_RW -Directory $subDir -DeleteAfterCopy} | Should -Not -Throw
+    }
+
+    It 'Fails to download deleted file' {
+        # the same command as above should now fail
+        {Get-AzmiBlobContent -Container $CONTAINER_RW -Directory $subDir -DeleteAfterCopy} | Should -Throw
     }
 
 
