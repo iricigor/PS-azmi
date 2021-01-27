@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Azure.Identity;
@@ -18,7 +16,7 @@ namespace azmi
     //
 
     [Cmdlet(VerbsCommon.Set, "AzmiBlobContent")]
-    public class SetAzmiBlobContent : PSCmdlet
+    public class SetBlobContent : PSCmdlet
     {
 
         //

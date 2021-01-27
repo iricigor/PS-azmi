@@ -14,7 +14,7 @@ namespace azmi
     //
 
     [Cmdlet(VerbsCommon.Get, "AzmiBlob")]
-    public class GetAzmiBlob : Cmdlet
+    public class GetBlob : Cmdlet
     {
 
         //

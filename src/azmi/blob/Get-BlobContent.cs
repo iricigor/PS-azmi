@@ -18,7 +18,7 @@ namespace azmi
     //
 
     [Cmdlet(VerbsCommon.Get, "AzmiBlobContent")]
-    public class GetAzmiBlobContent : PSCmdlet
+    public class GetBlobContent : PSCmdlet
     {
         //
         // Arguments private properties
