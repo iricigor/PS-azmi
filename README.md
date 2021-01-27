@@ -1,6 +1,5 @@
 ﻿# PS-azmi
 
-## Idea
 This PowerShell module simplifies operations against Azure cloud ☁ resources, like storage accounts and key vault.
 The biggest difference between these and other Azure commands is that these do not require additional commands for Azure authentication.
 Authentication is done transparently for the running session using Azure Managed Identity.
