@@ -56,11 +56,11 @@ The following commandlets are implemented or planned:
   - [x] **`Get-AzmiBlobContent`** - Downloads one or more storage blobs to a local file
   - [x] **`Set-AzmiBlobContent`** - Uploads a local file or directory to an Azure Storage blob or container
 - 🔐 Secret
-  - [x] **`Get-AzmiKeyVaultSecret`** - Gets the secrets from Azure Key Vault
-  - [ ] **`Set-AzmiKeyVaultSecret`** - Creates or updates a secret in a Azure Key Vault
+  - [x] **`Get-AzmiSecret`** - Gets the secrets from Azure Key Vault
+  - [ ] **`Set-AzmiSecret`** - Creates or updates a secret in a Azure Key Vault
 - 🧾 Certificate
-  - [ ] **`Get-AzmiKeyVaultCertificate`**
-  - [ ] **`Set-AzmiKeyVaultCertificate`**
+  - [ ] **`Get-AzmiCertificate`**
+  - [ ] **`Set-AzmiCertificate`**
 
 
 ## Detailed explanation of commands
@@ -80,8 +80,8 @@ All commands support also argument `-Verbose`, which will produce additional out
   - [x] `Set-AzmiBlobContent -Container -Directory` - Upload multiple blobs
 
 ### Key Vault Secret commands 🔐
-  - [x] **`Get-AzmiKeyVaultSecret`** - Secret - Get the secrets from Azure Key Vault
-  - [ ] **`Set-AzmiKeyVaultSecret`** - Create or update a secret in a Azure Key Vault
+  - [x] **`Get-AzmiSecret`** - Secret - Get the secrets from Azure Key Vault
+  - [ ] **`Set-AzmiSecret`** - Create or update a secret in a Azure Key Vault
 
 ## Links
 

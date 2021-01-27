@@ -18,7 +18,9 @@ BeforeAll {
     # calculated values
     $KV_NA="https://$KEY_VAULTS_BASE_NAME-na.vault.azure.net"
     $KV_RO="https://$KEY_VAULTS_BASE_NAME-ro.vault.azure.net"
-    $Secret1 = "$KV_RO/secrets/secret1"
+
+    $PEMCERT='/certificates/pem-cert'
+    $PFXCERT='/certificates/pfx-cert'
 
     if (!(Get-Module $moduleName)) {
         throw "You must import module before running tests."
@@ -46,5 +48,12 @@ Describe 'Function import verifications'  {
     It 'Function has identity argument' {
         $P = (Get-Command $commandName -Module $moduleName).Parameters
         $P.Identity | Should -Not -BeNullOrEmpty
+    }
+}
+
+Describe 'Basic Tests' {
+
+    It 'Returns something' {
+        Get-AzmiCertificate -Certificate "$KV_RO$PEMCERT" | Should -Not -BeNullOrEmpty
     }
 }

@@ -20,7 +20,6 @@ namespace azmi
         //
         private string identity;
         private string certificate;
-        private string file;
 
         //
         // Arguments Definitions
@@ -31,9 +30,6 @@ namespace azmi
 
         [Parameter(Position = 0, Mandatory = true)]
         public string Certificate { get { return certificate; } set { certificate = value; } }
-
-        [Parameter(Mandatory = true)]
-        public string File { get { return file; } set { file = value; } }
 
         //
         //
@@ -52,22 +48,21 @@ namespace azmi
             WriteVerbose($"Obtaining certificate client for '{keyVault}' using '{identity}'...");
             // var secretClient = new SecretClient(keyVault, cred);
             var certificateClient = new CertificateClient(keyVault, cred);
-            Uri secretIdentifier;
+            KeyVaultCertificate certObj;
 
-             WriteVerbose($"Obtaining certificate {certName}...");
+            WriteVerbose($"Obtaining certificate Id {certName}...");
             if (String.IsNullOrEmpty(certVersion)) {
-            var certObj = certificateClient.GetCertificate(certName);
-                secretIdentifier = certObj.Value.SecretId;
+                certObj = certificateClient.GetCertificate(certName);
             } else
             {
-                var certObj = certificateClient.GetCertificateVersion(certName, certVersion);
-                secretIdentifier = certObj.Value.SecretId;
+                certObj = certificateClient.GetCertificateVersion(certName, certVersion);
             }
+            var secretId = certObj.SecretId.ToString();
 
-
-            // WriteObject(secretClient.GetSecret(secretName, secretVersion).Value.Value);
-
-            WriteObject(1);
+            WriteVerbose($"Obtaining certificate from {secretId}...");
+            var gs = new GetSecret() { Secret = secretId, Identity = identity };
+            var cert = gs.Invoke();
+            WriteObject(cert);
         }
     }
 }
