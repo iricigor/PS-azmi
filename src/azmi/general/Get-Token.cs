@@ -15,7 +15,7 @@ namespace azmi
 
 
     [Cmdlet(VerbsCommon.Get, "AzmiToken")]
-    public class GetAzmiTokenCommand : Cmdlet
+    public class GetToken : Cmdlet
     {
 
         //

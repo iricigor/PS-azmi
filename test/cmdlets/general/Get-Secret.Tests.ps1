@@ -8,7 +8,7 @@
 BeforeAll {
 
     $moduleName = 'azmi'
-    $commandName = 'Get-AzmiKeyVaultSecret'
+    $commandName = 'Get-AzmiSecret'
     $managedIdentityName = 'azmitest'
 
     # import environment variables
@@ -53,23 +53,23 @@ Describe 'Function import verifications'  {
 Describe 'Basic tests'  {
 
     It 'It returns something' {
-        Get-AzmiKeyVaultSecret -Secret $Secret1 | Should -Not -BeNullOrEmpty
+        Get-AzmiSecret -Secret $Secret1 | Should -Not -BeNullOrEmpty
     }
 
     It 'It supports Verbose switch' {
-        Get-AzmiKeyVaultSecret  -Secret $Secret1 -Verbose | Should -Not -BeNullOrEmpty
+        Get-AzmiSecret  -Secret $Secret1 -Verbose | Should -Not -BeNullOrEmpty
     }
 
     It 'It fails on non-existing secret' {
-        {Get-AzmiKeyVaultSecret -Secret 'non-existing'} | Should -Throw
+        {Get-AzmiSecret -Secret 'non-existing'} | Should -Throw
     }
 
     It 'It fails on missing secret in existing KV' {
-        {Get-AzmiKeyVaultSecret -Secret "$KV_RO/secrets/missingsecret"} | Should -Throw
+        {Get-AzmiSecret -Secret "$KV_RO/secrets/missingsecret"} | Should -Throw
     }
 
     It 'It fails on wrongly formatted URL' { # missing URL part /secrets/
-        {Get-AzmiKeyVaultSecret -Secret "$KV_RO/secret1"} | Should -Throw
+        {Get-AzmiSecret -Secret "$KV_RO/secret1"} | Should -Throw
     }
 
 }
@@ -77,7 +77,7 @@ Describe 'Basic tests'  {
 Describe 'Content tests'  {
 
     It 'It returns proper value' {
-        Get-AzmiKeyVaultSecret -Secret $Secret1 | Should -Be 'version2'
+        Get-AzmiSecret -Secret $Secret1 | Should -Be 'version2'
     }
 
     # add test for previous version which should return 'version1'

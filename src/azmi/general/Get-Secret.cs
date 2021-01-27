@@ -1,5 +1,4 @@
 ﻿using System.Management.Automation;
-using System.Text.RegularExpressions;
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 using System;
@@ -8,13 +7,13 @@ using System;
 namespace azmi
 {
     //
-    // Get-AzmiBlobContent
+    // Get-AzmiSecret
     //
-    //   Lists secrets from Azure Key Vault using managed identity
+    //   Get content of the secret from Azure Key Vault using managed identity
     //
 
-    [Cmdlet(VerbsCommon.Get, "AzmiKeyVaultSecret")]
-    public class GetAzmiKeyVaultSecret : PSCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzmiSecret")]
+    public class GetSecret : PSCmdlet
     {
         //
         // Arguments private properties
@@ -57,22 +56,5 @@ namespace azmi
         // for multiple secrets see here
         // https://docs.microsoft.com/en-us/dotnet/api/overview/azure/security.keyvault.secrets-readme#list-secrets
 
-        private (Uri, string, string) ParseSecret(string secret) {
-            // Example of expected URLs: https://my-key-vault.vault.azure.net/secrets/mySecretpwd (latest version)
-            // or https://my-key-vault.vault.azure.net/secrets/mySecretpwd/67d1f6c499824607b81d5fa852f9865c (specific version)
-
-            // split
-            var u = new Uri(secret);
-            var kv = u.Scheme + Uri.SchemeDelimiter + u.Host;
-            var p = u.AbsolutePath.Split('/');
-
-            // validate
-            //var t = kv + "/secret/" + p[2];
-            //if (!String.IsNullOrEmpty(p[3])) { t += $"/{p[3]}"; };
-            //if (t != secret) { throw new Exception(); };
-
-            // return values
-            return (new Uri(kv), p[2], (p.Length < 4) ? null : p[3]);
-        }
     }
 }

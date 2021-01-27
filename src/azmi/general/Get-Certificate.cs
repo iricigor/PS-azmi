@@ -2,7 +2,6 @@
 using Azure.Identity;
 using System;
 using Azure.Security.KeyVault.Certificates;
-using Microsoft.PowerShell.Commands;  // Windows PowerShell assembly.
 
 
 namespace azmi
@@ -10,11 +9,11 @@ namespace azmi
     //
     // Get-AzmiCertificate
     //
-    //   Get certificate and its content from Azure Key Vault using managed identity
+    //   Get certificate content from Azure Key Vault using managed identity
     //
 
     [Cmdlet(VerbsCommon.Get, "AzmiCertificate")]
-    public class GetAzmiCertificate : PSCmdlet
+    public class GetCertificate : PSCmdlet
     {
         //
         // Arguments private properties
