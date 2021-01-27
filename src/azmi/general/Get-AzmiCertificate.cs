@@ -54,7 +54,5 @@ namespace azmi
 
             WriteObject(1);
         }
-     
-        
     }
 }
