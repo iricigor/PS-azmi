@@ -30,10 +30,11 @@ BeforeAll {
     $STORAGEACCOUNTNAME = $Env:STORAGE_ACCOUNT_NAME
 
     # calculated variables
-    $CONTAINER_NA="https://$STORAGEACCOUNTNAME.blob.core.windows.net/azmi-na"
-    $CONTAINER_RO="https://$STORAGEACCOUNTNAME.blob.core.windows.net/azmi-ro"
-    $CONTAINER_RW="https://$STORAGEACCOUNTNAME.blob.core.windows.net/azmi-rw"
-    $CONTAINER_LB="https://$STORAGEACCOUNTNAME.blob.core.windows.net/azmi-ls"
+    $StorageAccountURL = "https://$STORAGEACCOUNTNAME.blob.core.windows.net"
+    $CONTAINER_NA="$StorageAccountURL/azmi-na"
+    $CONTAINER_RO="$StorageAccountURL/azmi-ro"
+    $CONTAINER_RW="$StorageAccountURL/azmi-rw"
+    $CONTAINER_LB="$StorageAccountURL/azmi-ls"
 
 
     if (!(Get-Module $moduleName)) {

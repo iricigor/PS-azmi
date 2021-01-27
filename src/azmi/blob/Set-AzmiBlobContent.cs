@@ -102,7 +102,7 @@ namespace azmi
             directory = Path.GetFullPath(directory, SessionState.Path.CurrentLocation.Path);
             WriteVerbose($"Using source: '{directory}'");
 
-            // get list of blobs
+            // get list of files
             WriteVerbose("Obtaining list of files...");
             var fileList = System.IO.Directory.EnumerateFiles(directory, "*", SearchOption.AllDirectories);
             WriteVerbose($"Obtained {fileList.Count()} files");
