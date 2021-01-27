@@ -88,11 +88,14 @@ Describe 'Single file upload against different containers'  {
         {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_RO/test.txt"} | Should -Throw
     }
 
-    # TODO: Think of independent tests, these four tests should be a single test with multiple Asserts
     It 'Successfully uploads file on RW container' {
         {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_RW/test.txt"} | Should -Not -Throw
     }
+}
 
+Describe 'Single file upload verification'  {
+    
+    # TODO: Think of independent tests, these four tests should be a single test with multiple Asserts
     It 'Verify content of uploaded file' {
         $testFile2 | Should -Not -FileContentMatch $testContent
         Get-AzmiBlobContent -Blob "$CONTAINER_RW/test.txt" -File $testFile2
@@ -123,7 +126,10 @@ Describe 'Multiple files upload against different containers'  {
     It 'Successfully uploads directory to RW container' {
         {Set-AzmiBlobContent -Directory $testDir -Container $CONTAINER_RW} | Should -Not -Throw
     }
+}
 
+Describe 'Multiple files upload against different containers'  {
+    
     It 'Verify count of uploaded file' {
         Get-AzmiBlob -Container $CONTAINER_RW | Should  -HaveCount 3
     }
