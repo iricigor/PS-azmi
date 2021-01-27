@@ -7,7 +7,7 @@ Authentication is done transparently for the running session using Azure Managed
 Your code can be absolutely free of any secrets, you do not even need to store user names!
 Read more about Azure Managed Identities at [MS Docs web site](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview).
 
-This PowerShell module is written in C# compiled with .NET 5.0. It is targeting PowerShell v.7.
+This PowerShell module is written in C# compiled with [.NET 5.0](https://docs.microsoft.com/en-us/dotnet/core/dotnet-five). It is targeting [PowerShell version 7](https://docs.microsoft.com/en-us/powershell/scripting/whats-new/what-s-new-in-powershell-70?view=powershell-7.1).
 
 ## How to use
 

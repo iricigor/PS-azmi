@@ -13,7 +13,7 @@ namespace azmi
     //   Get certificate and its content from Azure Key Vault using managed identity
     //
 
-    [Cmdlet(VerbsCommon.Get, "AzmiKeyCertificate")]
+    [Cmdlet(VerbsCommon.Get, "AzmiCertificate")]
     public class GetAzmiCertificate : PSCmdlet
     {
         //
