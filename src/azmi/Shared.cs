@@ -15,7 +15,7 @@ namespace azmi {
             //                    p[0]                  p[1]      p[2]        p[3]
 
             // return values are:
-            //   uri of the Azure Key Vault 
+            //   uri of the Azure Key Vault
             //   string identifying secret or certificate name
             //   string identifying version or null if missing
 

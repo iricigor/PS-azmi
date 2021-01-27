@@ -10,7 +10,7 @@ using Azure.Storage.Blobs;
 
 namespace azmi
 {
-    
+
     //
     // Set-AzmiBlobContent
     //

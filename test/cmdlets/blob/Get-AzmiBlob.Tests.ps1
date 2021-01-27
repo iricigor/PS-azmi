@@ -63,6 +63,8 @@ Describe 'Basic tests'  {
 
     It 'It supports Verbose switch' {
         Get-AzmiBlob -Container $CONTAINER_LB -Verbose | Should -Not -BeNullOrEmpty
+        # sometimes this throws CredentialUnavailableException
+        #  ManagedIdentityCredential authentication unavailable. No Managed Identity endpoint found.
     }
 }
 
