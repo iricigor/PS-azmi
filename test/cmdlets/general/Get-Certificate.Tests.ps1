@@ -57,3 +57,14 @@ Describe 'Basic Tests' {
         Get-AzmiCertificate -Certificate "$KV_RO$PEMCERT" | Should -Not -BeNullOrEmpty
     }
 }
+
+Describe 'Access rights tests against different Key Vaults' {
+
+    It 'Fails on RO Key Vault' {
+        {Get-AzmiCertificate -Certificate "$KV_NA$PEMCERT"} | Should -Throw
+    }
+
+    It 'Works on RW Key Vault' {
+        {Get-AzmiCertificate -Certificate "$KV_RW$PEMCERT"} | Should -Throw
+    }
+}
