@@ -46,7 +46,7 @@ namespace azmi {
             }
 
             // return values
-            return (new Uri(kv), p[2], hasVersionInfo ? null : p[3]);
+            return (new Uri(kv), p[2], hasVersionInfo ? p[3] : null);
         }
 
     }
