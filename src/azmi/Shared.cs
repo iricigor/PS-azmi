@@ -28,6 +28,7 @@ namespace azmi {
             if ((p.Length < 3) || (p.Length > 4)) {
                 throw new ArgumentException($"Invalid url does not contain 3 or 4 parts: {urlText}");
             }
+            bool hasVersion = (p.Length == 4);
 
             // check if validation string is present
             if (!String.IsNullOrEmpty(validation)  && (p[1]) != validation) {
@@ -35,9 +36,14 @@ namespace azmi {
             }
 
             // validate complete string
-            //var t = kv + "/secret/" + p[2];
-            //if (!String.IsNullOrEmpty(p[3])) { t += $"/{p[3]}"; };
-            //if (t != secret) { throw new Exception(); };
+            if (!String.IsNullOrEmpty(validation)) {
+                string newString = $"{kv.ToString()}/secrets/{p[2]}";
+                if (hasVersion) {newString += $"/{p[3]}"};
+                if (newString != urlText) { 
+                    var msg = $"Input url does not match expected url:\n{urlText}\n{newString}";
+                    throw new ArgumentException(msg);
+                }
+            }
 
             // return values
             return (new Uri(kv), p[2], (p.Length < 4) ? null : p[3]);

@@ -28,7 +28,7 @@ namespace azmi
         [Parameter(Mandatory = false)]
         public string Identity { get { return identity; } set { identity = value; } }
 
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "Full secret URL like https://Contoso-Vault2.vault.azure.net/secrets/ExamplePassword")]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "Full secret URL like https://ContosoVault.vault.azure.net/secrets/Password")]
         public string Secret { get { return secret; } set { secret = value; } }
 
         //
@@ -44,7 +44,7 @@ namespace azmi
 
             WriteVerbose($"Parsing secret... '{secret}'");
             //(Uri keyVault, string secretName, string secretVersion) = ParseSecret(secrets);
-            (Uri keyVault, string secretName, string secretVersion) = Shared.ParseUrl(secret, "secret");
+            (Uri keyVault, string secretName, string secretVersion) = Shared.ParseUrl(secret, "secrets");
 
             WriteVerbose($"Obtaining KV client for '{keyVault}' using '{identity}'...");
             var secretClient = new SecretClient(keyVault, cred);
