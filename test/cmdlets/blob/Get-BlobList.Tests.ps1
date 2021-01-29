@@ -57,14 +57,15 @@ Describe 'Function import verifications'  {
 
 Describe 'Basic tests'  {
 
+    # sometimes these test throw CredentialUnavailableException
+    #  ManagedIdentityCredential authentication unavailable. No Managed Identity endpoint found.
+
     It 'It returns something' {
         Get-AzmiBlobList -Container $CONTAINER_LB | Should -Not -BeNullOrEmpty
     }
 
     It 'It supports Verbose switch' {
         Get-AzmiBlobList -Container $CONTAINER_LB -Verbose | Should -Not -BeNullOrEmpty
-        # sometimes this throws CredentialUnavailableException
-        #  ManagedIdentityCredential authentication unavailable. No Managed Identity endpoint found.
     }
 }
 
