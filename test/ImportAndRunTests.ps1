@@ -1,3 +1,8 @@
+param (
+	# we need to import secret variable like this
+	[string]$MSI
+)
+
 # module can be compiled (published) in previous step or even on different machine
 $modulePath = './publish/azmi.dll'
 
@@ -16,6 +21,11 @@ if (!(Get-Module 'Pester' -List | ? Version -ge 5.0.0)) {
 	Install-Module 'Pester' -MinimumVersion 5.0.0 -Scope CurrentUser -Force
 }
 
+# Handle ADO secret variable
+if ($MSI.Length -gt 1) {
+	Write-Output "Setting up variable IDENTITY_CLIENT_ID"
+	Write-Host "##vso[task.setvariable variable=IDENTITY_CLIENT_ID]$MSI"
+}
 
 Write-Output "Invoke Pester tests"
 Invoke-Pester -Path  'test/Azmi.Module.Tests.ps1', 'test/cmdlets/*' -CI
