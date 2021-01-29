@@ -8,13 +8,13 @@ using Azure.Storage.Blobs;
 namespace azmi
 {
     //
-    // Get-AzmiBlob
+    // Get-AzmiBlobList
     //
     //   Lists blobs from Azure storage account container using managed identity
     //
 
-    [Cmdlet(VerbsCommon.Get, "AzmiBlob")]
-    public class GetBlob : Cmdlet
+    [Cmdlet(VerbsCommon.Get, "AzmiBlobList")]
+    public class GetBlobList : Cmdlet
     {
 
         //

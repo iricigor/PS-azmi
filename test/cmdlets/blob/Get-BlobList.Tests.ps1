@@ -8,7 +8,7 @@
 BeforeAll {
 
     $moduleName = 'azmi'
-    $commandName = 'Get-AzmiBlob'
+    $commandName = 'Get-AzmiBlobList'
     $managedIdentityName = 'azmitest'
 
     # import environment variables
@@ -58,7 +58,7 @@ Describe 'Function import verifications'  {
 Describe 'Basic tests'  {
 
     It 'It returns something' {
-        Get-AzmiBlob -Container $CONTAINER_LB | Should -Not -BeNullOrEmpty
+        Get-AzmiBlobList -Container $CONTAINER_LB | Should -Not -BeNullOrEmpty
     }
 
     It 'It supports Verbose switch' {
@@ -72,11 +72,11 @@ Describe 'Basic tests'  {
 Describe 'Identity argument'  {
 
     It 'It works with default ID' {
-        Get-AzmiBlob -Container $CONTAINER_LB | Should -Not -BeNullOrEmpty
+        Get-AzmiBlobList -Container $CONTAINER_LB | Should -Not -BeNullOrEmpty
     }
 
     It 'It works with proper ID' {
-        Get-AzmiBlob -Container $CONTAINER_LB -Identity $MSI | Should -Not -BeNullOrEmpty
+        Get-AzmiBlobList -Container $CONTAINER_LB -Identity $MSI | Should -Not -BeNullOrEmpty
     }
 
     It 'It fails with fake ID' {
@@ -87,15 +87,15 @@ Describe 'Identity argument'  {
 Describe 'Container argument'  {
 
     It 'It works with proper container' {
-        Get-AzmiBlob -Container $CONTAINER_LB | Should -Not -BeNullOrEmpty
+        Get-AzmiBlobList -Container $CONTAINER_LB | Should -Not -BeNullOrEmpty
     }
 
     It 'It fails with not accessible container' {
-        {Get-AzmiBlob -Container $CONTAINER_NA}| Should -Throw
+        {Get-AzmiBlobList -Container $CONTAINER_NA}| Should -Throw
     }
 
     It 'It fails with wrong container url' {
-        {Get-AzmiBlob -Container 'random_text'}| Should -Throw
+        {Get-AzmiBlobList -Container 'random_text'}| Should -Throw
     }
 
 }
@@ -114,7 +114,7 @@ Describe 'Verify return values'  {
     # server2-file2
 
     It 'Verify proper blob names' {
-        $BlobNames = Get-AzmiBlob -Container $CONTAINER_LB
+        $BlobNames = Get-AzmiBlobList -Container $CONTAINER_LB
         $BlobNames | % {$_ | Should -Match 'server\d-file\d'}
     }
 }
