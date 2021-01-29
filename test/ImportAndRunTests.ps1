@@ -23,8 +23,9 @@ if (!(Get-Module 'Pester' -List | ? Version -ge 5.0.0)) {
 
 # Handle ADO secret variable
 if ($MSI.Length -gt 1) {
-	Write-Output "Setting up variable IDENTITY_CLIENT_ID"
-	Write-Host "##vso[task.setvariable variable=IDENTITY_CLIENT_ID]$MSI"
+	Write-Output "Setting up variable IDENTITY_CLIENT_ID with length $($MSI.length)"
+	Write-Host "##vso[task.setvariable variable=IDENTITY_CLIENT_ID]'$MSI'"
+	Write-Output "Verification variable has length $($Env:IDENTITY_CLIENT_ID.length)"
 }
 
 Write-Output "Invoke Pester tests"
