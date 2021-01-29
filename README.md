@@ -12,7 +12,8 @@ This PowerShell module is written in C# compiled with [.NET 5.0](https://docs.mi
 ## How to use
 
 In order to use commands from this module you need to setup your environment.
-You would need a VM and some target resource that you want to access, like Storage Account or Key Vault.
+This is where all magic (transparent authorization and authentication) is actually happening.
+You need a VM and a target resource that you want to access, like Storage Account or Key Vault.
 
 ### Prepare the environment
 
@@ -42,7 +43,7 @@ Import-Module PS-azmi/azmi.dll
 And that is all! Now you can use commands from the module, and authentication will be done transparently
 ```PowerShell
 Get-AzmiToken -JWTFormat
-Get-AzmiBlob https://my-storage-account.blob.core.windows.net/my-container
+Get-AzmiBlobList https://my-storage-account.blob.core.windows.net/my-container
 ```
 
 
@@ -52,7 +53,7 @@ The following commandlets are implemented or planned:
 - 🔑 Common
   - [x] **`Get-AzmiToken`** - Obtains Azure authentication token for use in commands outside of this module
 - 💾 Blob
-  - [x] **`Get-AzmiBlob`** - List all blobs from container
+  - [x] **`Get-AzmiBlobList`** - List all blobs from container
   - [x] **`Get-AzmiBlobContent`** - Downloads one or more storage blobs to a local file
   - [x] **`Set-AzmiBlobContent`** - Uploads a local file or directory to an Azure Storage blob or container
 - 🔐 Secret
@@ -73,7 +74,7 @@ All commands support also argument `-Verbose`, which will produce additional out
 
 ### Storage Blob commands 💾
 
-  - [x] `Get-AzmiBlob -Container` - List all blobs
+  - [x] `Get-AzmiBlobList -Container` - List all blobs
   - [x] `Get-AzmiBlobContent -Blob -File -DeleteAfterCopy` - Download single blob
   - [x] `Get-AzmiBlobContent -Container -Directory -DeleteAfterCopy` - Download multiple blobs
   - [x] `Set-AzmiBlobContent -Blob -File` - Upload single blob

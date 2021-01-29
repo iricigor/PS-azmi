@@ -1,5 +1,5 @@
     #
-    # Pester tests for Get-AzmiBlob.cs
+    # Pester tests for Get-AzmiBlobList.cs
     #
     #   Lists blobs from Azure storage account container using managed identity
     #
@@ -62,7 +62,7 @@ Describe 'Basic tests'  {
     }
 
     It 'It supports Verbose switch' {
-        Get-AzmiBlob -Container $CONTAINER_LB -Verbose | Should -Not -BeNullOrEmpty
+        Get-AzmiBlobList -Container $CONTAINER_LB -Verbose | Should -Not -BeNullOrEmpty
         # sometimes this throws CredentialUnavailableException
         #  ManagedIdentityCredential authentication unavailable. No Managed Identity endpoint found.
     }
@@ -103,7 +103,7 @@ Describe 'Container argument'  {
 Describe 'Verify return values'  {
 
     It 'It returns 5 blobs' {
-        Get-AzmiBlob -Container $CONTAINER_LB | Should  -HaveCount 5
+        Get-AzmiBlobList -Container $CONTAINER_LB | Should  -HaveCount 5
     }
 
     # return objects should be

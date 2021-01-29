@@ -131,7 +131,7 @@ Describe 'Multiple files upload against different containers'  {
 Describe 'Multiple files upload against different containers'  {
 
     It 'Verify count of uploaded file' {
-        Get-AzmiBlob -Container $CONTAINER_RW | Should  -HaveCount 3
+        Get-AzmiBlobList -Container $CONTAINER_RW | Should  -HaveCount 3
     }
 
     It 'Verify content of uploaded file' {

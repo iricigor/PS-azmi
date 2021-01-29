@@ -14,8 +14,14 @@ Describe 'Module import verifications'  {
         Get-Module $moduleName | Should -Not -BeNullOrEmpty
     }
 
-    It 'Has functions imported' {
+    It 'Has cmdlets imported' {
         Get-Command -Module $moduleName | Should -Not -BeNullOrEmpty
+    }
+
+    It 'All cmdlets should have azmi in the name' {
+        $Cmdlets = Get-Command -Module $moduleName
+        $MatchingCmdlets = $Cmdlets | where Name -Match '-Azmi'
+        $MatchingCmdlets.Count | Should -HaveCount $Cmdlets.Count
     }
 
 }
