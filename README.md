@@ -16,7 +16,7 @@ You would need a VM and some target resource that you want to access, like Stora
 
 ### Prepare the environment
 
-You can do assign access in two ways:
+You can assign access in two ways:
 1) System Assigned Managed Identity
 
 On target resource, just assign access to your VM. More info [here](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/tutorial-linux-vm-access-arm).

@@ -28,7 +28,7 @@ namespace azmi
         [Parameter(Mandatory = false)]
         public string Identity { get { return identity; } set { identity = value; } }
 
-        [Parameter(Position = 0, Mandatory = true)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "Full secret URL like https://ContosoVault.vault.azure.net/secrets/Password")]
         public string Secret { get { return secret; } set { secret = value; } }
 
         //
@@ -43,8 +43,8 @@ namespace azmi
             var cred = new ManagedIdentityCredential(identity);
 
             WriteVerbose($"Parsing secret... '{secret}'");
-            //(Uri keyVault, string secretName, string secretVersion) = ParseSecret(secret);
-            (Uri keyVault, string secretName, string secretVersion) = Shared.ParseUrl(secret);
+            //(Uri keyVault, string secretName, string secretVersion) = ParseSecret(secrets);
+            (Uri keyVault, string secretName, string secretVersion) = Shared.ParseUrl(secret, "secrets");
 
             WriteVerbose($"Obtaining KV client for '{keyVault}' using '{identity}'...");
             var secretClient = new SecretClient(keyVault, cred);
