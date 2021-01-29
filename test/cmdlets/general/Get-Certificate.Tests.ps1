@@ -60,11 +60,19 @@ Describe 'Basic Tests' {
 
 Describe 'Access rights tests against different Key Vaults' {
 
-    It 'Fails on RO Key Vault' {
+    It 'Fails on NA Key Vault with cert 1' {
         {Get-AzmiCertificate -Certificate "$KV_NA$PEMCERT"} | Should -Throw
     }
 
-    It 'Works on RW Key Vault' {
-        {Get-AzmiCertificate -Certificate "$KV_RW$PEMCERT"} | Should -Throw
+    It 'Works on RO Key Vault with cert 1' {
+        {Get-AzmiCertificate -Certificate "$KV_RO$PEMCERT"} | Should -Not -Throw
+    }
+
+    It 'Fails on NA Key Vault with cert 2' {
+        {Get-AzmiCertificate -Certificate "$KV_NA$PFXCERT"} | Should -Throw
+    }
+
+    It 'Works on RO Key Vault with cert 2' {
+        {Get-AzmiCertificate -Certificate "$KV_RO$PFXCERT"} | Should -Not -Throw
     }
 }
