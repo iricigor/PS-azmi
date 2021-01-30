@@ -57,7 +57,8 @@ namespace azmi
                 WriteVerbose($"Obtained {blobsListing.Count} blobs");
                 blobsListing.ForEach(b => WriteObject(b));
             } else {
-                WriteVerbose($"Container {container} does not exist or cannot be accessed.");
+                //WriteVerbose($"Container {container} does not exist or cannot be accessed.");
+                WriteVerbose($"Container {Container} does not exist or cannot be accessed.");
                 // switch to error
                 // https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/adding-non-terminating-error-reporting-to-your-cmdlet?view=powershell-7.1#reporting-nonterminating-errors
             }
