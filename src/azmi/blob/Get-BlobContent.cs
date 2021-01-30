@@ -67,14 +67,19 @@ namespace azmi
 
         protected override void ProcessRecord()
         {
-
-            if (ParameterSetName == "Single") {
-                ProcessSingle();
-            } else if (ParameterSetName == "Multi") {
-                ProcessMulti();
-            } else {
-                throw new ArgumentException("Bad ParameterSet Name");
+            switch (ParameterSetName) {
+                case "Single": ProcessSingle(); break;
+                case "Multi" : ProcessMulti();  break;
+                default:
+                    throw new ArgumentException("Bad ParameterSet Name");
             }
+            // if (ParameterSetName == "Single") {
+            //     ProcessSingle();
+            // } else if (ParameterSetName == "Multi") {
+            //     ProcessMulti();
+            // } else {
+            //     throw new ArgumentException("Bad ParameterSet Name");
+            // }
         }
 
         private void ProcessSingle()
