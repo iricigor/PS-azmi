@@ -49,9 +49,9 @@ Describe 'Proper Documentation' {
 		Import-Module platyPS
 		# update documentation
 		Push-Location -Path $root
-        Update-MarkdownHelp -Path .\Docs
-        New-ExternalHelp -Path .\Docs -OutputPath .\en-US -Force
-        $diff = git diff .\Docs .\en-US
+        Update-MarkdownHelp -Path .\docs
+        New-ExternalHelp -Path .\docs -OutputPath .\en-US -Force
+        $diff = git diff .\docs .\en-US
         Pop-Location
 		$diff | Should -Be $null
 	}
