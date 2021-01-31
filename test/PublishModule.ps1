@@ -41,8 +41,8 @@ if ($moduleManifest.Count -gt 1) {
 	$moduleManifest = $moduleManifest[0]
 }
 # copy manifest to publish folder
-$modulePath = Copy-Item -Path $moduleManifest.FullName -Destination $dirs
-#$azmiPath = Join-Path $dirs 'azmi.dll'
+$modulePath = Join-Path $dirs $moduleManifest.BaseName
+Copy-Item -Path $moduleManifest.FullName -Destination $modulePath
 
 
 # Import and check module
