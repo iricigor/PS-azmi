@@ -45,10 +45,11 @@ $modulePath = Join-Path $dirs $moduleManifest.Name
 Copy-Item -Path $moduleManifest.FullName -Destination $modulePath
 
 # verify content of the folder
-Get-ChildItem $dirs
+Write-Output "Veify content of folder: $dirs"
+Get-ChildItem $dirs | Select -Expand Name
 
 # Import and check module
 Write-Output "Importing $modulePath"
 Import-Module $modulePath
-Get-Command -Module azmi | Select Name, ParameterSets
-Get-Module -Name $moduleName | Format-List
+Get-Command -Module 'azmi' | Select Name, Version
+Get-Module -Name 'azmi' | Format-List
