@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzmiSecret
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get content of the secret from Azure Key Vault using managed identity
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-AzmiSecret [-Identity <String>] [-Secret] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This command gets content of the secret from Azure Key Vault using managed identity.
 
 ## EXAMPLES
 

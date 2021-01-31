@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzmiBlobContent
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Download blob from Azure storage account to local file using managed identity.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-AzmiBlobContent [-Identity <String>] [-DeleteAfterCopy] -Container <String> 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This command downloads one or more blobs from Azure storage account to local file or directory using managed identity.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzmiBlobContent
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Uploads local file to Azure storage blob using managed identity
 
 ## SYNTAX
 
@@ -23,7 +23,7 @@ Set-AzmiBlobContent [-Identity <String>] -Container <String> [-Directory <String
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This command uploads local file or directory to Azure storage blob or container using managed identity.
 
 ## EXAMPLES
 

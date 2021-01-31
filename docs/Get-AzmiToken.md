@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzmiToken
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Returns Azure access token for a managed identity
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-AzmiToken [[-Identity] <String>] [[-Endpoint] <String>] [-JWTformat] [<Commo
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This command returns Azure access token for a given managed identity or using a default one.
 
 ## EXAMPLES
 

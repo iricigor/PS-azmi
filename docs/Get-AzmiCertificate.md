@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzmiCertificate
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get certificate content from Azure Key Vault using managed identity
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-AzmiCertificate [-Identity <String>] [-Certificate] <String> [<CommonParamet
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This command gets certificate content from Azure Key Vault using managed identity.
 
 ## EXAMPLES
 

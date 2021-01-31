@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzmiBlobList
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Lists blobs from Azure storage account container using managed identity
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-AzmiBlobList [-Identity <String>] [-Container] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This command lists blobs from Azure storage account container using managed identity.
 
 ## EXAMPLES
 
