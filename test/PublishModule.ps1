@@ -44,6 +44,8 @@ if ($moduleManifest.Count -gt 1) {
 $modulePath = Join-Path $dirs $moduleManifest.Name
 Copy-Item -Path $moduleManifest.FullName -Destination $modulePath
 
+# verify content of the folder
+Get-ChildItem $dirs
 
 # Import and check module
 Write-Output "Importing $modulePath"
