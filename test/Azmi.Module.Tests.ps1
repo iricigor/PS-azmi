@@ -14,7 +14,7 @@ Describe 'Module import verifications'  {
         Get-Module $moduleName | Should -Not -BeNullOrEmpty
     }
 
-    TestCases = @(
+    $TestCases = @(
         @{Name = 'Author'}
         @{Name = 'Description'}
         @{Name = 'Version'}
