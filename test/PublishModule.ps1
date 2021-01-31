@@ -28,8 +28,20 @@ if ($Dirs.Count -gt 1) {
 	$dirs = $dirs[0]
 }
 
-$moduleName = Get-Item '*.psd1' | Select -Expand BaseName
-$modulePath = Join-Path $dirs $moduleName
+# module manifest setup
+$moduleManifest = Get-ChildItem 'azmi.psd1' -Recurse
+if ($null -eq $moduleManifest) {
+	Write-Warning 'We did not find module manifest to import, display troubleshooting information'
+	gci 'azmi.psd1' -Recurse
+	throw "Did not find proper dll to import"
+}
+if ($moduleManifest.Count -gt 1) {
+	Write-Warning "Found more than one module manifest, using first one"
+	$moduleManifest
+	$moduleManifest = $moduleManifest[0]
+}
+# copy manifest to publish folder
+$modulePath = Copy-Item -Path $moduleManifest.FullName -Destination $dirs
 #$azmiPath = Join-Path $dirs 'azmi.dll'
 
 
@@ -37,4 +49,4 @@ $modulePath = Join-Path $dirs $moduleName
 Write-Output "Importing $modulePath"
 Import-Module $modulePath
 Get-Command -Module azmi | Select Name, ParameterSets
-Get-Module -Name $moduleName
+Get-Module -Name $moduleName | Format-List
