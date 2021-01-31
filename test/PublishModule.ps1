@@ -23,17 +23,18 @@ if ($null -eq $dirs) {
 }
 
 if ($Dirs.Count -gt 1) {
-	Write-Warning "Found more than one suitable azmi.dll."
+	Write-Warning "Found more than one suitable azmi.dll, using first one"
 	$dirs
+	$dirs = $dirs[0]
 }
 
-$azmiPath = Join-Path $dirs 'azmi.dll'
+$moduleName = Get-Item '*.psd1' | Select -Expand BaseName
+$modulePath = Join-Path $dirs $moduleName
+#$azmiPath = Join-Path $dirs 'azmi.dll'
 
 
 # Import and check module
-Write-Output "Importing $azmiPath"
-Import-Module $azmiPath
+Write-Output "Importing $modulePath"
+Import-Module $modulePath
 Get-Command -Module azmi | Select Name, ParameterSets
-
-
-
+Get-Module -Name $moduleName

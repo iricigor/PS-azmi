@@ -4,7 +4,7 @@ param (
 )
 
 # module can be compiled (published) in previous step or even on different machine
-$modulePath = './publish/azmi.dll'
+$modulePath = './publish/azmi.psd1'
 
 if (get-item $modulePath -ea 0) {
 	Write-Output "Import azmi module"
