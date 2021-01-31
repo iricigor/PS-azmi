@@ -6,20 +6,20 @@
       <command:verb>Get</command:verb>
       <command:noun>AzmiBlobContent</command:noun>
       <maml:description>
-        <maml:para>{{ Fill in the Synopsis }}</maml:para>
+        <maml:para>Download blob from Azure storage account to local file using managed identity.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{ Fill in the Description }}</maml:para>
+      <maml:para>This command downloads one or more blobs from Azure storage account to local file or directory using managed identity.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Get-AzmiBlobContent</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>Blob</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>{{ Fill Blob Description }}</maml:para>
-          </maml:description>
+          </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -29,9 +29,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>File</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>{{ Fill File Description }}</maml:para>
-          </maml:description>
+          </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -41,9 +41,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>DeleteAfterCopy</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>{{ Fill DeleteAfterCopy Description }}</maml:para>
-          </maml:description>
+          </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -52,9 +52,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Identity</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>{{ Fill Identity Description }}</maml:para>
-          </maml:description>
+          </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -67,9 +67,9 @@
         <maml:name>Get-AzmiBlobContent</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Container</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>{{ Fill Container Description }}</maml:para>
-          </maml:description>
+          </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -79,9 +79,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>DeleteAfterCopy</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>{{ Fill DeleteAfterCopy Description }}</maml:para>
-          </maml:description>
+          </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -90,9 +90,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Directory</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>{{ Fill Directory Description }}</maml:para>
-          </maml:description>
+          </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -102,9 +102,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Identity</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>{{ Fill Identity Description }}</maml:para>
-          </maml:description>
+          </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -117,9 +117,9 @@
     <command:parameters>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>Blob</maml:name>
-        <maml:description>
+        <maml:Description>
           <maml:para>{{ Fill Blob Description }}</maml:para>
-        </maml:description>
+        </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -129,9 +129,9 @@
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Container</maml:name>
-        <maml:description>
+        <maml:Description>
           <maml:para>{{ Fill Container Description }}</maml:para>
-        </maml:description>
+        </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -141,9 +141,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>DeleteAfterCopy</maml:name>
-        <maml:description>
+        <maml:Description>
           <maml:para>{{ Fill DeleteAfterCopy Description }}</maml:para>
-        </maml:description>
+        </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -153,9 +153,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Directory</maml:name>
-        <maml:description>
+        <maml:Description>
           <maml:para>{{ Fill Directory Description }}</maml:para>
-        </maml:description>
+        </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -165,9 +165,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
         <maml:name>File</maml:name>
-        <maml:description>
+        <maml:Description>
           <maml:para>{{ Fill File Description }}</maml:para>
-        </maml:description>
+        </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -177,9 +177,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Identity</maml:name>
-        <maml:description>
+        <maml:Description>
           <maml:para>{{ Fill Identity Description }}</maml:para>
-        </maml:description>
+        </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -230,20 +230,20 @@
       <command:verb>Get</command:verb>
       <command:noun>AzmiBlobList</command:noun>
       <maml:description>
-        <maml:para>{{ Fill in the Synopsis }}</maml:para>
+        <maml:para>Lists blobs from Azure storage account container using managed identity</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{ Fill in the Description }}</maml:para>
+      <maml:para>This command lists blobs from Azure storage account container using managed identity.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Get-AzmiBlobList</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>Container</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>{{ Fill Container Description }}</maml:para>
-          </maml:description>
+          </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -253,9 +253,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Identity</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>{{ Fill Identity Description }}</maml:para>
-          </maml:description>
+          </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -268,9 +268,9 @@
     <command:parameters>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>Container</maml:name>
-        <maml:description>
+        <maml:Description>
           <maml:para>{{ Fill Container Description }}</maml:para>
-        </maml:description>
+        </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -280,9 +280,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Identity</maml:name>
-        <maml:description>
+        <maml:Description>
           <maml:para>{{ Fill Identity Description }}</maml:para>
-        </maml:description>
+        </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -333,20 +333,20 @@
       <command:verb>Get</command:verb>
       <command:noun>AzmiCertificate</command:noun>
       <maml:description>
-        <maml:para>{{ Fill in the Synopsis }}</maml:para>
+        <maml:para>Get certificate content from Azure Key Vault using managed identity</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{ Fill in the Description }}</maml:para>
+      <maml:para>This command gets certificate content from Azure Key Vault using managed identity.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Get-AzmiCertificate</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>Certificate</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>{{ Fill Certificate Description }}</maml:para>
-          </maml:description>
+          </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -356,9 +356,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Identity</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>{{ Fill Identity Description }}</maml:para>
-          </maml:description>
+          </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -371,9 +371,9 @@
     <command:parameters>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>Certificate</maml:name>
-        <maml:description>
+        <maml:Description>
           <maml:para>{{ Fill Certificate Description }}</maml:para>
-        </maml:description>
+        </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -383,9 +383,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Identity</maml:name>
-        <maml:description>
+        <maml:Description>
           <maml:para>{{ Fill Identity Description }}</maml:para>
-        </maml:description>
+        </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -436,20 +436,20 @@
       <command:verb>Get</command:verb>
       <command:noun>AzmiSecret</command:noun>
       <maml:description>
-        <maml:para>{{ Fill in the Synopsis }}</maml:para>
+        <maml:para>Get content of the secret from Azure Key Vault using managed identity</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{ Fill in the Description }}</maml:para>
+      <maml:para>This command gets content of the secret from Azure Key Vault using managed identity.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Get-AzmiSecret</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>Secret</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>Full secret URL like https://ContosoVault.vault.azure.net/secrets/Password</maml:para>
-          </maml:description>
+          </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -459,9 +459,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Identity</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>{{ Fill Identity Description }}</maml:para>
-          </maml:description>
+          </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -474,9 +474,9 @@
     <command:parameters>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Identity</maml:name>
-        <maml:description>
+        <maml:Description>
           <maml:para>{{ Fill Identity Description }}</maml:para>
-        </maml:description>
+        </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -486,9 +486,9 @@
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>Secret</maml:name>
-        <maml:description>
+        <maml:Description>
           <maml:para>Full secret URL like https://ContosoVault.vault.azure.net/secrets/Password</maml:para>
-        </maml:description>
+        </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -539,20 +539,20 @@
       <command:verb>Get</command:verb>
       <command:noun>AzmiToken</command:noun>
       <maml:description>
-        <maml:para>{{ Fill in the Synopsis }}</maml:para>
+        <maml:para>Returns Azure access token for a managed identity</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{ Fill in the Description }}</maml:para>
+      <maml:para>This command returns Azure access token for a given managed identity or using a default one.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Get-AzmiToken</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>Identity</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>{{ Fill Identity Description }}</maml:para>
-          </maml:description>
+          </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -562,9 +562,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>Endpoint</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>{{ Fill Endpoint Description }}</maml:para>
-          </maml:description>
+          </maml:Description>
           <command:parameterValueGroup>
             <command:parameterValue required="false" command:variableLength="false">management</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">storage</command:parameterValue>
@@ -578,9 +578,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>JWTformat</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>{{ Fill JWTformat Description }}</maml:para>
-          </maml:description>
+          </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -592,9 +592,9 @@
     <command:parameters>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
         <maml:name>Endpoint</maml:name>
-        <maml:description>
+        <maml:Description>
           <maml:para>{{ Fill Endpoint Description }}</maml:para>
-        </maml:description>
+        </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -604,9 +604,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>Identity</maml:name>
-        <maml:description>
+        <maml:Description>
           <maml:para>{{ Fill Identity Description }}</maml:para>
-        </maml:description>
+        </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -616,9 +616,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>JWTformat</maml:name>
-        <maml:description>
+        <maml:Description>
           <maml:para>{{ Fill JWTformat Description }}</maml:para>
-        </maml:description>
+        </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -669,20 +669,20 @@
       <command:verb>Set</command:verb>
       <command:noun>AzmiBlobContent</command:noun>
       <maml:description>
-        <maml:para>{{ Fill in the Synopsis }}</maml:para>
+        <maml:para>Uploads local file to Azure storage blob using managed identity</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{ Fill in the Description }}</maml:para>
+      <maml:para>This command uploads local file or directory to Azure storage blob or container using managed identity.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Set-AzmiBlobContent</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>Blob</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>{{ Fill Blob Description }}</maml:para>
-          </maml:description>
+          </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -692,9 +692,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>File</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>{{ Fill File Description }}</maml:para>
-          </maml:description>
+          </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -704,9 +704,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Identity</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>{{ Fill Identity Description }}</maml:para>
-          </maml:description>
+          </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -719,9 +719,9 @@
         <maml:name>Set-AzmiBlobContent</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Container</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>{{ Fill Container Description }}</maml:para>
-          </maml:description>
+          </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -731,9 +731,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Directory</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>{{ Fill Directory Description }}</maml:para>
-          </maml:description>
+          </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -743,9 +743,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Identity</maml:name>
-          <maml:description>
+          <maml:Description>
             <maml:para>{{ Fill Identity Description }}</maml:para>
-          </maml:description>
+          </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -758,9 +758,9 @@
     <command:parameters>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>Blob</maml:name>
-        <maml:description>
+        <maml:Description>
           <maml:para>{{ Fill Blob Description }}</maml:para>
-        </maml:description>
+        </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -770,9 +770,9 @@
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Container</maml:name>
-        <maml:description>
+        <maml:Description>
           <maml:para>{{ Fill Container Description }}</maml:para>
-        </maml:description>
+        </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -782,9 +782,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Directory</maml:name>
-        <maml:description>
+        <maml:Description>
           <maml:para>{{ Fill Directory Description }}</maml:para>
-        </maml:description>
+        </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -794,9 +794,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
         <maml:name>File</maml:name>
-        <maml:description>
+        <maml:Description>
           <maml:para>{{ Fill File Description }}</maml:para>
-        </maml:description>
+        </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -806,9 +806,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Identity</maml:name>
-        <maml:description>
+        <maml:Description>
           <maml:para>{{ Fill Identity Description }}</maml:para>
-        </maml:description>
+        </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
