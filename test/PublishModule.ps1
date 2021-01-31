@@ -41,7 +41,7 @@ if ($moduleManifest.Count -gt 1) {
 	$moduleManifest = $moduleManifest[0]
 }
 # copy manifest to publish folder
-$modulePath = Join-Path $dirs $moduleManifest.BaseName
+$modulePath = Join-Path $dirs $moduleManifest.Name
 Copy-Item -Path $moduleManifest.FullName -Destination $modulePath
 
 
