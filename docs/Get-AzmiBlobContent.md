@@ -39,7 +39,7 @@ PS C:\> {{ Add example code here }}
 ## PARAMETERS
 
 ### -Blob
-{{ Fill Blob Description }}
+URL of blob which will be downloaded.
 
 ```yaml
 Type: String
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -Container
-{{ Fill Container Description }}
+URL of container to which file(s) will be downloaded from. Example https://myaccount.blob.core.windows.net/mycontainer
 
 ```yaml
 Type: String
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeleteAfterCopy
-{{ Fill DeleteAfterCopy Description }}
+Switch causing to delete a blob after successful copy. Similar to "move" operations on file system.
 
 ```yaml
 Type: SwitchParameter
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -Directory
-{{ Fill Directory Description }}
+Path to a local directory to which blobs will be downloaded to. Can be relative or absolute path. Examples: /home/myname/blobs/ or ./mydir
 
 ```yaml
 Type: String
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -File
-{{ Fill File Description }}
+Path to local file to which content will be downloaded to. Can be relative or absolute path. Examples: /tmp/1.txt, ./1.xml.
 
 ```yaml
 Type: String
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -Identity
-{{ Fill Identity Description }}
+Client or application ID of managed identity used to authenticate. Example: 117dc05c-4d12-4ac2-b5f8-5e239dc8bc54
 
 ```yaml
 Type: String

@@ -37,7 +37,7 @@ PS C:\> {{ Add example code here }}
 ## PARAMETERS
 
 ### -Blob
-{{ Fill Blob Description }}
+URL of blob which will be updated.
 
 ```yaml
 Type: String
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 ```
 
 ### -Container
-{{ Fill Container Description }}
+URL of container to which file(s) will be uploaded to. Example https://myaccount.blob.core.windows.net/mycontainer
 
 ```yaml
 Type: String
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -Directory
-{{ Fill Directory Description }}
+Path to a local directory from which blobs will be uploaded from. Can be relative or absolute path. Examples: /home/myname/blobs/ or ./mydir
 
 ```yaml
 Type: String
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -File
-{{ Fill File Description }}
+Path to local file to which will be uploaded to a blob. Can be relative or absolute path. Examples: /tmp/1.txt, ./1.xml.
 
 ```yaml
 Type: String
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -Identity
-{{ Fill Identity Description }}
+Client or application ID of managed identity used to authenticate. Example: 117dc05c-4d12-4ac2-b5f8-5e239dc8bc54
 
 ```yaml
 Type: String
