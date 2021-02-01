@@ -17,7 +17,7 @@ Get-AzmiToken [[-Identity] <String>] [[-Endpoint] <String>] [-JWTformat] [<Commo
 ```
 
 ## DESCRIPTION
-This command returns Azure access token for a given managed identity or using a default one.
+This command returns Azure access token for a given managed identity or using a default one. Token can be used for example in commands outside of this module or in OS commands that require communication with Azure resources.
 
 ## EXAMPLES
 
@@ -31,7 +31,7 @@ PS C:\> {{ Add example code here }}
 ## PARAMETERS
 
 ### -Endpoint
-{{ Fill Endpoint Description }}
+Endpoint against which to authenticate. Examples: management, storage. Default 'management'
 
 ```yaml
 Type: String
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -Identity
-{{ Fill Identity Description }}
+Client or application ID of managed identity used to authenticate. Example: 117dc05c-4d12-4ac2-b5f8-5e239dc8bc54
 
 ```yaml
 Type: String
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -JWTformat
-{{ Fill JWTformat Description }}
+Print token in parsed JSON Web Token (JWT) format which contains visible individual token fields.
 
 ```yaml
 Type: SwitchParameter
