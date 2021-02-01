@@ -23,15 +23,23 @@ This command gets certificate content from Azure Key Vault using managed identit
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzmiCertificate "$KVURL/certificates/MyCert"
 ```
 
-{{ Add example description here }}
+Obtains 'MyCert' certificate from Azure Key Vault using default managed identity.
+Please note that returned value is sensitive information and it should be treated as such.
+
+### Example 2
+```powershell
+PS C:\> Get-AzmiCertificate "$KVURL/certificates/MyCert/103a7355c6095bc78307b2db7b85b3c2"
+```
+
+Obtains specific version of 'MyCert' certificate from Azure Key Vault.
 
 ## PARAMETERS
 
 ### -Certificate
-Full URL of certificate like https://ContosoVault.vault.azure.net/certificates/MyCert.pem
+Full URL of certificate like https://ContosoVault.vault.azure.net/certificates/MyCert
 
 ```yaml
 Type: String

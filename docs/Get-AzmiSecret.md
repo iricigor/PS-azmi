@@ -23,10 +23,11 @@ This command gets content of the secret from Azure Key Vault using managed ident
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzmiSecret "$KVURL/secrets/ReadPassword/6f7c24526c4d489594ca27a85edf6176"
 ```
 
-{{ Add example description here }}
+Obtains specific version of 'ReadPassword' secret from Azure Key Vault using default managed identity.
+Please note that returned value is sensitive information and it should be treated as such.
 
 ## PARAMETERS
 
@@ -46,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -Secret
-Full secret URL like https://ContosoVault.vault.azure.net/secrets/Password
+Full URL of Key Vault secret like https://ContosoVault.vault.azure.net/secrets/Password. It can optionally include also version info at the end, like 6f7c24426c4d489594ca27a85edf6176.
 
 ```yaml
 Type: String

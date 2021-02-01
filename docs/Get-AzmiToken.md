@@ -23,10 +23,17 @@ This command returns Azure access token for a given managed identity or using a 
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $a = Get-AzmiToken
 ```
 
-{{ Add example description here }}
+Returns Azure authentication token which can be used in other commands. If VM has more than one or has no managed identities, this command will fail.
+
+### Example 2
+```powershell
+PS C:\> $a = Get-AzmiToken -Identity '117dc05c-4d12-4ac2-b5f8-5e239dc8bc54' -Endpoint 'storage'
+```
+
+Returns Azure authentication token for given user assigned identity which can be used for authentication against Azure storage endpoints.
 
 ## PARAMETERS
 
