@@ -31,10 +31,17 @@ This command downloads one or more blobs from Azure storage account to local fil
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzmiBlobContent -Blob $BlobURL -File ./blob1.txt
 ```
 
-{{ Add example description here }}
+Downloads blob to local file using default managed identity.
+
+### Example 2
+```powershell
+PS C:\> Get-AzmiBlobContent -Container $ContainerURL -Directory './data' -DeleteAfterCopy
+```
+
+Downloads all blobs from given container to a data folder and deletes successfully downloaded blobs from the container.
 
 ## PARAMETERS
 

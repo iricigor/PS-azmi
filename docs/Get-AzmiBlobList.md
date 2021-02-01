@@ -23,10 +23,10 @@ This command lists blobs from Azure storage account container using managed iden
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> (Get-AzmiBlobList $ContainerURL).Count
 ```
 
-{{ Add example description here }}
+Use default managed identity to obtain list of blobs from given Azure Storage Container and returns their count.
 
 ## PARAMETERS
 
