@@ -16,6 +16,7 @@ namespace azmi
     //
 
     [Cmdlet(VerbsCommon.Set, "AzmiBlobContent")]
+    [OutputType(typeof(void))]
     public class SetBlobContent : PSCmdlet
     {
 

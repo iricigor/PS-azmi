@@ -13,6 +13,7 @@ namespace azmi
     //
 
     [Cmdlet(VerbsCommon.Get, "AzmiSecret")]
+    [OutputType(typeof(String))]
     public class GetSecret : PSCmdlet
     {
         //

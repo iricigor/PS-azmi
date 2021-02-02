@@ -13,6 +13,7 @@ namespace azmi
     //
 
     [Cmdlet(VerbsCommon.Get, "AzmiCertificate")]
+    [OutputType(typeof(String))]
     public class GetCertificate : PSCmdlet
     {
         //

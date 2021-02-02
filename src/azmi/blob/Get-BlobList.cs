@@ -14,6 +14,7 @@ namespace azmi
     //
 
     [Cmdlet(VerbsCommon.Get, "AzmiBlobList")]
+    [OutputType(typeof(String))]
     public class GetBlobList : Cmdlet
     {
 

@@ -17,9 +17,9 @@
         <maml:name>Get-AzmiBlobContent</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>Blob</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill Blob Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>URL of blob which will be downloaded.</maml:para>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -29,9 +29,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>File</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill File Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>Path to local file to which content will be downloaded to. Can be relative or absolute path. Examples: /tmp/1.txt, ./1.xml.</maml:para>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -41,9 +41,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>DeleteAfterCopy</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill DeleteAfterCopy Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>Switch causing to delete a blob after successful copy. Similar to "move" operations on file system.</maml:para>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -52,9 +52,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Identity</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill Identity Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>Client or application ID of managed identity used to authenticate. Example: 117dc05c-4d12-4ac2-b5f8-5e239dc8bc54</maml:para>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -67,9 +67,9 @@
         <maml:name>Get-AzmiBlobContent</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Container</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill Container Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>URL of container to which file(s) will be downloaded from. Example https://myaccount.blob.core.windows.net/mycontainer</maml:para>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -79,9 +79,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>DeleteAfterCopy</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill DeleteAfterCopy Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>Switch causing to delete a blob after successful copy. Similar to "move" operations on file system.</maml:para>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -90,9 +90,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Directory</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill Directory Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>Path to a local directory to which blobs will be downloaded to. Can be relative or absolute path. Examples: /home/myname/blobs/ or ./mydir</maml:para>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -102,9 +102,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Identity</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill Identity Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>Client or application ID of managed identity used to authenticate. Example: 117dc05c-4d12-4ac2-b5f8-5e239dc8bc54</maml:para>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -117,9 +117,9 @@
     <command:parameters>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>Blob</maml:name>
-        <maml:Description>
-          <maml:para>{{ Fill Blob Description }}</maml:para>
-        </maml:Description>
+        <maml:description>
+          <maml:para>URL of blob which will be downloaded.</maml:para>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -129,9 +129,9 @@
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Container</maml:name>
-        <maml:Description>
-          <maml:para>{{ Fill Container Description }}</maml:para>
-        </maml:Description>
+        <maml:description>
+          <maml:para>URL of container to which file(s) will be downloaded from. Example https://myaccount.blob.core.windows.net/mycontainer</maml:para>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -141,9 +141,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>DeleteAfterCopy</maml:name>
-        <maml:Description>
-          <maml:para>{{ Fill DeleteAfterCopy Description }}</maml:para>
-        </maml:Description>
+        <maml:description>
+          <maml:para>Switch causing to delete a blob after successful copy. Similar to "move" operations on file system.</maml:para>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -153,9 +153,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Directory</maml:name>
-        <maml:Description>
-          <maml:para>{{ Fill Directory Description }}</maml:para>
-        </maml:Description>
+        <maml:description>
+          <maml:para>Path to a local directory to which blobs will be downloaded to. Can be relative or absolute path. Examples: /home/myname/blobs/ or ./mydir</maml:para>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -165,9 +165,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
         <maml:name>File</maml:name>
-        <maml:Description>
-          <maml:para>{{ Fill File Description }}</maml:para>
-        </maml:Description>
+        <maml:description>
+          <maml:para>Path to local file to which content will be downloaded to. Can be relative or absolute path. Examples: /tmp/1.txt, ./1.xml.</maml:para>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -177,9 +177,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Identity</maml:name>
-        <maml:Description>
-          <maml:para>{{ Fill Identity Description }}</maml:para>
-        </maml:Description>
+        <maml:description>
+          <maml:para>Client or application ID of managed identity used to authenticate. Example: 117dc05c-4d12-4ac2-b5f8-5e239dc8bc54</maml:para>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -216,9 +216,16 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
+        <dev:code>PS C:\&gt; Get-AzmiBlobContent -Blob $BlobURL -File ./blob1.txt</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>Downloads blob to local file using default managed identity.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-AzmiBlobContent -Container $ContainerURL -Directory './data' -DeleteAfterCopy</dev:code>
+        <dev:remarks>
+          <maml:para>Downloads all blobs from given container to a data folder and deletes successfully downloaded blobs from the container.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -241,9 +248,9 @@
         <maml:name>Get-AzmiBlobList</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>Container</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill Container Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>URL of container whose blobs will be listed. Example https://myaccount.blob.core.windows.net/mycontainer</maml:para>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -253,9 +260,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Identity</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill Identity Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>Client or application ID of managed identity used to authenticate. Example: 117dc05c-4d12-4ac2-b5f8-5e239dc8bc54</maml:para>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -268,9 +275,9 @@
     <command:parameters>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>Container</maml:name>
-        <maml:Description>
-          <maml:para>{{ Fill Container Description }}</maml:para>
-        </maml:Description>
+        <maml:description>
+          <maml:para>URL of container whose blobs will be listed. Example https://myaccount.blob.core.windows.net/mycontainer</maml:para>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -280,9 +287,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Identity</maml:name>
-        <maml:Description>
-          <maml:para>{{ Fill Identity Description }}</maml:para>
-        </maml:Description>
+        <maml:description>
+          <maml:para>Client or application ID of managed identity used to authenticate. Example: 117dc05c-4d12-4ac2-b5f8-5e239dc8bc54</maml:para>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -319,9 +326,9 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
+        <dev:code>PS C:\&gt; (Get-AzmiBlobList $ContainerURL).Count</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>Use default managed identity to obtain list of blobs from given Azure Storage Container and returns their count.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -344,9 +351,9 @@
         <maml:name>Get-AzmiCertificate</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>Certificate</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill Certificate Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>Full URL of certificate like https://ContosoVault.vault.azure.net/certificates/MyCert</maml:para>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -356,9 +363,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Identity</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill Identity Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>Client or application ID of managed identity used to authenticate. Example: 117dc05c-4d12-4ac2-b5f8-5e239dc8bc54</maml:para>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -371,9 +378,9 @@
     <command:parameters>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>Certificate</maml:name>
-        <maml:Description>
-          <maml:para>{{ Fill Certificate Description }}</maml:para>
-        </maml:Description>
+        <maml:description>
+          <maml:para>Full URL of certificate like https://ContosoVault.vault.azure.net/certificates/MyCert</maml:para>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -383,9 +390,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Identity</maml:name>
-        <maml:Description>
-          <maml:para>{{ Fill Identity Description }}</maml:para>
-        </maml:Description>
+        <maml:description>
+          <maml:para>Client or application ID of managed identity used to authenticate. Example: 117dc05c-4d12-4ac2-b5f8-5e239dc8bc54</maml:para>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -422,9 +429,16 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
+        <dev:code>PS C:\&gt; Get-AzmiCertificate "$KVURL/certificates/MyCert"</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>Obtains 'MyCert' certificate from Azure Key Vault using default managed identity. Please note that returned value is sensitive information and it should be treated as such.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-AzmiCertificate "$KVURL/certificates/MyCert/103a7355c6095bc78307b2db7b85b3c2"</dev:code>
+        <dev:remarks>
+          <maml:para>Obtains specific version of 'MyCert' certificate from Azure Key Vault.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -447,9 +461,9 @@
         <maml:name>Get-AzmiSecret</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>Secret</maml:name>
-          <maml:Description>
-            <maml:para>Full secret URL like https://ContosoVault.vault.azure.net/secrets/Password</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>Full URL of Key Vault secret like https://ContosoVault.vault.azure.net/secrets/Password. It can optionally include also version info at the end, like 6f7c24426c4d489594ca27a85edf6176.</maml:para>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -459,9 +473,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Identity</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill Identity Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>Client or application ID of managed identity used to authenticate. Example: 117dc05c-4d12-4ac2-b5f8-5e239dc8bc54</maml:para>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -474,9 +488,9 @@
     <command:parameters>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Identity</maml:name>
-        <maml:Description>
-          <maml:para>{{ Fill Identity Description }}</maml:para>
-        </maml:Description>
+        <maml:description>
+          <maml:para>Client or application ID of managed identity used to authenticate. Example: 117dc05c-4d12-4ac2-b5f8-5e239dc8bc54</maml:para>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -486,9 +500,9 @@
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>Secret</maml:name>
-        <maml:Description>
-          <maml:para>Full secret URL like https://ContosoVault.vault.azure.net/secrets/Password</maml:para>
-        </maml:Description>
+        <maml:description>
+          <maml:para>Full URL of Key Vault secret like https://ContosoVault.vault.azure.net/secrets/Password. It can optionally include also version info at the end, like 6f7c24426c4d489594ca27a85edf6176.</maml:para>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -525,9 +539,9 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
+        <dev:code>PS C:\&gt; Get-AzmiSecret "$KVURL/secrets/ReadPassword/6f7c24526c4d489594ca27a85edf6176"</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>Obtains specific version of 'ReadPassword' secret from Azure Key Vault using default managed identity. Please note that returned value is sensitive information and it should be treated as such.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -543,16 +557,16 @@
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>This command returns Azure access token for a given managed identity or using a default one.</maml:para>
+      <maml:para>This command returns Azure access token for a given managed identity or using a default one. Token can be used for example in commands outside of this module or in OS commands that require communication with Azure resources.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Get-AzmiToken</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>Identity</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill Identity Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>Client or application ID of managed identity used to authenticate. Example: 117dc05c-4d12-4ac2-b5f8-5e239dc8bc54</maml:para>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -562,9 +576,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>Endpoint</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill Endpoint Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>Endpoint against which to authenticate. Examples: management, storage. Default 'management'</maml:para>
+          </maml:description>
           <command:parameterValueGroup>
             <command:parameterValue required="false" command:variableLength="false">management</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">storage</command:parameterValue>
@@ -578,9 +592,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>JWTformat</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill JWTformat Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>Print token in parsed JSON Web Token (JWT) format which contains visible individual token fields.</maml:para>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -592,9 +606,9 @@
     <command:parameters>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
         <maml:name>Endpoint</maml:name>
-        <maml:Description>
-          <maml:para>{{ Fill Endpoint Description }}</maml:para>
-        </maml:Description>
+        <maml:description>
+          <maml:para>Endpoint against which to authenticate. Examples: management, storage. Default 'management'</maml:para>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -604,9 +618,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>Identity</maml:name>
-        <maml:Description>
-          <maml:para>{{ Fill Identity Description }}</maml:para>
-        </maml:Description>
+        <maml:description>
+          <maml:para>Client or application ID of managed identity used to authenticate. Example: 117dc05c-4d12-4ac2-b5f8-5e239dc8bc54</maml:para>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -616,9 +630,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>JWTformat</maml:name>
-        <maml:Description>
-          <maml:para>{{ Fill JWTformat Description }}</maml:para>
-        </maml:Description>
+        <maml:description>
+          <maml:para>Print token in parsed JSON Web Token (JWT) format which contains visible individual token fields.</maml:para>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -655,9 +669,16 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
+        <dev:code>PS C:\&gt; $a = Get-AzmiToken</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>Returns Azure authentication token which can be used in other commands. If VM has more than one or has no managed identities, this command will fail.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; $a = Get-AzmiToken -Identity '117dc05c-4d12-4ac2-b5f8-5e239dc8bc54' -Endpoint 'storage'</dev:code>
+        <dev:remarks>
+          <maml:para>Returns Azure authentication token for given user assigned identity which can be used for authentication against Azure storage endpoints.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -680,9 +701,9 @@
         <maml:name>Set-AzmiBlobContent</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>Blob</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill Blob Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>URL of blob which will be updated.</maml:para>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -692,9 +713,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>File</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill File Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>Path to local file to which will be uploaded to a blob. Can be relative or absolute path. Examples: /tmp/1.txt, ./1.xml.</maml:para>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -704,9 +725,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Identity</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill Identity Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>Client or application ID of managed identity used to authenticate. Example: 117dc05c-4d12-4ac2-b5f8-5e239dc8bc54</maml:para>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -719,9 +740,9 @@
         <maml:name>Set-AzmiBlobContent</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Container</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill Container Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>URL of container to which file(s) will be uploaded to. Example https://myaccount.blob.core.windows.net/mycontainer</maml:para>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -731,9 +752,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Directory</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill Directory Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>Path to a local directory from which blobs will be uploaded from. Can be relative or absolute path. Examples: /home/myname/blobs/ or ./mydir</maml:para>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -743,9 +764,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Identity</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill Identity Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>Client or application ID of managed identity used to authenticate. Example: 117dc05c-4d12-4ac2-b5f8-5e239dc8bc54</maml:para>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -758,9 +779,9 @@
     <command:parameters>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>Blob</maml:name>
-        <maml:Description>
-          <maml:para>{{ Fill Blob Description }}</maml:para>
-        </maml:Description>
+        <maml:description>
+          <maml:para>URL of blob which will be updated.</maml:para>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -770,9 +791,9 @@
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Container</maml:name>
-        <maml:Description>
-          <maml:para>{{ Fill Container Description }}</maml:para>
-        </maml:Description>
+        <maml:description>
+          <maml:para>URL of container to which file(s) will be uploaded to. Example https://myaccount.blob.core.windows.net/mycontainer</maml:para>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -782,9 +803,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Directory</maml:name>
-        <maml:Description>
-          <maml:para>{{ Fill Directory Description }}</maml:para>
-        </maml:Description>
+        <maml:description>
+          <maml:para>Path to a local directory from which blobs will be uploaded from. Can be relative or absolute path. Examples: /home/myname/blobs/ or ./mydir</maml:para>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -794,9 +815,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
         <maml:name>File</maml:name>
-        <maml:Description>
-          <maml:para>{{ Fill File Description }}</maml:para>
-        </maml:Description>
+        <maml:description>
+          <maml:para>Path to local file to which will be uploaded to a blob. Can be relative or absolute path. Examples: /tmp/1.txt, ./1.xml.</maml:para>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -806,9 +827,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Identity</maml:name>
-        <maml:Description>
-          <maml:para>{{ Fill Identity Description }}</maml:para>
-        </maml:Description>
+        <maml:description>
+          <maml:para>Client or application ID of managed identity used to authenticate. Example: 117dc05c-4d12-4ac2-b5f8-5e239dc8bc54</maml:para>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -845,9 +866,9 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
+        <dev:code>PS C:\&gt; Set-AzmiBlobContent -Blob $BlobURL -File ./myFile.txt</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>Uploads local file to the Azure Storage Blob using default managed identity.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>

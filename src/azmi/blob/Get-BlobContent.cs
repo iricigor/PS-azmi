@@ -18,6 +18,7 @@ namespace azmi
     //
 
     [Cmdlet(VerbsCommon.Get, "AzmiBlobContent")]
+    [OutputType(typeof(void))]
     public class GetBlobContent : PSCmdlet
     {
         //
