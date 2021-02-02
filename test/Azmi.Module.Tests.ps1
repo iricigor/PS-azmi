@@ -44,7 +44,7 @@ Describe "Commandlets import verification" {
 
 Describe 'Proper Documentation' {
 
-	It 'Updates documentation and does git diff' {
+	It 'Update documentation and git diff should be null' {
         if (!(Get-Module platyPS -List -ea 0)) {Install-Module platyPS -Force -Scope CurrentUser}
 		Import-Module platyPS
 		# update documentation
@@ -55,4 +55,9 @@ Describe 'Proper Documentation' {
         Pop-Location
 		$diff | Should -Be $null
 	}
+
+    It 'Verifies documentation for blank descriptors' {
+        Select-String -Path '.\docs\*.md' -Pattern '{{.+}}' | Should -BeNullOrEmpty
+    }
+
 }
