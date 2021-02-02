@@ -29,10 +29,10 @@ This command uploads local file or directory to Azure storage blob or container 
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzmiBlobContent -Blob $BlobURL -File ./myFile.txt
 ```
 
-{{ Add example description here }}
+Uploads local file to the Azure Storage Blob using default managed identity.
 
 ## PARAMETERS
 
