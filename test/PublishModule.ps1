@@ -56,8 +56,9 @@ if ($helpFile.Count -gt 1) {
 	$helpFile
 	$helpFile = $helpFile[0]
 }
-$helpFilePath = Join-Path $publishDir 'en-US' 'azmi.dll-Help.xml'
-Copy-Item -Path $helpFile.FullName -Destination $helpFilePath
+$helpFileDir = Join-Path $publishDir 'en-US'
+New-Item $helpFileDir -ItemType Directory -Force | Out-Null
+Copy-Item -Path $helpFile.FullName -Destination $helpFileDir
 
 # verify content of the folder
 Write-Output "Verify content of folder: $publishDir"
