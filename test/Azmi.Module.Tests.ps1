@@ -60,4 +60,9 @@ Describe 'Proper Documentation' {
         Select-String -Path '.\docs\*.md' -Pattern '{{.+}}' | Should -BeNullOrEmpty
     }
 
+    It 'Check for each cmdlets description' {
+        foreach ($Cmd in (Get-Command -Module $moduleName)) {
+            Get-Help $Cmd.Name | Select -Expand Synopsis | Should -Not -BeNullOrEmpty
+        }
+    }
 }
