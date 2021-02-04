@@ -9,10 +9,10 @@ namespace azmi {
 
     public class Shared {
 
-    static internal (Uri, string, string) ParseUrl(string urlText, string validation = null) {
-            // Example of expected URLs: https://my-key-vault.vault.azure.net/secrets/mySecretpwd (latest version)
-            // or https://my-key-vault.vault.azure.net/secrets/mySecretpwd/67d1f6c499824607b81d5fa852f9865c (specific version)
-            //                    p[0]                  p[1]      p[2]        p[3]
+    static public (Uri, string, string) ParseUrl(string urlText, string validation = null) {
+            // Example of expected URL
+            // https://{vault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}
+            //           - - - - - p[0] - - - - -     - p[1] -      - p[2] -      - p[3] -
 
             // return values are:
             //   uri of the Azure Key Vault
@@ -37,9 +37,9 @@ namespace azmi {
 
             // validate complete string
             if (!String.IsNullOrEmpty(validation)) {
-                string newString = $"{kv.ToString()}/secrets/{p[2]}";
+                string newString = $"{kv.ToString()}/{validation}/{p[2]}";
                 if (hasVersionInfo) {newString += $"/{p[3]}";};
-                if (newString != urlText) { 
+                if (newString != urlText) {
                     var msg = $"Input url does not match expected url:\n{urlText}\n{newString}";
                     throw new ArgumentException(msg);
                 }

@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "azmi", "src\azmi\azmi.csproj", "{57471C9D-CCC2-4647-A10C-DDDE20342864}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "azmi-test", "test\azmi-test\azmi-test.csproj", "{3CA8EA9B-651D-4D5B-BC41-88A2BE877124}"
+	ProjectSection(ProjectDependencies) = postProject
+		{57471C9D-CCC2-4647-A10C-DDDE20342864} = {57471C9D-CCC2-4647-A10C-DDDE20342864}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +20,10 @@ Global
 		{57471C9D-CCC2-4647-A10C-DDDE20342864}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57471C9D-CCC2-4647-A10C-DDDE20342864}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57471C9D-CCC2-4647-A10C-DDDE20342864}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CA8EA9B-651D-4D5B-BC41-88A2BE877124}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CA8EA9B-651D-4D5B-BC41-88A2BE877124}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CA8EA9B-651D-4D5B-BC41-88A2BE877124}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CA8EA9B-651D-4D5B-BC41-88A2BE877124}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
