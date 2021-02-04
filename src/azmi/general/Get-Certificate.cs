@@ -43,7 +43,7 @@ namespace azmi
         {
             var cred = new ManagedIdentityCredential(identity);
 
-            WriteVerbose($"Parsing secret... '{certificate}'");
+            WriteVerbose($"Parsing certificate... '{certificate}'");
             (Uri keyVault, string certName, string certVersion) = Shared.ParseUrl(certificate);
 
             WriteVerbose($"Obtaining certificate client for '{keyVault}' using '{identity}'...");
