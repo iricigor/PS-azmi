@@ -57,12 +57,11 @@ The following commandlets are implemented or planned:
   - [x] **`Get-AzmiBlobList`** - List all blobs from container
   - [x] **`Get-AzmiBlobContent`** - Downloads one or more storage blobs to a local file
   - [x] **`Set-AzmiBlobContent`** - Uploads a local file or directory to an Azure Storage blob or container
-- 🔐 Secret
+- 🔐 Key Vault
   - [x] **`Get-AzmiSecret`** - Gets the secrets from Azure Key Vault
   - [ ] **`Set-AzmiSecret`** - Creates or updates a secret in a Azure Key Vault
-- 🧾 Certificate
-  - [x] **`Get-AzmiCertificate`**
-  - [ ] **`Set-AzmiCertificate`**
+  - [x] **`Get-AzmiCertificate`** - Gets the certificate from Azure Key Vault
+  - [ ] **`Set-AzmiCertificate`** - Creates or updates a certificate in a Azure Key Vault
 
 
 All commands support argument `-Identity` (managed identity client ID), which can be skipped if VM has exactly one managed identity.
