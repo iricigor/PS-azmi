@@ -91,7 +91,7 @@ Related documentation links:
 Testing this module presents a challenge, because traditional pipelines do not support managed identity.
 Therefore, it is required to have a private pipeline agent on a dedicated ADO pool for module integration testing.
 
-|Test|Results|
-|-|-|
+|Test|Status|Results|
+|-|-|-|
 | Integration tests | [![Build Status](https://dev.azure.com/iiric/azmi/_apis/build/status/PS-azmi%20integration%20tests?branchName=master)](https://dev.azure.com/iiric/azmi/_build/latest?definitionId=39&branchName=master) | [![Test detailsBuild Status](https://img.shields.io/azure-devops/tests/iiric/azmi/39)](https://dev.azure.com/iiric/azmi/_build/latest?definitionId=39&branchName=master) |
-| Unit tests | [![Build Status](https://dev.azure.com/iiric/azmi/_apis/build/status/PS-azmi%20Unit%20testing?branchName=master)](https://dev.azure.com/iiric/azmi/_build/latest?definitionId=41&branchName=master) | |
+| Unit tests | [![Build Status](https://dev.azure.com/iiric/azmi/_apis/build/status/PS-azmi%20Unit%20testing?branchName=master)](https://dev.azure.com/iiric/azmi/_build/latest?definitionId=41&branchName=master) | [![Test detailsBuild Status](https://img.shields.io/azure-devops/tests/iiric/azmi/41)](https://dev.azure.com/iiric/azmi/_build/latest?definitionId=41&branchName=master) |
