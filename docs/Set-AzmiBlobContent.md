@@ -14,12 +14,13 @@ Uploads local file to Azure storage blob using managed identity
 
 ### Single
 ```
-Set-AzmiBlobContent [-Identity <String>] [-Blob] <String> [[-File] <String>] [<CommonParameters>]
+Set-AzmiBlobContent [-Identity <String>] [-Force] [-Blob] <String> [[-File] <String>] [<CommonParameters>]
 ```
 
 ### Multi
 ```
-Set-AzmiBlobContent [-Identity <String>] -Container <String> [-Directory <String>] [<CommonParameters>]
+Set-AzmiBlobContent [-Identity <String>] [-Force] -Container <String> [-Directory <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,6 +102,22 @@ Client or application ID of managed identity used to authenticate. Example: 117d
 
 ```yaml
 Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+If specified, it forces cmdlet to overwrite existing blob(s) in Azure.
+By default, cmdlet will fail if target blob exists.
+
+```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
