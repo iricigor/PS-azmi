@@ -2,6 +2,23 @@
 #  Publish the code as dll module
 #
 
+function Set-OnlyOne([ref]$Obj, [string]$explanation, [string]$filter) {
+	if ($null -eq $Obj) {
+		Write-Warning "We did not find proper $explanation to import, display troubleshooting information"
+		Get-ChildItem -Filter $filter -Recurse -ea 0
+		throw "Did not find proper $explanation to import"
+	}
+
+	if ($Obj.Count -gt 1) {
+		Write-Warning "Found more than one suitable $explanation, using first one"
+		$Obj
+		$Obj = $Obj[0]
+	} else {
+		Write-Output "Using $explanation without modifications as $Obj"
+	}
+}
+
+
 Write-Output "dotnet publish"
 
 # https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish
@@ -13,20 +30,21 @@ dotnet publish 'src/azmi/azmi.csproj'  --runtime $runtime
 $files = @('azmi.dll', 'System.Management.Automation.dll')
 $publishDir = (Get-ChildItem -Include $files -Recurse | Group Directory | ? Count -eq 2).Name
 
-if ($null -eq $publishDir) {
-	Write-Warning 'We did not find proper dll to import, display troubleshooting information'
-	$files | % {
-		$_
-		gci $_ -Recurse
-	}
-	throw "Did not find proper dll to import"
-}
+Set-OnlyOne $publishDir 'azmi.dll' 'azmi.dll|System.Management.Automation.dll'
+# if ($null -eq $publishDir) {
+# 	Write-Warning 'We did not find proper dll to import, display troubleshooting information'
+# 	$files | % {
+# 		$_
+# 		gci $_ -Recurse
+# 	}
+# 	throw "Did not find proper dll to import"
+# }
 
-if ($publishDir.Count -gt 1) {
-	Write-Warning "Found more than one suitable azmi.dll, using first one"
-	$publishDir
-	$publishDir = $publishDir[0]
-}
+# if ($publishDir.Count -gt 1) {
+# 	Write-Warning "Found more than one suitable azmi.dll, using first one"
+# 	$publishDir
+# 	$publishDir = $publishDir[0]
+# }
 
 # module manifest setup
 $moduleManifest = Get-ChildItem 'azmi.psd1' -Recurse
