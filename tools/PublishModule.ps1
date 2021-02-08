@@ -20,11 +20,16 @@ function Set-OnlyOne([ref]$Obj, [string]$explanation, [string]$filter) {
 	}
 }
 
+if (Get-Module azmi -ea 0) {
+	Write-Warning "Module is already loaded in the session. Please run this command in new sessions"
+	throw "Module azmi already loaded"
+}
 
 Write-Output "dotnet publish"
 
 # https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish
 $runtime = (($IsLinux -or $IsMacOS) ? "linux-x64" : "win-x64")
+dotnet clean 'src/azmi/azmi.csproj'  --runtime $runtime
 dotnet publish 'src/azmi/azmi.csproj'  --runtime $runtime
 
 # Find proper dll to import
@@ -55,7 +60,7 @@ Write-Output "Verify content of folder: $publishDir"
 Get-ChildItem $publishDir | Select -Expand Name
 
 # Import and check module
-Write-Output "Importing $modulePath"
+Write-Output "`n#`nImporting $modulePath`n#`n"
 Import-Module $modulePath
 Get-Command -Module 'azmi' | Select Name, Version
 Get-Module -Name 'azmi' | Format-List

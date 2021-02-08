@@ -3,7 +3,7 @@ using Azure.Identity;
 using Azure.Core;
 using System.Management.Automation;
 using System.IdentityModel.Tokens.Jwt;
-
+using System.Linq;
 
 namespace azmi
 {
@@ -71,18 +71,19 @@ namespace azmi
             var Request = new TokenRequestContext(Scope);
             var Token = Cred.GetToken(Request);
             if (jwtformat) {
-                WriteObject(Decode_JWT(Token.Token));
+                //WriteObject(Decode_JWT(Token.Token));
+                //blobsListing.ForEach(b => WriteObject(b));
+                Array.ForEach(Decode_JWT(Token.Token), b => WriteObject(b));
             } else {
                 WriteObject(Token.Token);
             }
         }
 
-        private string Decode_JWT(string tokenEncoded)
+        private string[] Decode_JWT(string tokenEncoded)
         {
             var handler = new JwtSecurityTokenHandler();
             var tokenDecoded = handler.ReadJwtToken(tokenEncoded);
-            return tokenDecoded.ToString(); // decoded JSON Web Token
-
+            return new string[] { tokenDecoded.Header.ToString(), tokenDecoded.Payload.ToString() };
         }
     }
 }

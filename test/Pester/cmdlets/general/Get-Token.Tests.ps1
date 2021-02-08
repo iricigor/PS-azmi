@@ -56,6 +56,10 @@ Describe 'Basic tests'  {
         (Get-AzmiToken -JWTformat).Contains($managedIdentityName) | Should -Be $true
     }
 
+    It 'JWT you can parse back as JSON' {
+        Get-AzmiToken -JWTformat | ConvertFrom-Json | Should -Not -BeNullOrEmpty
+    }
+
 }
 
 Describe 'Identity argument'  {
