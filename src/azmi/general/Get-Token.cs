@@ -71,17 +71,18 @@ namespace azmi
             var Request = new TokenRequestContext(Scope);
             var Token = Cred.GetToken(Request);
             if (jwtformat) {
-                WriteObject(Decode_JWT(Token.Token));
+                //WriteObject(Decode_JWT(Token.Token));
+                Array.ForEach(Decode_JWT(Token.Token), a => WriteObject(a));
             } else {
                 WriteObject(Token.Token);
             }
         }
 
-        private string Decode_JWT(string tokenEncoded)
+        private string[] Decode_JWT(string tokenEncoded)
         {
             var handler = new JwtSecurityTokenHandler();
             var tokenDecoded = handler.ReadJwtToken(tokenEncoded);
-            return ("[" + tokenDecoded.Header.ToString() + "," + tokenDecoded.Payload.ToString() + "]");
+            return new string[] { tokenDecoded.Header.SerializeToJson(), tokenDecoded.Payload.SerializeToJson() };
             // just token.ToString() merges results by . and it cannot be parsed back
         }
     }
