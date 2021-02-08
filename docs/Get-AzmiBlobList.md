@@ -68,7 +68,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### None
 ## OUTPUTS
 
-### System.Object
+### System.String
 ## NOTES
 
 ## RELATED LINKS

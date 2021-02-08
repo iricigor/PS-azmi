@@ -119,7 +119,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### None
 ## OUTPUTS
 
-### System.Object
+### None
 ## NOTES
 
 ## RELATED LINKS
