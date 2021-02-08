@@ -24,30 +24,35 @@ namespace azmi
         // Arguments private properties
         //
 
-        private string identity;
-        private string blob;
-        private string file;
-        private string container;
-        private string directory;
+        //private string identity;
+        //private string blob;
+        //private string file;
+        //private string container;
+        //private string directory;
 
         //
         // Arguments Definitions
         //
 
         [Parameter(Mandatory = false)]
-        public string Identity { get { return identity; } set { identity = value; } }
+        public string Identity { get; set; }
 
+        [Parameter()]
+        public SwitchParameter Force { get; set; }
+
+        // Single File/Blob parameter set
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = "Single")]
-        public string Blob { get { return blob; } set { blob = value; } }
+        public string Blob { get; set; }
 
         [Parameter(Position = 1, Mandatory = false, ParameterSetName = "Single")]
-        public string File { get { return file; } set { file = value; } }
+        public string File { get; set; }
 
+        // Multiple files/blobs parameter set
         [Parameter(Mandatory = true, ParameterSetName = "Multi")]
-        public string Container { get { return container; } set { container = value; } }
+        public string Container { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = "Multi")]
-        public string Directory { get { return directory; } set { directory = value; } }
+        public string Directory { get; set; }
 
 
         //
@@ -78,14 +83,14 @@ namespace azmi
         {
             WriteVerbose("Starting to process a single blob");
             // Connection
-            var cred = new ManagedIdentityCredential(identity);
-            var blobClient = new BlobClient(new Uri(blob), cred);
+            var cred = new ManagedIdentityCredential(Identity);
+            var blobClient = new BlobClient(new Uri(Blob), cred);
             // Fix path
-            file ??= blob.Split('/').Last();
-            file = Path.GetFullPath(file, SessionState.Path.CurrentLocation.Path);
-            WriteVerbose($"Using source: '{file}'");
+            File ??= Blob.Split('/').Last();
+            File = Path.GetFullPath(File, SessionState.Path.CurrentLocation.Path);
+            WriteVerbose($"Using source: '{File}'");
             // Download
-            blobClient.Upload(file);
+            blobClient.Upload(File, Force);
             WriteVerbose("Upload completed");
         }
 
@@ -93,24 +98,24 @@ namespace azmi
         {
             WriteVerbose("Starting to process a container");
             // Connection
-            var cred = new ManagedIdentityCredential(identity);
-            var containerClient = new BlobContainerClient(new Uri(container), cred);
+            var cred = new ManagedIdentityCredential(Identity);
+            var containerClient = new BlobContainerClient(new Uri(Container), cred);
 
             // fix path
-            directory ??= container.Split('/').Last();
-            directory = Path.GetFullPath(directory, SessionState.Path.CurrentLocation.Path);
-            WriteVerbose($"Using source: '{directory}'");
+            Directory ??= Container.Split('/').Last();
+            Directory = Path.GetFullPath(Directory, SessionState.Path.CurrentLocation.Path);
+            WriteVerbose($"Using source: '{Directory}'");
 
             // get list of files
             WriteVerbose("Obtaining list of files...");
-            var fileList = System.IO.Directory.EnumerateFiles(directory, "*", SearchOption.AllDirectories);
+            var fileList = System.IO.Directory.EnumerateFiles(Directory, "*", SearchOption.AllDirectories);
             WriteVerbose($"Obtained {fileList.Count()} files");
 
             Parallel.ForEach(fileList, file =>
             {
-                var blobPath = file.Substring(directory.Length).TrimStart(Path.DirectorySeparatorChar);
+                var blobPath = file.Substring(Directory.Length).TrimStart(Path.DirectorySeparatorChar);
                 BlobClient blobClient = containerClient.GetBlobClient(blobPath);
-                blobClient.Upload(file);
+                blobClient.Upload(file, Force);
             });
             WriteVerbose("Upload completed");
         }

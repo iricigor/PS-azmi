@@ -148,8 +148,24 @@ Describe 'Multiple files upload against different containers'  {
         # the same command as above should now fail
         {Get-AzmiBlobContent -Blob "$CONTAINER_RW/test1.txt" -File $testFile3} | Should -Throw
     }
-
-
 }
 
 
+Describe 'Upload file with force' {
+
+    It 'Uploads file to empty container' {
+        {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_RW/test.txt"} | Should -Not -Throw
+    }
+
+    It 'Uploads the same file fails' {
+        {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_RW/test.txt"} | Should -Throw
+    }
+
+    It 'Uploads with force is OK' {
+        {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_RW/test.txt" -Force} | Should -Not -Throw
+    }
+
+    It 'Deletes uploaded file' {
+        {Get-AzmiBlobContent -Blob "$CONTAINER_RW/test.txt" -File $testFile3 -DeleteAfterCopy} | Should -Not -Throw
+    }
+}
