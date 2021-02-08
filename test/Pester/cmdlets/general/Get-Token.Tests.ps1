@@ -53,7 +53,7 @@ Describe 'Basic tests'  {
     }
 
     It 'In JWT you can see identity' {
-        (Get-AzmiToken -JWTformat).Contains($managedIdentityName) | Should -Be $true
+        (-join (Get-AzmiToken -JWTformat)).Contains($managedIdentityName) | Should -Be $true
     }
 
     It 'JWT you can parse back as JSON' {
