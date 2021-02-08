@@ -33,34 +33,11 @@ $files = @('azmi.dll', 'System.Management.Automation.dll')
 $publishDir = (Get-ChildItem -Include $files -Recurse | Group Directory | ? Count -eq 2).Name
 
 Set-OnlyOne ([ref]$publishDir) 'azmi.dll' 'azmi.dll|System.Management.Automation.dll'
-# if ($null -eq $publishDir) {
-# 	Write-Warning 'We did not find proper dll to import, display troubleshooting information'
-# 	$files | % {
-# 		$_
-# 		gci $_ -Recurse
-# 	}
-# 	throw "Did not find proper dll to import"
-# }
-
-# if ($publishDir.Count -gt 1) {
-# 	Write-Warning "Found more than one suitable azmi.dll, using first one"
-# 	$publishDir
-# 	$publishDir = $publishDir[0]
-# }
 
 # module manifest setup
 $moduleManifest = Get-ChildItem 'azmi.psd1' -Recurse
 Set-OnlyOne ([ref]$moduleManifest) 'module manifest' 'azmi.psd1'
-# if ($null -eq $moduleManifest) {
-# 	Write-Warning 'We did not find module manifest to import, display troubleshooting information'
-# 	gci 'azmi.psd1' -Recurse
-# 	throw "Did not find proper psd1 to import"
-# }
-# if ($moduleManifest.Count -gt 1) {
-# 	Write-Warning "Found more than one module manifest, using first one"
-# 	$moduleManifest
-# 	$moduleManifest = $moduleManifest[0]
-# }
+
 # copy manifest to publish folder
 $modulePath = Join-Path $publishDir $moduleManifest.Name
 Copy-Item -Path $moduleManifest.FullName -Destination $modulePath
@@ -68,16 +45,7 @@ Copy-Item -Path $moduleManifest.FullName -Destination $modulePath
 # copy XML help file to publish folder
 $helpFile = Get-ChildItem 'azmi.dll-Help.xml' -Recurse
 Set-OnlyOne ([ref]$helpFile) 'module XML help' 'azmi.dll-Help.xml'
-# if ($null -eq $helpFile) {
-# 	Write-Warning 'We did not find module XML help file to publish, display troubleshooting information'
-# 	gci 'azmi.psd1' -Recurse
-# 	throw "Did not find proper xml to import"
-# }
-# if ($helpFile.Count -gt 1) {
-# 	Write-Warning "Found more than one module help file, using first one"
-# 	$helpFile
-# 	$helpFile = $helpFile[0]
-# }
+
 $helpFileDir = Join-Path $publishDir 'en-US'
 New-Item $helpFileDir -ItemType Directory -Force | Out-Null
 Copy-Item -Path $helpFile.FullName -Destination $helpFileDir
