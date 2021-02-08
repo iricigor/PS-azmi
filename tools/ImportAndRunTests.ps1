@@ -28,4 +28,4 @@ if ($MSI.Length -gt 1) {
 }
 
 Write-Output "Invoke Pester tests"
-Invoke-Pester -Path  'test/Azmi.Module.Tests.ps1', 'test/cmdlets/*' -CI 4> $null
+Invoke-Pester -Path  'test/Pester/Azmi.Module.Tests.ps1', 'test/Pester/cmdlets/*' -CI 4> $null
