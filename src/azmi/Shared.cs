@@ -30,16 +30,19 @@ namespace azmi {
             }
             bool hasVersionInfo = (p.Length == 4);
 
-            // check if validation string is present
-            if (!String.IsNullOrEmpty(validation)  && (p[1]) != validation) {
-                throw new ArgumentException($"Invalid url does not contain {validation} at second position: {urlText}");
-            }
+            if (!String.IsNullOrEmpty(validation))
+            {
+                // check if validation string is present
+                if ((p[1]) != validation)
+                {
+                    throw new ArgumentException($"Invalid url does not contain {validation} at second position: {urlText}");
+                }
 
-            // validate complete string
-            if (!String.IsNullOrEmpty(validation)) {
-                string newString = $"{kv.ToString()}/{validation}/{p[2]}";
-                if (hasVersionInfo) {newString += $"/{p[3]}";};
-                if (newString != urlText) {
+                // validate complete string
+                string newString = $"{kv}/{validation}/{p[2]}";
+                if (hasVersionInfo) { newString += $"/{p[3]}"; };
+                if (newString != urlText)
+                {
                     var msg = $"Input url does not match expected url:\n{urlText}\n{newString}";
                     throw new ArgumentException(msg);
                 }
@@ -48,6 +51,5 @@ namespace azmi {
             // return values
             return (new Uri(kv), p[2], hasVersionInfo ? p[3] : null);
         }
-
     }
 }
