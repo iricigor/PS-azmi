@@ -101,7 +101,7 @@ PrivateData = @{
         Tags = @('certificate','powershell','azure','secret','blob','key-vault','commandlets','managed-identity')
 
         # A URL to the license for this module.
-        # LicenseUri = ''
+        LicenseUri = 'https://github.com/iricigor/PS-azmi/blob/master/LICENSE'
 
         # A URL to the main website for this project.
         ProjectUri = 'https://github.com/iricigor/PS-azmi'

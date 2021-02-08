@@ -57,12 +57,11 @@ The following commandlets are implemented or planned:
   - [x] **`Get-AzmiBlobList`** - List all blobs from container
   - [x] **`Get-AzmiBlobContent`** - Downloads one or more storage blobs to a local file
   - [x] **`Set-AzmiBlobContent`** - Uploads a local file or directory to an Azure Storage blob or container
-- 🔐 Secret
+- 🔐 Key Vault
   - [x] **`Get-AzmiSecret`** - Gets the secrets from Azure Key Vault
   - [ ] **`Set-AzmiSecret`** - Creates or updates a secret in a Azure Key Vault
-- 🧾 Certificate
-  - [x] **`Get-AzmiCertificate`**
-  - [ ] **`Set-AzmiCertificate`**
+  - [x] **`Get-AzmiCertificate`** - Gets the certificate from Azure Key Vault
+  - [ ] **`Set-AzmiCertificate`** - Creates or updates a certificate in a Azure Key Vault
 
 
 All commands support argument `-Identity` (managed identity client ID), which can be skipped if VM has exactly one managed identity.
@@ -91,7 +90,7 @@ Related documentation links:
 Testing this module presents a challenge, because traditional pipelines do not support managed identity.
 Therefore, it is required to have a private pipeline agent on a dedicated ADO pool for module integration testing.
 
-|Test|Results|
-|-|-|
-| Integration tests | [![Build Status](https://dev.azure.com/iiric/azmi/_apis/build/status/PS-azmi%20integration%20tests?branchName=master)](https://dev.azure.com/iiric/azmi/_build/latest?definitionId=39&branchName=master) [![Test detailsBuild Status](https://img.shields.io/azure-devops/tests/iiric/azmi/39)](https://dev.azure.com/iiric/azmi/_build/latest?definitionId=39&branchName=master)
-
+|Test|Status|Results|
+|-|-|-|
+| Integration tests | [![Build Status](https://dev.azure.com/iiric/azmi/_apis/build/status/PS-azmi%20integration%20tests?branchName=master)](https://dev.azure.com/iiric/azmi/_build/latest?definitionId=39&branchName=master) | [![Test detailsBuild Status](https://img.shields.io/azure-devops/tests/iiric/azmi/39)](https://dev.azure.com/iiric/azmi/_build/latest?definitionId=39&branchName=master) |
+| Unit tests | [![Build Status](https://dev.azure.com/iiric/azmi/_apis/build/status/PS-azmi%20Unit%20testing?branchName=master)](https://dev.azure.com/iiric/azmi/_build/latest?definitionId=41&branchName=master) | [![Test detailsBuild Status](https://img.shields.io/azure-devops/tests/iiric/azmi/41)](https://dev.azure.com/iiric/azmi/_build/latest?definitionId=41&branchName=master) |
