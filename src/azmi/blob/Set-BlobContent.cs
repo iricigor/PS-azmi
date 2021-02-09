@@ -44,14 +44,14 @@ namespace azmi
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = "Single")]
         public string Blob { get; set; }
 
-        [Parameter(Position = 1, Mandatory = false, ParameterSetName = "Single")]
+        [Parameter(Position = 1, Mandatory = true, ParameterSetName = "Single")]
         public string File { get; set; }
 
         // Multiple files/blobs parameter set
         [Parameter(Mandatory = true, ParameterSetName = "Multi")]
         public string Container { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = "Multi")]
+        [Parameter(Mandatory = true, ParameterSetName = "Multi")]
         public string Directory { get; set; }
 
 
