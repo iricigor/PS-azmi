@@ -21,7 +21,7 @@ Get-AzmiBlobContent [-Identity <String>] [-DeleteAfterCopy] [-Blob] <String> [[-
 ### Multi
 ```
 Get-AzmiBlobContent [-Identity <String>] [-DeleteAfterCopy] -Container <String> [-Directory <String>]
- [-Exclude <String>] [<CommonParameters>]
+ [-Exclude <String>] [-Prefix <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -137,6 +137,23 @@ Accept wildcard characters: False
 
 ### -Exclude
 Exclude blobs from downloading that match given regular expression.
+It performs client-side filtering.
+
+```yaml
+Type: String
+Parameter Sets: Multi
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Prefix
+Specifies a string that filters the results to return only blobs whose name begins with the specified prefix.
+It performs server-side filtering.
 
 ```yaml
 Type: String
