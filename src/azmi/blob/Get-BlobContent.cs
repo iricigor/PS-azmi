@@ -61,8 +61,11 @@ namespace azmi
         [Parameter(Mandatory = false, ParameterSetName = "Multi")]
         public string Directory { get; set; }
 
-        [Parameter(ParameterSetName = "Multi")]
+        [Parameter(Mandatory = false, ParameterSetName = "Multi")]
         public string Exclude { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = "Multi")]
+        public string Prefix { get; set; }
 
 
         //
@@ -105,7 +108,7 @@ namespace azmi
 
             // get list of blobs
             WriteVerbose("Obtaining list of blobs...");
-            List<string> blobListing = containerClient.GetBlobs().Select(i => i.Name).ToList();
+            List<string> blobListing = containerClient.GetBlobs(prefix: Prefix).Select(i => i.Name).ToList();
             WriteVerbose($"Obtained {blobListing.Count} blobs");
 
             // apply -Exclude regular expression

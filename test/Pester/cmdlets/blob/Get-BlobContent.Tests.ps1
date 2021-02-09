@@ -165,6 +165,17 @@ Describe 'Download filtered blobs properly' {
         Get-AzmiBlobContent -Container $CONTAINER_RO -Directory $testDir -Exclude 'file1'
         Get-ChildItem $testDir | Should -HaveCount 1
     }
+}
 
+Describe 'Download blobs with prefix properly' {
 
+    It 'Target directory is empty or not existing initially' {
+        Remove-Item $testDir -Force -ea 0
+        Get-ChildItem $testDir -ea 0 | Should -BeNullOrEmpty
+    }
+
+    It 'Creates only one file' {
+        Get-AzmiBlobContent -Container $CONTAINER_RO -Directory $testDir -Prefix 'file1'
+        Get-ChildItem $testDir | Should -HaveCount 1
+    }
 }
