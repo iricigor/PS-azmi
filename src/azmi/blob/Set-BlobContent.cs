@@ -123,6 +123,7 @@ namespace azmi
                 WriteVerbose("Filtering list of files...");
                 Regex excludeRegEx = new Regex(Exclude);
                 fileList = fileList.Where(file => !excludeRegEx.IsMatch(file));
+                WriteVerbose($"Filtered to {fileList.Count()} files");
             }
 
             Parallel.ForEach(fileList, file =>

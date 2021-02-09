@@ -136,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -Exclude
-{{ Fill Exclude Description }}
+Exclude blobs from downloading that match given regular expression.
 
 ```yaml
 Type: String
