@@ -173,7 +173,7 @@ Describe 'Upload file with force' {
 Describe 'Upload filtered list of files' {
 
     It 'Confirm local file exists' {
-        Get-ChildItem -Filter 'test2.txt' | Should -Not -BeNullOrEmpty
+        Get-ChildItem -Path $testDir -Filter 'test2.txt' | Should -Not -BeNullOrEmpty
     }
 
     It 'Successfully uploads directory to RW container' {

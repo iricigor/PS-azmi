@@ -117,7 +117,7 @@ namespace azmi
             var fileList = System.IO.Directory.EnumerateFiles(Directory, "*", SearchOption.AllDirectories);
             WriteVerbose($"Obtained {fileList.Count()} files");
 
-            // apply "--exclude" regular expression
+            // apply -Exclude regular expression
             if (!String.IsNullOrEmpty(Exclude))
             {
                 Regex excludeRegEx = new Regex(Exclude);
