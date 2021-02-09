@@ -19,7 +19,8 @@ Set-AzmiBlobContent [-Identity <String>] [-Force] [-Blob] <String> [-File] <Stri
 
 ### Multi
 ```
-Set-AzmiBlobContent [-Identity <String>] [-Force] -Container <String> -Directory <String> [<CommonParameters>]
+Set-AzmiBlobContent [-Identity <String>] [-Force] -Container <String> -Directory <String> [-Exclude <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,6 +103,21 @@ Client or application ID of managed identity used to authenticate. Example: 117d
 ```yaml
 Type: String
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Exclude
+Exclude files from uploading that match given regular expression.
+
+```yaml
+Type: String
+Parameter Sets: Multi
 Aliases:
 
 Required: False

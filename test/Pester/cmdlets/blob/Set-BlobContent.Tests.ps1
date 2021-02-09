@@ -169,3 +169,23 @@ Describe 'Upload file with force' {
         {Get-AzmiBlobContent -Blob "$CONTAINER_RW/test.txt" -File $testFile3 -DeleteAfterCopy} | Should -Not -Throw
     }
 }
+
+Describe 'Upload filtered list of files' {
+
+    It 'Confirm local file exists' {
+        Get-ChildItem -Filter 'test2.txt' | Should -Not -BeNullOrEmpty
+    }
+
+    It 'Successfully uploads directory to RW container' {
+        {Set-AzmiBlobContent -Directory $testDir -Container $CONTAINER_RW -Exclude 'test2.txt'} | Should -Not -Throw
+    }
+
+    It 'Verify count of uploaded file' {
+        Get-AzmiBlobList -Container $CONTAINER_RW | Should  -HaveCount 2
+    }
+
+    It 'Successfully deletes uploaded files' {
+        {Get-AzmiBlobContent -Container $CONTAINER_RW -Directory $subDir -DeleteAfterCopy} | Should -Not -Throw
+    }
+
+}

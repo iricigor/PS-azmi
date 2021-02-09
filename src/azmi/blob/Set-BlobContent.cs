@@ -5,6 +5,7 @@ using System.IO;
 using Azure.Identity;
 using System.Management.Automation;
 using Azure.Storage.Blobs;
+using System.Text.RegularExpressions;
 
 namespace azmi
 {
@@ -47,12 +48,17 @@ namespace azmi
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = "Single")]
         public string File { get; set; }
 
+        //
         // Multiple files/blobs parameter set
+        //
         [Parameter(Mandatory = true, ParameterSetName = "Multi")]
         public string Container { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = "Multi")]
         public string Directory { get; set; }
+
+        [Parameter(ParameterSetName = "Multi")]
+        public string Exclude { get; set; }
 
 
         //
@@ -110,6 +116,13 @@ namespace azmi
             WriteVerbose("Obtaining list of files...");
             var fileList = System.IO.Directory.EnumerateFiles(Directory, "*", SearchOption.AllDirectories);
             WriteVerbose($"Obtained {fileList.Count()} files");
+
+            // apply "--exclude" regular expression
+            if (!String.IsNullOrEmpty(Exclude))
+            {
+                Regex excludeRegEx = new Regex(Exclude);
+                fileList = fileList.Where(file => !excludeRegEx.IsMatch(file));
+            }
 
             Parallel.ForEach(fileList, file =>
             {
