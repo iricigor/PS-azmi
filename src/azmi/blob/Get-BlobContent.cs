@@ -25,12 +25,12 @@ namespace azmi
         // Arguments private properties
         //
 
-        private string identity;
-        private bool deleteAfterCopy;
-        private string blob;
-        private string file;
-        private string container;
-        private string directory;
+        //private string identity;
+        //private bool deleteAfterCopy;
+        //private string blob;
+        //private string file;
+        //private string container;
+        //private string directory;
 
         //
         // Arguments Definitions
@@ -38,25 +38,25 @@ namespace azmi
 
         // All Parameter Sets
         [Parameter(Mandatory = false)]
-        public string Identity {get { return identity; } set { identity = value; }}
+        public string Identity { get; set; }
 
         [Parameter(Mandatory = false)]
-        public SwitchParameter DeleteAfterCopy {get { return deleteAfterCopy; } set { deleteAfterCopy = value; }}
+        public SwitchParameter DeleteAfterCopy {get; set; }
 
 
         // Single Blob & File Parameter Set
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = "Single")]
-        public string Blob { get { return blob; } set { blob = value; } }
+        public string Blob { get; set; }
 
         [Parameter(Position = 1, Mandatory = false, ParameterSetName = "Single")]
-        public string File { get { return file; } set { file = value; } }
+        public string File { get; set; }
 
         // Multiple Blobs & Files (Container & Directory) Parameter Set
         [Parameter(Mandatory = true, ParameterSetName = "Multi")]
-        public string Container { get { return container; } set { container = value; } }
+        public string Container { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = "Multi")]
-        public string Directory { get { return directory; } set { directory = value; } }
+        public string Directory { get; set; }
 
 
         //
@@ -87,24 +87,24 @@ namespace azmi
         {
             WriteVerbose("Starting to process a single blob");
             // Connection
-            var cred = new ManagedIdentityCredential(identity);
-            var blobClient = new BlobClient(new Uri(blob), cred);
+            var cred = new ManagedIdentityCredential(Identity);
+            var blobClient = new BlobClient(new Uri(Blob), cred);
             // Fix path
-            file ??= blob.Split('/').Last();
-            file = Path.GetFullPath(file, SessionState.Path.CurrentLocation.Path);
-            WriteVerbose($"Using destination: '{file}'");
+            File ??= Blob.Split('/').Last();
+            File = Path.GetFullPath(File, SessionState.Path.CurrentLocation.Path);
+            WriteVerbose($"Using destination: '{File}'");
             // Download
-            blobClient.DownloadTo(file);
-            if (deleteAfterCopy) {blobClient.Delete();}
+            blobClient.DownloadTo(File);
+            if (DeleteAfterCopy) {blobClient.Delete();}
             WriteVerbose("Download completed");
         }
 
         private void ProcessMulti()
         {
-            WriteVerbose($"Starting to process a container {container}");
+            WriteVerbose($"Starting to process a container {Container}");
             // Connection
-            var cred = new ManagedIdentityCredential(identity);
-            var containerClient = new BlobContainerClient(new Uri(container), cred);
+            var cred = new ManagedIdentityCredential(Identity);
+            var containerClient = new BlobContainerClient(new Uri(Container), cred);
 
             // get list of blobs
             WriteVerbose("Obtaining list of blobs...");
@@ -112,10 +112,10 @@ namespace azmi
             WriteVerbose($"Obtained {blobListing.Count} blobs");
 
             // fix path
-            directory ??= container.Split('/').Last();
-            directory = Path.GetFullPath(directory, SessionState.Path.CurrentLocation.Path);
-            WriteVerbose($"Using destination: '{directory}'");
-            System.IO.Directory.CreateDirectory(directory);
+            Directory ??= Container.Split('/').Last();
+            Directory = Path.GetFullPath(Directory, SessionState.Path.CurrentLocation.Path);
+            WriteVerbose($"Using destination: '{Directory}'");
+            System.IO.Directory.CreateDirectory(Directory);
 
             //Task.WhenAll(blobListing.Select(async blob => {
             //    BlobClient blobClient = containerClient.GetBlobClient(blob);
@@ -126,11 +126,11 @@ namespace azmi
             Parallel.ForEach(blobListing, blobItem =>
             {
                 BlobClient blobClient = containerClient.GetBlobClient(blobItem);
-                string filePath = Path.Combine(directory, blobItem);
+                string filePath = Path.Combine(Directory, blobItem);
                 string absolutePath = Path.GetFullPath(filePath);
                 System.IO.Directory.CreateDirectory(Path.GetDirectoryName(filePath)); // required for missing sub-directories
                 blobClient.DownloadTo(filePath);
-                if (deleteAfterCopy) {blobClient.Delete();}
+                if (DeleteAfterCopy) {blobClient.Delete();}
             });
             WriteVerbose("Download completed");
         }
