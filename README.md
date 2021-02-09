@@ -68,7 +68,8 @@ All commands support argument `-Identity` (managed identity client ID), which ca
 
 All commands support also argument `-Verbose`, which will produce additional output about commandlet execution to verbose output stream.
 
-For more information on a specific command check their respective web pages:
+For more information on a specific command check their respective web pages
+- **[Module overview](./docs/Commands.md)**
 - [Get-AzmiToken](./docs/Get-AzmiToken.md)
 - [Get-AzmiBlobList](./docs/Get-AzmiBlobList.md)
 - [Get-AzmiBlobContent](./docs/Get-AzmiBlobContent.md)
