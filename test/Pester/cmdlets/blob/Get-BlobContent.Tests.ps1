@@ -144,12 +144,27 @@ Describe 'Downloads multiple files properly'  {
 
 Describe 'Delete after copy works properly'  {
 
-    it 'Fails on RO container' {
+    It 'Fails on RO container' {
         {Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File $testFile -DeleteAfterCopy} | Should -Throw
     }
 
     #
     # More tests are done in scope of Set-AzmiBlobContent commandlet tests
     #
+
+}
+
+Describe 'Download filtered blobs properly' {
+
+    It 'Target directory is empty or not existing initially' {
+        Remove-Item $testDir -Force -ea 0
+        Get-ChildItem $testDir -ea 0 | Should -BeNullOrEmpty
+    }
+
+    It 'Creates only one file' {
+        Get-AzmiBlobContent -Container $CONTAINER_RO -Directory $testDir -Exclude 'file1'
+        Get-ChildItem $testDir | Should -HaveCount 1
+    }
+
 
 }

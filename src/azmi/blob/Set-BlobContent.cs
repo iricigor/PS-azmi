@@ -120,6 +120,7 @@ namespace azmi
             // apply -Exclude regular expression
             if (!String.IsNullOrEmpty(Exclude))
             {
+                WriteVerbose("Filtering list of files...");
                 Regex excludeRegEx = new Regex(Exclude);
                 fileList = fileList.Where(file => !excludeRegEx.IsMatch(file));
             }

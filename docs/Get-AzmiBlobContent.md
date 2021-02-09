@@ -21,7 +21,7 @@ Get-AzmiBlobContent [-Identity <String>] [-DeleteAfterCopy] [-Blob] <String> [[-
 ### Multi
 ```
 Get-AzmiBlobContent [-Identity <String>] [-DeleteAfterCopy] -Container <String> [-Directory <String>]
- [<CommonParameters>]
+ [-Exclude <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -126,6 +126,21 @@ Client or application ID of managed identity used to authenticate. Example: 117d
 ```yaml
 Type: String
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Exclude
+{{ Fill Exclude Description }}
+
+```yaml
+Type: String
+Parameter Sets: Multi
 Aliases:
 
 Required: False

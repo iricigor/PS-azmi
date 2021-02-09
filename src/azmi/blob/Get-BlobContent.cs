@@ -6,6 +6,7 @@ using Azure.Storage.Blobs;
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 
 namespace azmi
@@ -51,12 +52,17 @@ namespace azmi
         [Parameter(Position = 1, Mandatory = false, ParameterSetName = "Single")]
         public string File { get; set; }
 
+        //
         // Multiple Blobs & Files (Container & Directory) Parameter Set
+        //
         [Parameter(Mandatory = true, ParameterSetName = "Multi")]
         public string Container { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = "Multi")]
         public string Directory { get; set; }
+
+        [Parameter(ParameterSetName = "Multi")]
+        public string Exclude { get; set; }
 
 
         //
@@ -71,16 +77,7 @@ namespace azmi
             switch (ParameterSetName) {
                 case "Single": ProcessSingle(); break;
                 case "Multi" : ProcessMulti();  break;
-                default:
-                    throw new ArgumentException("Bad ParameterSet Name");
             }
-            // if (ParameterSetName == "Single") {
-            //     ProcessSingle();
-            // } else if (ParameterSetName == "Multi") {
-            //     ProcessMulti();
-            // } else {
-            //     throw new ArgumentException("Bad ParameterSet Name");
-            // }
         }
 
         private void ProcessSingle()
@@ -110,6 +107,15 @@ namespace azmi
             WriteVerbose("Obtaining list of blobs...");
             List<string> blobListing = containerClient.GetBlobs().Select(i => i.Name).ToList();
             WriteVerbose($"Obtained {blobListing.Count} blobs");
+
+            // apply -Exclude regular expression
+            if (!String.IsNullOrEmpty(Exclude))
+            {
+                WriteVerbose("Filtering list of blobs...");
+                Regex excludeRegEx = new Regex(Exclude);
+                blobListing = blobListing.Where(blob => !excludeRegEx.IsMatch(blob)).ToList();
+                WriteVerbose($"Filtered to {blobListing.Count} blobs");
+            }
 
             // fix path
             Directory ??= Container.Split('/').Last();
