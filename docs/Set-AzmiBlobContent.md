@@ -14,13 +14,12 @@ Uploads local file to Azure storage blob using managed identity
 
 ### Single
 ```
-Set-AzmiBlobContent [-Identity <String>] [-Force] [-Blob] <String> [[-File] <String>] [<CommonParameters>]
+Set-AzmiBlobContent [-Identity <String>] [-Force] [-Blob] <String> [-File] <String> [<CommonParameters>]
 ```
 
 ### Multi
 ```
-Set-AzmiBlobContent [-Identity <String>] [-Force] -Container <String> [-Directory <String>]
- [<CommonParameters>]
+Set-AzmiBlobContent [-Identity <String>] [-Force] -Container <String> -Directory <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,7 +74,7 @@ Type: String
 Parameter Sets: Multi
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -90,7 +89,7 @@ Type: String
 Parameter Sets: Single
 Aliases:
 
-Required: False
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
