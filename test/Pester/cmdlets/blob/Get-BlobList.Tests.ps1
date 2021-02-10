@@ -28,6 +28,11 @@ BeforeAll {
 }
 
 
+#
+#  📃 non Functional testing 📃
+#
+
+
 Describe 'Verify required variables'  {
     # in order to avoid weird failures later, we first test if we have required variables
 
@@ -68,6 +73,11 @@ Describe 'Basic tests'  {
         Get-AzmiBlobList -Container $CONTAINER_LB -Verbose | Should -Not -BeNullOrEmpty
     }
 }
+
+
+#
+#  ⭐ Functional testing ⭐
+#
 
 
 Describe 'Identity argument'  {

@@ -49,6 +49,12 @@ AfterAll {
     Set-Location $firstLoc
 }
 
+
+#
+#  📃 non Functional testing 📃
+#
+
+
 Describe 'Verify required variables'  {
     # in order to avoid weird test failures later, we first test if we have required variables
 
@@ -76,6 +82,11 @@ Describe 'Function import verifications'  {
         $P.ContainsKey($argName) | Should -BeTrue
     }
 }
+
+
+#
+#  ⭐ Functional testing ⭐
+#
 
 
 Describe 'Single file upload against different containers'  {

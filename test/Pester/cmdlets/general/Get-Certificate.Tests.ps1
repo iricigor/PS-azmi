@@ -27,6 +27,12 @@ BeforeAll {
     }
 }
 
+
+#
+#  📃 non Functional testing 📃
+#
+
+
 Describe 'Verify required variables'  {
     # in order to avoid weird failures later, we first test if we have required variables
 
@@ -57,6 +63,12 @@ Describe 'Basic Tests' {
         Get-AzmiCertificate -Certificate "$KV_RO$PEMCERT" | Should -Not -BeNullOrEmpty
     }
 }
+
+
+#
+#  ⭐ Functional testing ⭐
+#
+
 
 Describe 'Access rights tests against different Key Vaults' {
 

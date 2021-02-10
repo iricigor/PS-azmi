@@ -36,6 +36,12 @@ AfterAll {
     Set-Location $firstLoc
 }
 
+
+#
+#  📃 non Functional testing 📃
+#
+
+
 Describe 'Verify required variables'  {
     # in order to avoid weird test failures later, we first test if we have required variables
 
@@ -84,6 +90,12 @@ Describe 'Basic tests'  {
         {Get-AzmiBlobContent -Container "$CONTAINER_NA" -Directory $testDir} | Should -Throw
     }
 }
+
+
+#
+#  ⭐ Functional testing ⭐
+#
+
 
 Describe 'Downloads single file properly'  {
 

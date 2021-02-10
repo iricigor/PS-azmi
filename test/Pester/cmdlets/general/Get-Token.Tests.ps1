@@ -19,6 +19,12 @@ BeforeAll {
     }
 }
 
+
+#
+#  📃 non Functional testing 📃
+#
+
+
 Describe 'Verify required variables'  {
     # in order to avoid weird failures later, we first test if we have required variables
     It 'Has IDENTITY_CLIENT_ID defined' {
@@ -37,6 +43,12 @@ Describe 'Function import verifications'  {
         $P.Identity | Should -Not -BeNullOrEmpty
     }
 }
+
+
+#
+#  ⭐ Functional testing ⭐
+#
+
 
 Describe 'Basic tests'  {
 

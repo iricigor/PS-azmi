@@ -25,6 +25,12 @@ BeforeAll {
     }
 }
 
+
+#
+#  📃 non Functional testing 📃
+#
+
+
 Describe 'Verify required variables'  {
     # in order to avoid weird failures later, we first test if we have required variables
 
@@ -48,6 +54,11 @@ Describe 'Function import verifications'  {
         $P.Identity | Should -Not -BeNullOrEmpty
     }
 }
+
+
+#
+#  ⭐ Functional testing ⭐
+#
 
 
 Describe 'Basic tests'  {
