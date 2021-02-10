@@ -141,7 +141,7 @@ Describe 'Downloads single file properly'  {
         Set-Location $testdir
         Get-AzmiBlobContent -Blob "$container_ro/file1" -File 'test.txt'
         Join-Path $testdir 'test.txt' | Should -Exist
-        Set-Location -1
+        Set-Location -Path -
         Remove-Item $testdir -Recurse -Force
     }
 }

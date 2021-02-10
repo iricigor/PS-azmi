@@ -178,7 +178,7 @@ Describe 'Multiple files upload verification'  {
 
 Describe 'Upload file with force' {
 
-    # Testing parameter -Filter
+    # Testing parameter -Force
 
     It 'Uploads file to empty container' {
         {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_RW/test.txt"} | Should -Not -Throw
