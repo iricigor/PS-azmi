@@ -39,7 +39,7 @@ Describe "Commandlets import verification" {
 
 
 #
-# Check if documentation is proper
+# 📃 Check if documentation is proper 📃
 #
 
 Describe 'Proper Documentation' {
