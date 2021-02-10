@@ -66,9 +66,11 @@ Describe 'Function import verifications'  {
     }
 }
 
+
 #
 #  ⭐ Basic and Access handling tests ⭐
 #
+
 
 Describe 'Basic tests'  {
 
@@ -98,7 +100,7 @@ Describe 'Access rights tests'  {
 
     It 'Works on RO blob with multiple files' {
         {Get-AzmiBlobContent -Container "$CONTAINER_RO" -Directory $testDir} | Should -Not -Throw
-        {Remove-Item $testDir -Force} | Should -Not -Throw
+        {Remove-Item $testDir -Force -Recurse} | Should -Not -Throw
     }
 
     # No testing for RW container because

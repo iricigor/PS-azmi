@@ -94,6 +94,7 @@ Describe 'Access rights tests'  {
 
 }
 
+
 #
 #  ⭐ Functional testing ⭐
 #
@@ -118,10 +119,6 @@ Describe 'Container argument'  {
 
     It 'It works with proper container' {
         Get-AzmiBlobList -Container $CONTAINER_LB | Should -Not -BeNullOrEmpty
-    }
-
-    It 'It fails with not accessible container' {
-        {Get-AzmiBlobList -Container $CONTAINER_NA}| Should -Throw
     }
 
     It 'It fails with wrong container url' {
