@@ -78,6 +78,21 @@ Describe 'Basic tests'  {
     }
 }
 
+Describe 'Access rights tests'  {
+
+    It 'Fails on NA container' {
+        {Get-AzmiBlobList -Container $CONTAINER_NA} | Should -Throw
+    }
+
+    It 'Works on RO container' {
+        {Get-AzmiBlobList -Container "$CONTAINER_RO"} | Should -Not -Throw
+    }
+
+    It 'Works on RW container' {
+        {Get-AzmiBlobList -Container "$CONTAINER_RO"} | Should -Not -Throw
+    }
+
+}
 
 #
 #  ⭐ Functional testing ⭐

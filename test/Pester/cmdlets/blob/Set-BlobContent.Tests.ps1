@@ -94,8 +94,7 @@ Describe "Basic Tests" {
     }
 
     It 'Clears uploaded file' {
-        {Get-AzmiBlobContent -Blob "$CONTAINER_RW/test.txt" -File $testFile2 -DeleteAfterCopy} | Should -Not -Throw
-        {Remove-Item $testFile2 -Force} | Should -Not -Throw
+        {Get-AzmiBlobContent -Blob "$CONTAINER_RW/test.txt" -File $testFile1 -DeleteAfterCopy} | Should -Not -Throw
     }
 
 }
