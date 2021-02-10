@@ -12,11 +12,11 @@ Module web page is https://github.com/iricigor/PS-azmi
 
 ### 💾 Blob
 
-- [Get-AzmiBlobList](./docs/Get-AzmiBlobList.md) - List all blobs from container
-- [Get-AzmiBlobContent](./docs/Get-AzmiBlobContent.md) - Downloads one or more storage blobs to a local file
-- [Set-AzmiBlobContent](./docs/Set-AzmiBlobContent.md) - Uploads a local file or directory to an Azure Storage blob or container
+- [Get-AzmiBlobList](./Get-AzmiBlobList.md) - List all blobs from container
+- [Get-AzmiBlobContent](./Get-AzmiBlobContent.md) - Downloads one or more storage blobs to a local file
+- [Set-AzmiBlobContent](./Set-AzmiBlobContent.md) - Uploads a local file or directory to an Azure Storage blob or container
 
 ### 🔐 Key Vault
 
-- [Get-AzmiSecret](./docs/Get-AzmiSecret.md) - Gets the secrets from Azure Key Vault
-- [Get-AzmiCertificate](./docs/Get-AzmiCertificate.md) - Gets the certificate from Azure Key Vault
+- [Get-AzmiSecret](./Get-AzmiSecret.md) - Gets the secrets from Azure Key Vault
+- [Get-AzmiCertificate](./Get-AzmiCertificate.md) - Gets the certificate from Azure Key Vault
