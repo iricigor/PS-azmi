@@ -127,18 +127,22 @@ Describe 'Downloads single file properly'  {
     It 'File exists' {
         Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File $testFile
         $testFile | Should -Exist
+        Remove-Item $testFile -Force
     }
 
     It 'File should contain Ahoj' {
         Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File $testFile
         $testFile | Should -FileContentMatch 'Ahoj!'
+        Remove-Item $testFile -Force
     }
 
     It 'creates file in current directory' {
-        New-Item $testdir -itemtype directory -force | Out-Null
+        New-Item $testdir -ItemType Directory -Force | Out-Null
         Set-Location $testdir
-        Get-AzmiBlobContent -blob "$container_ro/file1" -file 'test.txt'
-        Join-Path $testdir 'test.txt' | should -exist
+        Get-AzmiBlobContent -Blob "$container_ro/file1" -File 'test.txt'
+        Join-Path $testdir 'test.txt' | Should -Exist
+        Set-Location -1
+        Remove-Item $testdir -Recurse -Force
     }
 }
 
