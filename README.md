@@ -1,4 +1,6 @@
-# PS-azmi
+<img align="right" width="40%" src="img/PS-azmi-logo.svg"><br/>
+
+# PS azmi 
 
 PS-azmi PowerShell module simplifies operations against Azure cloud ☁ resources, like storage accounts and key vaults.
 Authorization is done via Managed Identity which is assigned to host virtual machine, completly transparently for logged in user or a running script.
