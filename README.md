@@ -45,7 +45,8 @@ Import-Module PS-azmi/azmi.dll
 And that is all! Now you can use commands from the module, and authentication will be done transparently
 ```PowerShell
 Get-AzmiToken -JWTFormat
-Get-AzmiBlobList"$StorageAccount/azmi-ls"
+Get-AzmiBlobList "$StorageAccount/azmi-ls"
+Get-AzmiBlobContent "$StorageAccount/azmi/azmi.txt"
 ```
 
 ![](img/PS-azmi01.png)
