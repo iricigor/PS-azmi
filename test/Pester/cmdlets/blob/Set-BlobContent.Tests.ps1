@@ -99,7 +99,7 @@ Describe "Basic Tests" {
 
 }
 
-Describe 'Single file upload against different containers'  {
+Describe 'Access rights tests'  {
 
     It 'Fails to upload file on NA container' {
         {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_NA/test.txt"} | Should -Throw
@@ -112,9 +112,6 @@ Describe 'Single file upload against different containers'  {
     It 'Successfully uploads file on RW container' {
         {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_RW/test.txt" -Force} | Should -Not -Throw
     }
-}
-
-Describe 'Multiple files upload against different containers'  {
 
     It 'Fails to upload directory to NA container' {
         {Set-AzmiBlobContent -Directory $testDir -Container $CONTAINER_NA} | Should -Throw

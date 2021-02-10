@@ -83,13 +83,27 @@ Describe 'Basic tests'  {
 
 Describe 'Access rights tests'  {
 
-    It 'Fails on no access blob with single file' {
+    It 'Fails on NA blob with single file' {
         {Get-AzmiBlobContent -Blob "$CONTAINER_NA/file1" -File $testFile} | Should -Throw
     }
 
-    It 'Fails on no access blob with multiple files' {
+    It 'Fails on NA blob with multiple files' {
         {Get-AzmiBlobContent -Container "$CONTAINER_NA" -Directory $testDir} | Should -Throw
     }
+
+    It 'Works on RO blob with single file' {
+        {Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File $testFile} | Should -Not -Throw
+        {Remove-Item $testFile -Force} | Should -Not -Throw
+    }
+
+    It 'Works on RO blob with multiple files' {
+        {Get-AzmiBlobContent -Container "$CONTAINER_RO" -Directory $testDir} | Should -Not -Throw
+        {Remove-Item $testDir -Force} | Should -Not -Throw
+    }
+
+    # No testing for RW container because
+    #   - it does not have files initially, it adds complexity to create and delete files
+    #   - it gives the same results as RO directory, it adds no additional value
 }
 
 
