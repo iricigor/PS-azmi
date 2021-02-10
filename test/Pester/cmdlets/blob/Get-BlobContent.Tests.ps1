@@ -38,7 +38,7 @@ AfterAll {
 
 
 #
-#  📃 non Functional testing 📃
+#  ⭐ non Functional testing ⭐
 #
 
 
@@ -54,23 +54,21 @@ Describe 'Verify required variables'  {
     }
 }
 
-
 Describe 'Function import verifications'  {
 
     It 'Has function imported' {
         Get-Command $commandName -Module $moduleName | Should -Not -BeNullOrEmpty
     }
 
-    $testCases = @(
-        @{argName = 'Identity'}
-        @{argName = 'DeleteAfterCopy'}
-    )
-    It "Function has $argName argument" -TestCases $testCases {
+    It 'Function has identity argument' {
         $P = (Get-Command $commandName -Module $moduleName).Parameters
-        $P.ContainsKey($argName) | Should -BeTrue
+        $P.Identity | Should -Not -BeNullOrEmpty
     }
 }
 
+#
+#  ⭐ Basic and Access handling tests ⭐
+#
 
 Describe 'Basic tests'  {
 
@@ -81,6 +79,9 @@ Describe 'Basic tests'  {
     It 'It supports Verbose switch' {
         {Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File $testFile -Verbose} | Should -Not -Throw
     }
+}
+
+Describe 'Access rights tests'  {
 
     It 'Fails on no access blob with single file' {
         {Get-AzmiBlobContent -Blob "$CONTAINER_NA/file1" -File $testFile} | Should -Throw

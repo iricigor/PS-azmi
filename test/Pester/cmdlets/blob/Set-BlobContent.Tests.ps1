@@ -51,7 +51,7 @@ AfterAll {
 
 
 #
-#  📃 non Functional testing 📃
+#  ⭐ non Functional testing ⭐
 #
 
 
@@ -67,27 +67,38 @@ Describe 'Verify required variables'  {
     }
 }
 
-
 Describe 'Function import verifications'  {
 
     It 'Has function imported' {
         Get-Command $commandName -Module $moduleName | Should -Not -BeNullOrEmpty
     }
 
-    $testCases = @(
-        @{argName = 'Identity'}
-    )
-    It "Function has $argName argument" -TestCases $testCases {
+    It 'Function has identity argument' {
         $P = (Get-Command $commandName -Module $moduleName).Parameters
-        $P.ContainsKey($argName) | Should -BeTrue
+        $P.Identity | Should -Not -BeNullOrEmpty
     }
 }
 
-
 #
-#  ⭐ Functional testing ⭐
+#  ⭐ Basic and Access handling tests ⭐
 #
 
+Describe "Basic Tests" {
+
+    It 'Successfully uploads file on RW container' {
+        {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_RW/test.txt"} | Should -Not -Throw
+    }
+
+    It 'Supports Verbose switch' {
+        {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_RW/test.txt" -Force -Verbose} | Should -Not -Throw
+    }
+
+    It 'Clears uploaded file' {
+        {Get-AzmiBlobContent -Blob "$CONTAINER_RW/test.txt" -File $testFile2 -DeleteAfterCopy} | Should -Not -Throw
+        {Remove-Item $testFile2 -Force} | Should -Not -Throw
+    }
+
+}
 
 Describe 'Single file upload against different containers'  {
 
@@ -100,9 +111,30 @@ Describe 'Single file upload against different containers'  {
     }
 
     It 'Successfully uploads file on RW container' {
-        {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_RW/test.txt"} | Should -Not -Throw
+        {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_RW/test.txt" -Force} | Should -Not -Throw
     }
 }
+
+Describe 'Multiple files upload against different containers'  {
+
+    It 'Fails to upload directory to NA container' {
+        {Set-AzmiBlobContent -Directory $testDir -Container $CONTAINER_NA} | Should -Throw
+    }
+
+    It 'Fails to upload directory to RO container' {
+        {Set-AzmiBlobContent -Directory $testDir -Container $CONTAINER_RO} | Should -Throw
+    }
+
+    It 'Successfully uploads directory to RW container' {
+        {Set-AzmiBlobContent -Directory $testDir -Container $CONTAINER_RW -Force} | Should -Not -Throw
+    }
+}
+
+
+#
+#  ⭐ Functional testing ⭐
+#
+
 
 Describe 'Single file upload verification'  {
 
@@ -123,23 +155,7 @@ Describe 'Single file upload verification'  {
 
 }
 
-
-Describe 'Multiple files upload against different containers'  {
-
-    It 'Fails to upload directory to NA container' {
-        {Set-AzmiBlobContent -Directory $testDir -Container $CONTAINER_NA} | Should -Throw
-    }
-
-    It 'Fails to upload directory to RO container' {
-        {Set-AzmiBlobContent -Directory $testDir -Container $CONTAINER_RO} | Should -Throw
-    }
-
-    It 'Successfully uploads directory to RW container' {
-        {Set-AzmiBlobContent -Directory $testDir -Container $CONTAINER_RW} | Should -Not -Throw
-    }
-}
-
-Describe 'Multiple files upload against different containers'  {
+Describe 'Multiple files upload verification'  {
 
     It 'Verify count of uploaded file' {
         Get-AzmiBlobList -Container $CONTAINER_RW | Should  -HaveCount 3
@@ -164,6 +180,8 @@ Describe 'Multiple files upload against different containers'  {
 
 Describe 'Upload file with force' {
 
+    # Testing parameter -Filter
+
     It 'Uploads file to empty container' {
         {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_RW/test.txt"} | Should -Not -Throw
     }
@@ -182,6 +200,8 @@ Describe 'Upload file with force' {
 }
 
 Describe 'Upload filtered list of files' {
+
+    # Testing parameter -Filter
 
     It 'Confirm local file exists' {
         Get-ChildItem -Path $testDir -Filter 'test2.txt' | Should -Not -BeNullOrEmpty

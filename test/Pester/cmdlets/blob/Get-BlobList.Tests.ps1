@@ -29,7 +29,7 @@ BeforeAll {
 
 
 #
-#  📃 non Functional testing 📃
+#  ⭐ non Functional testing ⭐
 #
 
 
@@ -46,7 +46,6 @@ Describe 'Verify required variables'  {
 
 }
 
-
 Describe 'Function import verifications'  {
 
     It 'Has function imported' {
@@ -58,6 +57,11 @@ Describe 'Function import verifications'  {
         $P.Identity | Should -Not -BeNullOrEmpty
     }
 }
+
+
+#
+#  ⭐ Basic and Access handling tests ⭐
+#
 
 
 Describe 'Basic tests'  {
