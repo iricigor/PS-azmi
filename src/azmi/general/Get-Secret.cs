@@ -19,18 +19,21 @@ namespace azmi
         //
         // Arguments private properties
         //
-        private string identity;
-        private string secret;
+        //private string identity;
+        //private string secret;
 
         //
         // Arguments Definitions
         //
 
         [Parameter(Mandatory = false)]
-        public string Identity { get { return identity; } set { identity = value; } }
+        public string Identity { get; set; }
 
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Full secret URL like https://ContosoVault.vault.azure.net/secrets/Password")]
-        public string Secret { get { return secret; } set { secret = value; } }
+        public string Secret { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public string File { get; set; }
 
         //
         //
@@ -41,17 +44,29 @@ namespace azmi
 
         protected override void ProcessRecord()
         {
-            var cred = new ManagedIdentityCredential(identity);
+            var cred = new ManagedIdentityCredential(Identity);
 
-            WriteVerbose($"Parsing secret... '{secret}'");
+            WriteVerbose($"Parsing secret... '{Secret}'");
             //(Uri keyVault, string secretName, string secretVersion) = ParseSecret(secrets);
-            (Uri keyVault, string secretName, string secretVersion) = Shared.ParseUrl(secret, "secrets");
+            (Uri keyVault, string secretName, string secretVersion) = Shared.ParseUrl(Secret, "secrets");
 
-            WriteVerbose($"Obtaining KV client for '{keyVault}' using '{identity}'...");
+            WriteVerbose($"Obtaining KV client for '{keyVault}' using '{Identity}'...");
             var secretClient = new SecretClient(keyVault, cred);
 
             WriteVerbose($"Obtaining secret {secretName}...");
-            WriteObject(secretClient.GetSecret(secretName, secretVersion).Value.Value);
+            var secretValue = secretClient.GetSecret(secretName, secretVersion).Value.Value;
+
+            // return value
+            if (String.IsNullOrEmpty(File))
+            {
+                WriteObject(secretValue);
+            } else
+            {
+                WriteVerbose($"Saving secret to file {File}...");
+                System.IO.File.WriteAllText(File, secretValue);
+                // TODO: Add test for file in current dir
+                // TODO: Candidate for async
+            }
         }
 
         // for multiple secrets see here
