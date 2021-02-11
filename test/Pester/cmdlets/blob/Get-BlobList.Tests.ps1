@@ -102,6 +102,8 @@ Describe 'Access rights tests'  {
 
 Describe 'Identity argument'  {
 
+    # Testing parameter -Identity
+
     It 'It works with default ID' {
         Get-AzmiBlobList -Container $CONTAINER_LB | Should -Not -BeNullOrEmpty
     }
@@ -116,6 +118,8 @@ Describe 'Identity argument'  {
 }
 
 Describe 'Container argument'  {
+
+    # Testing parameter -Container
 
     It 'It works with proper container' {
         Get-AzmiBlobList -Container $CONTAINER_LB | Should -Not -BeNullOrEmpty

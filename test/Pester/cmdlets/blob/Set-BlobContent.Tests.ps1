@@ -143,6 +143,8 @@ Describe 'Access rights tests'  {
 
 Describe 'Single file upload verification'  {
 
+    # Testing parameters -File and -Blob
+
     It 'Upload file for testing' {
         {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_RW/test.txt" -Force} | Should -Not -Throw
     }
@@ -164,6 +166,8 @@ Describe 'Single file upload verification'  {
 }
 
 Describe 'Multiple files upload verification'  {
+
+    # Testing parameters -Container and -Directory
 
     It 'Upload directory for testing' {
         {Set-AzmiBlobContent -Directory $testDir -Container $CONTAINER_RW -Force} | Should -Not -Throw
