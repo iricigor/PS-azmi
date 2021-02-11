@@ -172,6 +172,7 @@ Describe 'Downloads multiple files properly'  {
         $newDir | Should -Exist
 
         Get-ChildItem $newDir | Should -HaveCount 2
+        Set-Location -Path -
         Remove-Item $testdir -Recurse -Force
     }
 }

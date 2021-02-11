@@ -165,6 +165,10 @@ Describe 'Single file upload verification'  {
 
 Describe 'Multiple files upload verification'  {
 
+    It 'Upload directory for testing' {
+        {Set-AzmiBlobContent -Directory $testDir -Container $CONTAINER_RW -Force} | Should -Not -Throw
+    }
+
     It 'Verify count of uploaded file' {
         Get-AzmiBlobList -Container $CONTAINER_RW | Should  -HaveCount 3
     }
