@@ -3,13 +3,13 @@
 # PS azmi 
 
 PS-azmi PowerShell module simplifies operations against Azure cloud ☁ resources, like storage accounts and key vaults.
-Authorization is done via Managed Identity which is assigned to host virtual machine, completly transparently for logged in user or a running script.
+Authentication is done via Managed Identity which is assigned to host virtual machine, completly transparently for logged in user or a running script.
 Your code can be absolutely free of any secrets, you do not even need to store user names!
 
 The biggest difference between these and other Azure commands is that these do not require additional commands for Azure authentication, like `Login-AzAccount` or similar.
 Read more about Azure Managed Identities at [MS Docs web site](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview).
 
-This PowerShell module is written in C# compiled with [.NET 5.0](https://docs.microsoft.com/en-us/dotnet/core/dotnet-five). It is targeting [PowerShell version 7](https://docs.microsoft.com/en-us/powershell/scripting/whats-new/what-s-new-in-powershell-70?view=powershell-7.1).
+This PowerShell module is written in C# and compiled with [.NET 5.0](https://docs.microsoft.com/en-us/dotnet/core/dotnet-five). It is targeting [PowerShell version 7](https://docs.microsoft.com/en-us/powershell/scripting/whats-new/what-s-new-in-powershell-70?view=powershell-7.1).
 
 PS-azmi is pronounced "AH - z - m - ee" and it stands for **AZ**ure **M**anaged **I**dentity.
 
