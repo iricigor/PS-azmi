@@ -14,6 +14,7 @@ BeforeAll {
     # prepare the environment on test drive
     $testDir = Join-Path $TestDrive 'testDir'
     $subDir = Join-Path $testDir 'testSubDir'
+    $tempDir = Join-Path $TestDrive 'tempDir'
     $testFile1 = Join-Path $testDir 'test1.txt'
     $testFile2 = Join-Path $testDir 'test2.txt'
     $testFile3 = Join-Path $subDir 'test3.txt'
@@ -126,6 +127,12 @@ Describe 'Access rights tests'  {
     It 'Successfully uploads directory to RW container' {
         {Set-AzmiBlobContent -Directory $testDir -Container $CONTAINER_RW -Force} | Should -Not -Throw
     }
+
+    It 'Clear all blobs and files' {
+        Get-AzmiBlobContent -Container $CONTAINER_RW -Directory $tempDir -DeleteAfterCopy
+        Remove-Item $tempDir -Recurse -Force
+    }
+
 }
 
 
@@ -136,7 +143,10 @@ Describe 'Access rights tests'  {
 
 Describe 'Single file upload verification'  {
 
-    # TODO: Think of independent tests, these four tests should be a single test with multiple Asserts
+    It 'Upload file for testing' {
+        {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_RW/test.txt" -Force} | Should -Not -Throw
+    }
+
     It 'Verify content of uploaded file' {
         $testFile2 | Should -Not -FileContentMatch $testContent
         Get-AzmiBlobContent -Blob "$CONTAINER_RW/test.txt" -File $testFile2

@@ -124,7 +124,7 @@ Describe 'Downloads single file properly'  {
         $testFile | Should -Not -Exist
     }
 
-    It 'File exists' {
+    It 'File exists after downloading' {
         Get-AzmiBlobContent -Blob "$CONTAINER_RO/file1" -File $testFile
         $testFile | Should -Exist
         Remove-Item $testFile -Force
@@ -136,7 +136,7 @@ Describe 'Downloads single file properly'  {
         Remove-Item $testFile -Force
     }
 
-    It 'creates file in current directory' {
+    It 'Creates file in current directory' {
         New-Item $testdir -ItemType Directory -Force | Out-Null
         Set-Location $testdir
         Get-AzmiBlobContent -Blob "$container_ro/file1" -File 'test.txt'
@@ -161,6 +161,7 @@ Describe 'Downloads multiple files properly'  {
     It 'File should have proper content' {
         Get-AzmiBlobContent -Container $CONTAINER_RO -Directory $testDir -Verbose
         Join-Path $testDir 'file1' | Should -FileContentMatch 'Ahoj!'
+        Remove-Item $testdir -Recurse -Force
     }
 
     It 'Creates directory under current location' {
@@ -171,6 +172,7 @@ Describe 'Downloads multiple files properly'  {
         $newDir | Should -Exist
 
         Get-ChildItem $newDir | Should -HaveCount 2
+        Remove-Item $testdir -Recurse -Force
     }
 }
 
