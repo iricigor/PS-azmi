@@ -89,7 +89,8 @@ Project is based on a `azmi` Linux CLI project - https://github.com/SRE-PRG/azmi
 Related documentation links:
 - How to write a PowerShell cmdlet at [MS Docs web site](https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/how-to-write-a-simple-cmdlet?view=powershell-7.1)
 - Azure Managed Identities at [MS Docs web site](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)
-- Pester documentation at [netlify.app](https://pester-docs.netlify.app/)
+- Pester - testing framework documentation at [netlify.app](https://pester-docs.netlify.app/)
+- PlatyPS - external Help and Markdown authoring at [GitHub](https://github.com/PowerShell/platyPS)
 
 ## Testing Pipelines
 

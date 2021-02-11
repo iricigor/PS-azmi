@@ -21,7 +21,7 @@ BeforeAll {
 
 
 #
-#  📃 non Functional testing 📃
+#  ⭐ non Functional testing ⭐
 #
 
 
@@ -46,7 +46,7 @@ Describe 'Function import verifications'  {
 
 
 #
-#  ⭐ Functional testing ⭐
+#  ⭐ Basic and Access handling tests ⭐
 #
 
 
@@ -59,6 +59,17 @@ Describe 'Basic tests'  {
     It 'It supports Verbose switch' {
         Get-AzmiToken -Verbose | Should -Not -BeNullOrEmpty
     }
+}
+
+
+#
+#  ⭐ Functional testing ⭐
+#
+
+
+Describe 'JWT parameter tests' {
+
+    # Testing parameter -JWTformat
 
     It 'It accepts JWTformat switch' {
         Get-AzmiToken -JWTformat | Should -Not -BeNullOrEmpty
@@ -75,6 +86,8 @@ Describe 'Basic tests'  {
 }
 
 Describe 'Identity argument'  {
+
+    # Testing parameter -Identity
 
     It 'It works with proper ID' {
         Get-AzmiToken -Identity $MSI | Should -Not -BeNullOrEmpty

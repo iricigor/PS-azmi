@@ -29,7 +29,7 @@ BeforeAll {
 
 
 #
-#  📃 non Functional testing 📃
+#  ⭐ non Functional testing ⭐
 #
 
 
@@ -57,18 +57,22 @@ Describe 'Function import verifications'  {
     }
 }
 
+#
+#  ⭐ Basic and Access handling tests ⭐
+#
+
+
 Describe 'Basic Tests' {
 
     It 'Returns something' {
         Get-AzmiCertificate -Certificate "$KV_RO$PEMCERT" | Should -Not -BeNullOrEmpty
     }
+
+    It 'It supports Verbose switch' {
+        Get-AzmiCertificate -Certificate "$KV_RO$PEMCERT" -Verbose | Should -Not -BeNullOrEmpty
+    }
+
 }
-
-
-#
-#  ⭐ Functional testing ⭐
-#
-
 
 Describe 'Access rights tests against different Key Vaults' {
 
@@ -88,3 +92,8 @@ Describe 'Access rights tests against different Key Vaults' {
         {Get-AzmiCertificate -Certificate "$KV_RO$PFXCERT"} | Should -Not -Throw
     }
 }
+
+#
+#  ⭐ Functional testing ⭐
+#
+

@@ -18,7 +18,8 @@ BeforeAll {
     # calculated values
     $KV_NA="https://$KEY_VAULTS_BASE_NAME-na.vault.azure.net"
     $KV_RO="https://$KEY_VAULTS_BASE_NAME-ro.vault.azure.net"
-    $Secret1 = "$KV_RO/secrets/secret1"
+    $SecretRO = "$KV_RO/secrets/secret1"
+    $SecretNA = "$KV_NA/secrets/secret1"
 
     if (!(Get-Module $moduleName)) {
         throw "You must import module before running tests."
@@ -27,7 +28,7 @@ BeforeAll {
 
 
 #
-#  📃 non Functional testing 📃
+#  ⭐ non Functional testing ⭐
 #
 
 
@@ -55,21 +56,40 @@ Describe 'Function import verifications'  {
     }
 }
 
-
 #
-#  ⭐ Functional testing ⭐
+#  ⭐ Basic and Access handling tests ⭐
 #
 
 
 Describe 'Basic tests'  {
 
     It 'It returns something' {
-        Get-AzmiSecret -Secret $Secret1 | Should -Not -BeNullOrEmpty
+        Get-AzmiSecret -Secret $SecretRO | Should -Not -BeNullOrEmpty
     }
 
     It 'It supports Verbose switch' {
-        Get-AzmiSecret  -Secret $Secret1 -Verbose | Should -Not -BeNullOrEmpty
+        Get-AzmiSecret  -Secret $SecretRO -Verbose | Should -Not -BeNullOrEmpty
     }
+}
+
+Describe 'Access rights tests against different Key Vaults' {
+
+    It 'Fails on NA Key Vault' {
+        {Get-AzmiSecret -Secret $SecretNA} | Should -Throw
+    }
+
+    It 'Works on RO Key Vault' {
+        {Get-AzmiSecret -Secret $SecretRO} | Should -Not -Throw
+    }
+}
+
+
+#
+#  ⭐ Functional testing ⭐
+#
+
+
+Describe 'Wrong secret URL tests' {
 
     It 'It fails on non-existing secret' {
         {Get-AzmiSecret -Secret 'non-existing'} | Should -Throw
@@ -88,7 +108,7 @@ Describe 'Basic tests'  {
 Describe 'Content tests'  {
 
     It 'It returns proper value' {
-        Get-AzmiSecret -Secret $Secret1 | Should -Be 'version2'
+        Get-AzmiSecret -Secret $SecretRO | Should -Be 'version2'
     }
 
     # add test for previous version which should return 'version1'
