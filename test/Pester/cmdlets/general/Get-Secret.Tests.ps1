@@ -119,6 +119,8 @@ Describe 'Content tests'  {
 
 Describe 'File export'  {
 
+    # Test argument -File
+
     It 'File does not exist initially' {
         Test-Path $testFile | Should -Be $false
     }
@@ -142,8 +144,6 @@ Describe 'File export'  {
     It 'Removes test file' {
         Remove-Item $testFile -Force
     }
-
-
 }
 
 

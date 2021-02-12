@@ -22,6 +22,8 @@ BeforeAll {
     $PEMCERT='/certificates/pem-cert'
     $PFXCERT='/certificates/pfx-cert'
 
+    $testFile = Join-Path $TestDrive 'secret.txt'
+
     if (!(Get-Module $moduleName)) {
         throw "You must import module before running tests."
     }
@@ -97,3 +99,46 @@ Describe 'Access rights tests against different Key Vaults' {
 #  ⭐ Functional testing ⭐
 #
 
+
+Describe 'Verify returned objects' {
+
+    # It 'PEM cert is OK' {
+    #     Get-AzmiCertificate -Certificate "$KV_RO$PEMCERT" | Should -Contain 'what?'
+    # }
+
+    # It 'PFX cert is OK' {
+    #     Get-AzmiCertificate -Certificate "$KV_RO$PFXCERT" | Should -Contain 'what?'
+    # }
+
+}
+
+Describe 'Writes cert to file' {
+
+    # Test argument -File
+
+    It 'File does not exist initially' {
+        Test-Path $testFile | Should -Be $false
+    }
+
+    It 'Accepts -File argument' {
+        Get-AzmiCertificate -Certificate "$KV_RO$PEMCERT" -File $testFile
+    }
+
+    It 'File does exist after command' {
+        Test-Path $testFile | Should -Be $true
+    }
+
+    # It 'File has proper content' {
+    #     Get-Content $testFile | Should -Be 'what?'
+    # }
+
+    It 'It overwrites existing file' {
+        Get-AzmiCertificate -Certificate "$KV_RO$PEMCERT" -File $testFile
+    }
+
+    It 'Removes test file' {
+        Remove-Item $testFile -Force
+    }
+
+
+}
