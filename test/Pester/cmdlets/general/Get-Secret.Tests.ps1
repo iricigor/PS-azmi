@@ -21,6 +21,8 @@ BeforeAll {
     $SecretRO = "$KV_RO/secrets/secret1"
     $SecretNA = "$KV_NA/secrets/secret1"
 
+    $testFile = Join-Path $TestDrive 'secret.txt'
+
     if (!(Get-Module $moduleName)) {
         throw "You must import module before running tests."
     }
@@ -113,5 +115,27 @@ Describe 'Content tests'  {
 
     # add test for previous version which should return 'version1'
 
+}
+
+Describe 'File export'  {
+
+    It 'File does not exist initially' {
+        Test-Path $testFile | Should -Be $false
+    }
+
+    It 'Creates a file' {
+        Get-AzmiSecret -Secret $SecretRO -File $testFile | Should -Be 'version2'
+    }
+
+    It 'File has proper content' {
+        Get-Content $testFile | Should -Be 'version2'
+    }
+
+    It 'Removes test file' {
+        Remove-Item $testFile -Force
+    }
+
 
 }
+
+
