@@ -128,11 +128,15 @@ Describe 'File export'  {
     }
 
     It 'File does exist after command' {
-        Test-Path $testFile | Should -Be $false
+        Test-Path $testFile | Should -Be $true
     }
 
     It 'File has proper content' {
         Get-Content $testFile | Should -Be 'version2'
+    }
+
+    It 'It overwrites existing file' {
+        Get-AzmiSecret -Secret $SecretRO -File $testFile
     }
 
     It 'Removes test file' {
