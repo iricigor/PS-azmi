@@ -22,15 +22,13 @@ You need a VM and a target resource that you want to access, like Storage Accoun
 ### Prepare the environment
 
 You can assign access in two ways:
-1) System Assigned Managed Identity
+1) System Assigned Managed Identity -
+On target resource, just assign access to your VM.
+More info [here](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/tutorial-linux-vm-access-arm).
 
-On target resource, just assign access to your VM. More info [here](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/tutorial-linux-vm-access-arm).
-
-2) Using User Assigned Managed Identity
-
+2) Using User Assigned Managed Identity -
 Create new managed identity and assign it to your VM.
 On target resource grant appropriate access rights to the identity.
-
 If you want to assign the same access to multiple VMs, this is the preferred method.
 
 ### Install the module
