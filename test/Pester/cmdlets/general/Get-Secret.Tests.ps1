@@ -123,8 +123,12 @@ Describe 'File export'  {
         Test-Path $testFile | Should -Be $false
     }
 
-    It 'Creates a file' {
-        Get-AzmiSecret -Secret $SecretRO -File $testFile | Should -Be 'version2'
+    It 'Accepts -File argument' {
+        Get-AzmiSecret -Secret $SecretRO -File $testFile
+    }
+
+    It 'File does exist after command' {
+        Test-Path $testFile | Should -Be $false
     }
 
     It 'File has proper content' {
