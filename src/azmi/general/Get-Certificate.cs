@@ -63,8 +63,11 @@ namespace azmi
             var secretId = certObj.SecretId.ToString();
 
             WriteVerbose($"Obtaining certificate from {secretId}...");
-            var gs = new GetSecret() { Secret = secretId, Identity = Identity };
-            var cert = (string)gs.Invoke();
+            // var gs = new GetSecret() { Secret = secretId, Identity = Identity };
+            // var cert = (string)gs.Invoke();
+            // currently throws InvalidCastException
+            //   Unable to cast object of type '<Invoke>d__40' to type 'System.String'.
+            string cert = System.Text.Encoding.UTF8.GetString(certObj.Cer);
 
             // return value
             if (String.IsNullOrEmpty(File))
