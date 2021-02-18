@@ -107,7 +107,7 @@ PrivateData = @{
         ProjectUri = 'https://github.com/iricigor/PS-azmi'
 
         # A URL to an icon representing this module.
-        # IconUri = ''
+        IconUri = 'https://github.com/iricigor/PS-azmi/blob/master/img/PS-azmi-logo.png'
 
         # ReleaseNotes of this module
         # ReleaseNotes = ''
