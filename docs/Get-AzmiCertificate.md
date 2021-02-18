@@ -13,7 +13,7 @@ Get certificate content from Azure Key Vault using managed identity
 ## SYNTAX
 
 ```
-Get-AzmiCertificate [-Identity <String>] [-Certificate] <String> [<CommonParameters>]
+Get-AzmiCertificate [-Identity <String>] [-Certificate] <String> [-File <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,6 +55,21 @@ Accept wildcard characters: False
 
 ### -Identity
 Client or application ID of managed identity used to authenticate. Example: 117dc05c-4d12-4ac2-b5f8-5e239dc8bc54
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -File
+Path to local file to which content will be downloaded.
 
 ```yaml
 Type: String

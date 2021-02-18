@@ -13,7 +13,7 @@ Get content of the secret from Azure Key Vault using managed identity
 ## SYNTAX
 
 ```
-Get-AzmiSecret [-Identity <String>] [-Secret] <String> [<CommonParameters>]
+Get-AzmiSecret [-Identity <String>] [-Secret] <String> [-File <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,6 +56,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -File
+Path to local file to which content will be downloaded.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
