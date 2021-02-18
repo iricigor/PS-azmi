@@ -129,8 +129,9 @@ Describe 'Writes cert to file' {
     }
 
     It 'File has proper content' {
-        (Get-Content $testFile).StartsWith('MII') | Should -BeTrue
-        (Get-Content $testFile).EndsWith('=') | Should -BeTrue
+        $cer = Get-Content $testFile
+        $cer.StartsWith('MII') | Should -BeTrue -Because $cer
+        $cer.EndsWith('=') | Should -BeTrue -Because $cer
     }
 
     It 'It overwrites existing file' {
