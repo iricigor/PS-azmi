@@ -67,7 +67,8 @@ namespace azmi
             // var cert = (string)gs.Invoke();
             // currently throws InvalidCastException
             //   Unable to cast object of type '<Invoke>d__40' to type 'System.String'.
-            string cert = System.Text.Encoding.UTF32.GetString(certObj.Cer);
+            // string cert = System.Text.Encoding.UTF32.GetString(certObj.Cer);
+            string cert = Convert.ToBase64String(certObj.Cer);
 
             // return value
             if (String.IsNullOrEmpty(File))
