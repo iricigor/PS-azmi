@@ -128,9 +128,10 @@ Describe 'Writes cert to file' {
         Test-Path $testFile | Should -Be $true
     }
 
-    # It 'File has proper content' {
-    #     Get-Content $testFile | Should -Be 'what?'
-    # }
+    It 'File has proper content' {
+        (Get-Content $testFile).StartsWith('MII') | Should -BeTrue
+        (Get-Content $testFile).EndsWith('=') | Should -BeTrue
+    }
 
     It 'It overwrites existing file' {
         Get-AzmiCertificate -Certificate "$KV_RO$PEMCERT" -File $testFile
