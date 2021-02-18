@@ -102,13 +102,17 @@ Describe 'Access rights tests against different Key Vaults' {
 
 Describe 'Verify returned objects' {
 
-    # It 'PEM cert is OK' {
-    #     Get-AzmiCertificate -Certificate "$KV_RO$PEMCERT" | Should -Contain 'what?'
-    # }
+    It 'PEM cert is OK' {
+        $cer = Get-AzmiCertificate -Certificate "$KV_RO$PEMCERT"
+        $cer.StartsWith('MII') | Should -BeTrue -Because $cer
+        $cer.EndsWith('=') | Should -BeTrue -Because $cer
+    }
 
-    # It 'PFX cert is OK' {
-    #     Get-AzmiCertificate -Certificate "$KV_RO$PFXCERT" | Should -Contain 'what?'
-    # }
+    It 'PFX cert is OK' {
+        $cer = Get-AzmiCertificate -Certificate "$KV_RO$PFXCERT"
+        $cer.StartsWith('MII') | Should -BeTrue -Because $cer
+        $cer.EndsWith('=') | Should -BeTrue -Because $cer
+    }
 
 }
 
