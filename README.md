@@ -84,6 +84,8 @@ For more information on a specific command check their respective web pages
 
 Project is based on a `azmi` Linux CLI project - https://github.com/SRE-PRG/azmitool
 
+You can find it also on PS Gallery - https://www.powershellgallery.com/packages/azmi
+
 Related documentation links:
 - How to write a PowerShell cmdlet at [MS Docs web site](https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/how-to-write-a-simple-cmdlet?view=powershell-7.1)
 - Azure Managed Identities at [MS Docs web site](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)
