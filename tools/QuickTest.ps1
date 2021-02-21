@@ -41,9 +41,20 @@ catch [Azure.Identity.CredentialUnavailableException] {}
 
 $url = 'https://mystorage.blob.core.windows.net/container/file'
 try {Get-AzmiBlobContent $url}
-catch [Azure.Identity.CredentialUnavailableException] {
+catch [Azure.Identity.CredentialUnavailableException] {}
 
 try {Get-AzmiBlobList $url}
-catch [Azure.Identity.CredentialUnavailableException] {
+catch [Azure.Identity.CredentialUnavailableException] {}
+
+$fileName = Get-ChildItem $env:HOMEPATH -file -Recurse | Select -First 1 | Select -ExpandProperty FullName
+try {Set-AzmiBlobContent $url $fileName}
+catch [Azure.Identity.CredentialUnavailableException] {}
+
+$KV = 'https://key.vault.azure.net/'
+try {Get-AzmiSecret "${KV}secrets/secret"}
+catch [Azure.Identity.CredentialUnavailableException] {}
+
+try {Get-AzmiCertificate "${KV}certificates/cert"}
+catch [Azure.Identity.CredentialUnavailableException] {}
 
 Write-Output "All good"
