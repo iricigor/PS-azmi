@@ -23,7 +23,10 @@ Write-Output "Import module $FullPath"
 Import-Module $FullPath
 
 Write-Output "Check commands $FullPath"
-Get-Command -module $Module | Select CommandType, Name, Version
+Get-Command -module $Module | Select CommandType, Name, Version | Format-Table
 
 Write-Output "Check syntax $FullPath"
-Get-Command -module $Module | % { get-help $_ | % {$_.Syntax}}
+Get-Command -module $Module | % {
+    "$('='*40)`n$_`n"
+    Get-Help $_ | % {$_.Syntax.syntaxItem.parameter}
+}

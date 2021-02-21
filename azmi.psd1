@@ -21,7 +21,7 @@ ModuleVersion = '0.0.2'
 GUID = '1a8f4dd0-78f9-4d6e-a4ce-456fea22b60b'
 
 # Author of this module
-Author = 'iiric@outlook.com'
+Author = 'iricigor@outlook.com'
 
 # Company or vendor of this module
 # CompanyName = 'Unknown'
@@ -54,36 +54,36 @@ Description = 'This PowerShell module simplifies operations against Azure cloud 
 # RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 
-'./Azure.Core.dll',
-'./Azure.Identity.dll',
-'./Azure.Security.KeyVault.Certificates.dll',
-'./Azure.Security.KeyVault.Secrets.dll',
-'./Azure.Storage.Blobs.dll',
-'./Azure.Storage.Common.dll',
-'./Microsoft.ApplicationInsights.dll',
-'./Microsoft.Bcl.AsyncInterfaces.dll',
-'./Microsoft.Identity.Client.dll',
-'./Microsoft.Identity.Client.Extensions.Msal.dll',
-'./Microsoft.IdentityModel.JsonWebTokens.dll',
-'./Microsoft.IdentityModel.Logging.dll',
-'./Microsoft.IdentityModel.Tokens.dll',
-'./Microsoft.Win32.Registry.AccessControl.dll',
-'./Microsoft.Win32.SystemEvents.dll',
-'./Newtonsoft.Json.dll',
-'./System.CodeDom.dll',
-'./System.Configuration.ConfigurationManager.dll',
-'./System.Diagnostics.EventLog.dll',
-'./System.DirectoryServices.dll',
-'./System.Drawing.Common.dll',
-'./System.IdentityModel.Tokens.Jwt.dll',
-'./System.Management.Automation.dll',
-'./System.Management.dll',
-'./System.Memory.Data.dll',
-'./System.Security.Cryptography.Pkcs.dll',
-'./System.Security.Cryptography.ProtectedData.dll',
-'./System.Security.Permissions.dll',
-'./System.Windows.Extensions.dll'
+# RequiredAssemblies = 
+# './Azure.Core.dll',
+# './Azure.Identity.dll',
+# './Azure.Security.KeyVault.Certificates.dll',
+# './Azure.Security.KeyVault.Secrets.dll',
+# './Azure.Storage.Blobs.dll',
+# './Azure.Storage.Common.dll',
+# './Microsoft.ApplicationInsights.dll',
+# './Microsoft.Bcl.AsyncInterfaces.dll',
+# './Microsoft.Identity.Client.dll',
+# './Microsoft.Identity.Client.Extensions.Msal.dll',
+# './Microsoft.IdentityModel.JsonWebTokens.dll',
+# './Microsoft.IdentityModel.Logging.dll',
+# './Microsoft.IdentityModel.Tokens.dll',
+# './Microsoft.Win32.Registry.AccessControl.dll',
+# './Microsoft.Win32.SystemEvents.dll',
+# './Newtonsoft.Json.dll',
+# './System.CodeDom.dll',
+# './System.Configuration.ConfigurationManager.dll',
+# './System.Diagnostics.EventLog.dll',
+# './System.DirectoryServices.dll',
+# './System.Drawing.Common.dll',
+# './System.IdentityModel.Tokens.Jwt.dll',
+# './System.Management.Automation.dll',
+# './System.Management.dll',
+# './System.Memory.Data.dll',
+# './System.Security.Cryptography.Pkcs.dll',
+# './System.Security.Cryptography.ProtectedData.dll',
+# './System.Security.Permissions.dll',
+# './System.Windows.Extensions.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
