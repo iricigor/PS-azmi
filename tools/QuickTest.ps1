@@ -33,10 +33,17 @@ Get-Command -module $Module | % {
 }
 
 Write-Output "Check commands execution"
-try {
-    Get-AzmiToken
-    Get-AzmiToken -JWTformat
-    Write-Output "All good"
-} catch [Azure.Identity.CredentialUnavailableException] {
-    # no action needed for this exception
-}
+try {Get-AzmiToken}
+catch [Azure.Identity.CredentialUnavailableException] {}
+
+try {Get-AzmiToken -JWTformat}
+catch [Azure.Identity.CredentialUnavailableException] {}
+
+$url = 'https://mystorage.blob.core.windows.net/container/file'
+try {Get-AzmiBlobContent $url}
+catch [Azure.Identity.CredentialUnavailableException] {
+
+try {Get-AzmiBlobList $url}
+catch [Azure.Identity.CredentialUnavailableException] {
+
+Write-Output "All good"
