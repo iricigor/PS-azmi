@@ -6,6 +6,7 @@ param (
 )
 
 # Quick test for the module, just import and verify commands
+# It works also on machines without managed identity
 
 Write-Output "PSVersionTable"
 $PSVersionTable
@@ -35,6 +36,7 @@ Write-Output "Check commands execution"
 try {
     Get-AzmiToken
     Get-AzmiToken -JWTformat
+    Write-Output "All good"
 } catch [Azure.Identity.CredentialUnavailableException] {
     # no action needed for this exception
 }
