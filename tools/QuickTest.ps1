@@ -30,3 +30,11 @@ Get-Command -module $Module | % {
     "$('='*40)`n$_`n"
     Get-Help $_ | % {$_.Syntax.syntaxItem.parameter}
 }
+
+Write-Output "Check commands execution"
+try {
+    Get-AzmiToken
+    Get-AzmiToken -JWTformat
+} catch [Azure.Identity.CredentialUnavailableException] {
+    # no action needed for this exception
+}
