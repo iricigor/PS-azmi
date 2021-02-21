@@ -68,7 +68,6 @@ RequiredAssemblies =
 './Microsoft.IdentityModel.JsonWebTokens.dll',
 './Microsoft.IdentityModel.Logging.dll',
 './Microsoft.IdentityModel.Tokens.dll',
-'./Microsoft.Management.Infrastructure.dll',
 './Microsoft.Win32.Registry.AccessControl.dll',
 './Microsoft.Win32.SystemEvents.dll',
 './Newtonsoft.Json.dll',
