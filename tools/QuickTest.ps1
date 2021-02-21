@@ -1,0 +1,29 @@
+[CmdletBinding()]
+param (
+    [Parameter(Mandatory=$false,Position=0)][int]$RequiredVersion,
+    [Parameter()][string]$Path = './publish',
+    [Parameter()][string]$Module = 'azmi'
+)
+
+# Quick test for the module, just import and verify commands
+
+Write-Output "PSVersionTable"
+$PSVersionTable
+
+if (!$RequiredVersion) {
+    Write-Warning 'Please specify required PowerShell version as argument -RequiredVersion'
+} elseif ($PSVersionTable.PSVersion.Major -ne $RequiredVersion) {
+    Write-Warning "PowerShell required version mismatch, expected $RequiredVersion, found $($PSVersionTable.PSVersion.Major)"
+} else {
+    Write-Output "PowerShell required version as expected - $RequiredVersion"
+}
+
+$FullPath = Join-Path $Path $Module
+Write-Output "Import module $FullPath"
+Import-Module $FullPath
+
+Write-Output "Check commands $FullPath"
+Get-Command -module $Module | Select CommandType, Name, Version
+
+Write-Output "Check syntax $FullPath"
+Get-Command -module $Module | % { get-help $_ | % {$_.Syntax}}
