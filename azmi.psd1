@@ -33,7 +33,7 @@ Author = 'iricigor@outlook.com'
 Description = 'This PowerShell module simplifies operations against Azure cloud ☁ resources, like storage accounts and key vault. The biggest difference between these and other Azure commands is that these do not require additional commands for Azure authentication. Authentication is done transparently for the running session using Azure Managed Identity.'
 
 # Minimum version of the PowerShell engine required by this module
-# PowerShellVersion = ''
+PowerShellVersion = '5.1'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
