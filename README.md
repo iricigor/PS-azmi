@@ -104,4 +104,4 @@ Therefore, it is required to have a private pipeline agent on a dedicated ADO po
 
 ### Ongoing issues
 
-- Module is currently not running on Windows Powershell, issue #30
+- Module is currently not running on Windows Powershell, [see issue #30](https://github.com/iricigor/PS-azmi/issues/30)
