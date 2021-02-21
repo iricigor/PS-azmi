@@ -33,7 +33,7 @@ Author = 'iricigor@outlook.com'
 Description = 'This PowerShell module simplifies operations against Azure cloud ☁ resources, like storage accounts and key vault. The biggest difference between these and other Azure commands is that these do not require additional commands for Azure authentication. Authentication is done transparently for the running session using Azure Managed Identity.'
 
 # Minimum version of the PowerShell engine required by this module
-# PowerShellVersion = '5.1'
+# PowerShellVersion = ''
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
@@ -42,7 +42,7 @@ Description = 'This PowerShell module simplifies operations against Azure cloud 
 # PowerShellHostVersion = ''
 
 # Minimum version of Microsoft .NET Framework required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
-# DotNetFrameworkVersion = '3.5'
+# DotNetFrameworkVersion = ''
 
 # Minimum version of the common language runtime (CLR) required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
 # ClrVersion = ''
@@ -78,7 +78,7 @@ CmdletsToExport = @(
 )
 
 # Variables to export from this module
-VariablesToExport = ''
+VariablesToExport = '*'
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = @()
@@ -108,7 +108,7 @@ PrivateData = @{
 
         # A URL to an icon representing this module.
         IconUri = 'https://raw.githubusercontent.com/iricigor/PS-azmi/master/img/PS-azmi-logo.png'
-                   
+
         # ReleaseNotes of this module
         # ReleaseNotes = ''
 
