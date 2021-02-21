@@ -12,16 +12,16 @@
 RootModule = 'azmi.dll'
 
 # Version number of this module.
-ModuleVersion = '0.0.1'
+ModuleVersion = '0.0.2'
 
 # Supported PSEditions
-# CompatiblePSEditions = @()
+CompatiblePSEditions = 'Core', 'Desktop'
 
 # ID used to uniquely identify this module
 GUID = '1a8f4dd0-78f9-4d6e-a4ce-456fea22b60b'
 
 # Author of this module
-Author = 'iiric@outlook.com'
+Author = 'iricigor@outlook.com'
 
 # Company or vendor of this module
 # CompanyName = 'Unknown'
@@ -98,7 +98,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = @('certificate','powershell','azure','secret','blob','key-vault','commandlets','managed-identity')
+        Tags = @('certificate','powershell','azure','secret','blob','key-vault','commandlets','managed-identity','Linux','Windows')
 
         # A URL to the license for this module.
         LicenseUri = 'https://github.com/iricigor/PS-azmi/blob/master/LICENSE'
@@ -107,7 +107,7 @@ PrivateData = @{
         ProjectUri = 'https://github.com/iricigor/PS-azmi'
 
         # A URL to an icon representing this module.
-        IconUri = 'https://github.com/iricigor/PS-azmi/blob/master/img/PS-azmi-logo.png'
+        IconUri = 'https://raw.githubusercontent.com/iricigor/PS-azmi/master/img/PS-azmi-logo.png'
 
         # ReleaseNotes of this module
         # ReleaseNotes = ''
@@ -132,4 +132,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-

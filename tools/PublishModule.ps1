@@ -57,7 +57,8 @@ Copy-Item -Path $helpFile.FullName -Destination $helpFileDir
 
 # verify content of the folder
 Write-Output "Verify content of folder: $publishDir"
-Get-ChildItem $publishDir | Select -Expand Name
+Get-Item $publishDir | Select LastWriteTime, CreationTime, Name
+Get-ChildItem $publishDir | Select LastWriteTime, CreationTime, Name | Sort-Object CreationTime -Descending
 
 # Import and check module
 Write-Output "`n#`nImporting $modulePath`n#`n"
