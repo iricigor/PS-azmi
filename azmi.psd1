@@ -12,10 +12,10 @@
 RootModule = 'azmi.dll'
 
 # Version number of this module.
-ModuleVersion = '0.0.1'
+ModuleVersion = '0.0.2'
 
 # Supported PSEditions
-# CompatiblePSEditions = @()
+CompatiblePSEditions = 'Core', 'Desktop'
 
 # ID used to uniquely identify this module
 GUID = '1a8f4dd0-78f9-4d6e-a4ce-456fea22b60b'
@@ -33,7 +33,7 @@ Author = 'iiric@outlook.com'
 Description = 'This PowerShell module simplifies operations against Azure cloud ☁ resources, like storage accounts and key vault. The biggest difference between these and other Azure commands is that these do not require additional commands for Azure authentication. Authentication is done transparently for the running session using Azure Managed Identity.'
 
 # Minimum version of the PowerShell engine required by this module
-# PowerShellVersion = ''
+PowerShellVersion = '5.1'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
@@ -42,7 +42,7 @@ Description = 'This PowerShell module simplifies operations against Azure cloud 
 # PowerShellHostVersion = ''
 
 # Minimum version of Microsoft .NET Framework required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
-# DotNetFrameworkVersion = ''
+DotNetFrameworkVersion = '3.5'
 
 # Minimum version of the common language runtime (CLR) required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
 # ClrVersion = ''
@@ -54,7 +54,37 @@ Description = 'This PowerShell module simplifies operations against Azure cloud 
 # RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
-# RequiredAssemblies = @()
+RequiredAssemblies = 
+'Azure.Core.dll',
+'Azure.Identity.dll',
+'Azure.Security.KeyVault.Certificates.dll',
+'Azure.Security.KeyVault.Secrets.dll',
+'Azure.Storage.Blobs.dll',
+'Azure.Storage.Common.dll',
+'Microsoft.ApplicationInsights.dll',
+'Microsoft.Bcl.AsyncInterfaces.dll',
+'Microsoft.Identity.Client.dll',
+'Microsoft.Identity.Client.Extensions.Msal.dll',
+'Microsoft.IdentityModel.JsonWebTokens.dll',
+'Microsoft.IdentityModel.Logging.dll',
+'Microsoft.IdentityModel.Tokens.dll',
+'Microsoft.Management.Infrastructure.dll',
+'Microsoft.Win32.Registry.AccessControl.dll',
+'Microsoft.Win32.SystemEvents.dll',
+'Newtonsoft.Json.dll',
+'System.CodeDom.dll',
+'System.Configuration.ConfigurationManager.dll',
+'System.Diagnostics.EventLog.dll',
+'System.DirectoryServices.dll',
+'System.Drawing.Common.dll',
+'System.IdentityModel.Tokens.Jwt.dll',
+'System.Management.Automation.dll',
+'System.Management.dll',
+'System.Memory.Data.dll',
+'System.Security.Cryptography.Pkcs.dll',
+'System.Security.Cryptography.ProtectedData.dll',
+'System.Security.Permissions.dll',
+'System.Windows.Extensions.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -78,7 +108,7 @@ CmdletsToExport = @(
 )
 
 # Variables to export from this module
-VariablesToExport = '*'
+VariablesToExport = ''
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = @()
@@ -98,7 +128,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = @('certificate','powershell','azure','secret','blob','key-vault','commandlets','managed-identity')
+        Tags = @('certificate','powershell','azure','secret','blob','key-vault','commandlets','managed-identity','Linux','Windows')
 
         # A URL to the license for this module.
         LicenseUri = 'https://github.com/iricigor/PS-azmi/blob/master/LICENSE'
@@ -107,8 +137,8 @@ PrivateData = @{
         ProjectUri = 'https://github.com/iricigor/PS-azmi'
 
         # A URL to an icon representing this module.
-        IconUri = 'https://github.com/iricigor/PS-azmi/blob/master/img/PS-azmi-logo.png'
-
+        IconUri = 'https://raw.githubusercontent.com/iricigor/PS-azmi/master/img/PS-azmi-logo.png'
+                   
         # ReleaseNotes of this module
         # ReleaseNotes = ''
 
