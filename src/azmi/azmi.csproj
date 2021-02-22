@@ -3,7 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <OutputType>Library</OutputType>
-	<LangVersion>8.0</LangVersion>
+	  <LangVersion>8.0</LangVersion>
+    <DependsOnNETStandard>true</DependsOnNETStandard>
   </PropertyGroup>
 
   <ItemGroup>
