@@ -93,7 +93,7 @@ namespace azmi
             var blobClient = new BlobClient(new Uri(Blob), cred);
             // Fix path
             File ??= Blob.Split('/').Last();
-            File = Path.GetFullPath(File, SessionState.Path.CurrentLocation.Path);
+            //File = Path.GetFullPath(File, SessionState.Path.CurrentLocation.Path);
             WriteVerbose($"Using source: '{File}'");
             // Download
             blobClient.Upload(File, Force);
@@ -109,7 +109,7 @@ namespace azmi
 
             // fix path
             Directory ??= Container.Split('/').Last();
-            Directory = Path.GetFullPath(Directory, SessionState.Path.CurrentLocation.Path);
+            //Directory = Path.GetFullPath(Directory, SessionState.Path.CurrentLocation.Path);
             WriteVerbose($"Using source: '{Directory}'");
 
             // get list of files
