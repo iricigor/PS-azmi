@@ -12,7 +12,7 @@
 RootModule = 'azmi.dll'
 
 # Version number of this module.
-ModuleVersion = '0.0.2'
+ModuleVersion = '0.0.3'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -110,7 +110,7 @@ PrivateData = @{
         IconUri = 'https://raw.githubusercontent.com/iricigor/PS-azmi/master/img/PS-azmi-logo.png'
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = 'https://github.com/iricigor/PS-azmi/releases/tag/0.0.3'
 
         # Prerelease string of this module
         # Prerelease = ''
