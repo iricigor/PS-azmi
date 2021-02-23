@@ -3,8 +3,9 @@ param (
     [Parameter()][string]$ModuleName = 'azmi',
 
     [Parameter()][string]$ModulePath = '.'
-    # location where module folder is location, not the module itself
-    # folder name must be the same as module name!
+    # location where module folder is located, not the module itself
+    # actual module folder name must be the same as module name!
+    # by default script uses path like './azmi/azmi.psd1' for the module
 )
 
 #$ModuleName = 'azmi'
@@ -13,7 +14,7 @@ param (
 # check if the key is defined as environment variable
 $Key = $env:MyPSGalleryAPIKey
 if ($Key.Length -gt 10) {
-    Write-Host "Key with length $($Key.Length) found, it starts with $($Key.Substring(0,3))"
+    Write-Output "Key with length $($Key.Length) found, it starts with $($Key.Substring(0,3))"
 } else {
     throw "Key not found"
 }
