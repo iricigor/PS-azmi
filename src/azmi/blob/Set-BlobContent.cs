@@ -92,8 +92,8 @@ namespace azmi
             var cred = new ManagedIdentityCredential(Identity);
             var blobClient = new BlobClient(new Uri(Blob), cred);
             // Fix path
-            File ??= Blob.Split('/').Last();
-            File = Path.GetFullPath(File, SessionState.Path.CurrentLocation.Path);
+            //File ??= Blob.Split('/').Last();
+            //File = Path.GetFullPath(File, SessionState.Path.CurrentLocation.Path);
             WriteVerbose($"Using source: '{File}'");
             // Download
             blobClient.Upload(File, Force);
@@ -108,8 +108,8 @@ namespace azmi
             var containerClient = new BlobContainerClient(new Uri(Container), cred);
 
             // fix path
-            Directory ??= Container.Split('/').Last();
-            Directory = Path.GetFullPath(Directory, SessionState.Path.CurrentLocation.Path);
+            //Directory ??= Container.Split('/').Last();
+            //Directory = Path.GetFullPath(Directory, SessionState.Path.CurrentLocation.Path);
             WriteVerbose($"Using source: '{Directory}'");
 
             // get list of files
