@@ -1,6 +1,6 @@
 <img align="right" width="40%" src="img/PS-azmi-logo.svg"><br/>
 
-# PS azmi 
+# PS azmi
 
 PS-azmi PowerShell module simplifies operations against Azure cloud ☁ resources, like storage accounts and key vaults.
 Authentication is done via Managed Identity which is assigned to host virtual machine, completly transparently for logged in user or a running script.
@@ -82,9 +82,28 @@ For more information on a specific command check their respective web pages
 
 ## Links
 
+PS azmi project homepage is on GitHub - https://github.com/iricigor/PS-azmi
+
+![](https://img.shields.io/github/v/release/iricigor/PS-azmi)
+![](https://img.shields.io/github/release-date/iricigor/PS-azmi)
+![](https://img.shields.io/github/last-commit/iricigor/PS-azmi)
+![](https://img.shields.io/github/commits-since/iricigor/PS-azmi/latest)
+
+![](https://img.shields.io/github/issues-pr/iricigor/PS-azmi)
+![](https://img.shields.io/github/issues/iricigor/PS-azmi)
+![](https://img.shields.io/github/issues/iricigor/PS-azmi/help%20wanted)
+
+![](https://img.shields.io/github/languages/count/iricigor/PS-azmi)
+![](https://img.shields.io/github/languages/top/iricigor/PS-azmi)
+![](https://img.shields.io/github/languages/code-size/iricigor/PS-azmi)
+
 Project is based on a `azmi` Linux CLI project - https://github.com/SRE-PRG/azmitool
 
 You can find it also on PS Gallery - https://www.powershellgallery.com/packages/azmi
+
+[![](https://img.shields.io/powershellgallery/v/azmi)](https://www.powershellgallery.com/packages/azmi)
+[![](https://img.shields.io/powershellgallery/dt/azmi)](https://www.powershellgallery.com/packages/azmi)
+[![](https://img.shields.io/powershellgallery/p/azmi)](https://www.powershellgallery.com/packages/azmi)
 
 Related documentation links:
 - How to write a PowerShell cmdlet at [MS Docs web site](https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/how-to-write-a-simple-cmdlet?view=powershell-7.1)
