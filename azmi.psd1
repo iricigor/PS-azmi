@@ -15,7 +15,7 @@ RootModule = 'azmi.dll'
 ModuleVersion = '0.0.3'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core', 'Desktop'
+CompatiblePSEditions = 'Core'
 
 # ID used to uniquely identify this module
 GUID = '1a8f4dd0-78f9-4d6e-a4ce-456fea22b60b'
@@ -30,10 +30,14 @@ Author = 'iricigor@outlook.com'
 # Copyright = '(c) iiric. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'This PowerShell module simplifies operations against Azure cloud ☁ resources, like storage accounts and key vault. The biggest difference between these and other Azure commands is that these do not require additional commands for Azure authentication. Authentication is done transparently for the running session using Azure Managed Identity.'
+Description = @'
+This PowerShell module simplifies operations against Azure cloud ☁ resources, like storage accounts and key vault.
+Difference between these and other Azure commands is that these do not require additional commands for Azure authentication. Authentication is done transparently for the running session using Azure Managed Identity.
+Your code can be absolutely free of any secrets, you do not even need to store user names!
+'@
 
 # Minimum version of the PowerShell engine required by this module
-PowerShellVersion = '5.1'
+PowerShellVersion = '7.1'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
