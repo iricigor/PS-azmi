@@ -21,7 +21,9 @@ You need a VM and a target resource that you want to access, like Storage Accoun
 
 ### Prepare the environment
 
-You can assign access in two ways:
+If you need more info, take a look at [environment setup](./docs/azmiEnvironmentSetup.md) page.
+Briefly, you can assign access in two ways:
+
 1) System Assigned Managed Identity -
 On target resource, just assign access to your VM.
 More info [here](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/tutorial-linux-vm-access-arm).
@@ -31,16 +33,15 @@ Create new managed identity and assign it to your VM.
 On target resource grant appropriate access rights to the identity.
 If you want to assign the same access to multiple VMs, this is the preferred method.
 
-If you need more info, take a look at [environment setup](./docs/azmiEnvironmentSetup.md) page.
 ### Install the module
 
 Then, inside your Azure VM install this module
 
 ```PowerShell
-Install-Module PS-azmi
+Install-Module azmi -Scope CurrentUser -Repository PSGallery
 # or
 git clone https://github.com/iricigor/PS-azmi
-Import-Module PS-azmi/azmi.dll
+Import-Module PS-azmi/azmi.psd1
 ```
 
 And that is all! Now you can use commands from the module, and authentication will be done transparently
