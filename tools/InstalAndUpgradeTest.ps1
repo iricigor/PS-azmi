@@ -1,7 +1,8 @@
 $moduleName = 'azmi'
+$verbosity = $false
 
 Write-Host "Install module"
-Install-Module $moduleName -Repository PSGallery -Scope CurrentUser -Force -MinimumVersion 0.0.2 -Verbose
+Install-Module $moduleName -Repository PSGallery -Scope CurrentUser -Force -MinimumVersion 0.0.2 -Verbose:$verbosity
 if (Get-Module $moduleName -List | ? Version -gt 0.0.1) {
     Write-Host "Module installed successfully."
 } else {
@@ -9,7 +10,7 @@ if (Get-Module $moduleName -List | ? Version -gt 0.0.1) {
 }
 
 Write-Host "Uninstall module"
-Uninstall-Module $moduleName -Force -Verbose
+Uninstall-Module $moduleName -Force -Verbose:$verbosity
 if (Get-Module $moduleName -List -ea 0 | ? Version -gt 0.0.1) {
     Write-Error "Module not uninstalled successfully."
 } else {
@@ -17,7 +18,7 @@ if (Get-Module $moduleName -List -ea 0 | ? Version -gt 0.0.1) {
 }
 
 Write-Host "Install old version"
-Install-Module $moduleName -Repository PSGallery -Scope CurrentUser -RequiredVersion 0.0.1 -Force -Verbose
+Install-Module $moduleName -Repository PSGallery -Scope CurrentUser -RequiredVersion 0.0.1 -Force -Verbose:$verbosity
 if (Get-Module $moduleName -List | ? Version -eq 0.0.1) {
     Write-Host "Old module installed successfully."
 } else {
@@ -25,7 +26,7 @@ if (Get-Module $moduleName -List | ? Version -eq 0.0.1) {
 }
 
 Write-Host "Update module"
-Update-Module $moduleName -Force -Verbose
+Update-Module $moduleName -Force -Verbose:$verbosity
 if (Get-Module $moduleName -List | ? Version -gt 0.0.1) {
     Write-Host "Module updated successfully."
 } else {
