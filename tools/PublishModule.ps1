@@ -30,7 +30,7 @@ Write-Output "dotnet publish"
 # https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish
 $runtime = (($IsLinux -or $IsMacOS) ? "linux-x64" : "win-x64")
 dotnet clean 'src/azmi/azmi.csproj'  --runtime $runtime
-dotnet publish 'src/azmi/azmi.csproj'  --runtime $runtime
+dotnet publish 'src/azmi/azmi.csproj'  --runtime $runtime  --output 'src/azmi/bin/publish'
 
 # Find proper dll to import
 # idea taken from https://www.michev.info/Blog/Post/1722/use-powershell-to-list-all-directories-that-contain-both-file1-and-file2
