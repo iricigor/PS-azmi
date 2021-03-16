@@ -3,7 +3,7 @@
 # PS azmi
 
 PS-azmi PowerShell module simplifies operations against Azure cloud ☁ resources, like storage accounts and key vaults.
-Authentication is done via Managed Identity which is assigned to host virtual machine, completly transparently for logged in user or a running script.
+Authentication is done via Managed Identity which is assigned to host virtual machine, completely transparently for logged in user or a running script.
 Your code can be absolutely free of any secrets, you do not even need to store user names!
 
 The biggest difference between these and other Azure commands is that these do not require additional commands for Azure authentication, like `Login-AzAccount` or similar.
@@ -31,6 +31,7 @@ Create new managed identity and assign it to your VM.
 On target resource grant appropriate access rights to the identity.
 If you want to assign the same access to multiple VMs, this is the preferred method.
 
+If you need more info, take a look at [environment setup](./docs/azmiEnvironmentSetup.md) page.
 ### Install the module
 
 Then, inside your Azure VM install this module
@@ -50,6 +51,8 @@ Get-AzmiBlobContent "$StorageAccount/azmi/azmi.txt"
 ```
 
 ![](img/PS-azmi01.png)
+
+For more examples, see [use cases](./docs/azmiUseCases.md) page.
 
 ## List of Commandlets
 
@@ -72,7 +75,7 @@ All commands support argument `-Identity` (managed identity client ID), which ca
 All commands support also argument `-Verbose`, which will produce additional output about commandlet execution to verbose output stream.
 
 For more information on a specific command check their respective web pages
-- **[Module overview](./docs/Commands.md)**
+- **[Module overview](./docs/azmiCommands.md)**
 - [Get-AzmiToken](./docs/Get-AzmiToken.md)
 - [Get-AzmiBlobList](./docs/Get-AzmiBlobList.md)
 - [Get-AzmiBlobContent](./docs/Get-AzmiBlobContent.md)
