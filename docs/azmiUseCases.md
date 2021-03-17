@@ -27,7 +27,8 @@ Set-AzmiBlobContent -Blob $blob -File $tempFile
 Remove-Item $tempFile
 ```
 
-Anyone can verify download count using following command, but only your script can upload it!
+Anyone can verify download count using following command, due to public read access.
+But only your script can upload it due protected azmi access - and yet code is completely public!
 
 ```PowerShell
 irm https://azmi.blob.core.windows.net/psazmi/count/16032021
@@ -35,10 +36,18 @@ irm https://azmi.blob.core.windows.net/psazmi/count/16032021
 
 And you do not need to setup any complicated authentication methods, passwords, tokens...
 
-## Read secret from Azure Key Vault (AKV)
+## Read secret from Azure Key Vault (AKV) and upload PS module to Gallery
 
-T.B.D.
+Small sample below demonstrates how to upload you PowerShell module to PS Gallery.
+If you want, you can easily convert it to one-liner 😉
+
+```PowerShell
+$Key = Get-azmiSecret 'https://ContosoVault.vault.azure.net/secrets/UploadModuleKey'
+Publish-Module -Path . -Repository PSGallery -NuGetApiKey $Key -ea Stop -Verbose
+```
+
+Previously, you would need to register your account on PS Gallery and create upload key.
+Next you would store a key in Key Vault and grant access to your VM for that AKV.
+And, then you can use code above on the VM to upload module without hassle.
 
 ## More examples will follow...
-
-![Under Construction](https://openclipart.org/image/400px/231626)
