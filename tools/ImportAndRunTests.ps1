@@ -29,3 +29,4 @@ if ($MSI.Length -gt 1) {
 
 Write-Output "Invoke Pester tests"
 Invoke-Pester -Path  'test/Pester/Azmi.Module.Tests.ps1', 'test/Pester/cmdlets/*' -CI 4> $null
+# 4> $null redirects verbose output to null, to avoid nosie from certain tests
