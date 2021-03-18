@@ -12,9 +12,14 @@ Uploads local file to Azure storage blob using managed identity
 
 ## SYNTAX
 
-### Single
+### SingleFromFile
 ```
 Set-AzmiBlobContent [-Identity <String>] [-Force] [-Blob] <String> [-File] <String> [<CommonParameters>]
+```
+
+### SingleFromContent
+```
+Set-AzmiBlobContent [-Identity <String>] [-Force] [-Blob] <String> -Content <String> [<CommonParameters>]
 ```
 
 ### Multi
@@ -42,7 +47,7 @@ URL of blob which will be updated.
 
 ```yaml
 Type: String
-Parameter Sets: Single
+Parameter Sets: SingleFromFile, SingleFromContent
 Aliases:
 
 Required: True
@@ -67,12 +72,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Directory
-Path to a local directory from which blobs will be uploaded from. Can be relative or absolute path. Examples: /home/myname/blobs/ or ./mydir
+### -Content
+If uploading a single blob, you can directly specify its content, without creating the file.
+Temporary file will be created on disk, uploaded and then deleted.
 
 ```yaml
 Type: String
-Parameter Sets: Multi
+Parameter Sets: SingleFromContent
 Aliases:
 
 Required: True
@@ -82,30 +88,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -File
-Path to local file to which will be uploaded to a blob. Can be relative or absolute path. Examples: /tmp/1.txt, ./1.xml.
+### -Directory
+Path to a local directory from which blobs will be uploaded from. Can be relative or absolute path. Examples: /home/myname/blobs/ or ./mydir
 
 ```yaml
 Type: String
-Parameter Sets: Single
+Parameter Sets: Multi
 Aliases:
 
 Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Identity
-Client or application ID of managed identity used to authenticate. Example: 117dc05c-4d12-4ac2-b5f8-5e239dc8bc54
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -127,12 +118,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -File
+Path to local file to which will be uploaded to a blob. Can be relative or absolute path. Examples: /tmp/1.txt, ./1.xml.
+
+```yaml
+Type: String
+Parameter Sets: SingleFromFile
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Force
 If specified, it forces cmdlet to overwrite existing blob(s) in Azure.
 By default, cmdlet will fail if target blob exists.
 
 ```yaml
 Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Identity
+Client or application ID of managed identity used to authenticate. Example: 117dc05c-4d12-4ac2-b5f8-5e239dc8bc54
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 
