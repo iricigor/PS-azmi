@@ -85,7 +85,7 @@ namespace azmi
         protected override void ProcessRecord()
         {
 
-            if (ParameterSetName == "SingleFromFile" || ParameterSetName == "SingleFromFile")
+            if (ParameterSetName == "SingleFromFile" || ParameterSetName == "SingleFromContent")
             {
                 ProcessSingle();
             }
