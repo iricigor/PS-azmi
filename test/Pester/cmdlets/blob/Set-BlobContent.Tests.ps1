@@ -88,6 +88,10 @@ Describe 'Function import verifications'  {
 
 Describe "Basic Tests" {
 
+    It 'Verifies local file' {
+        $testFile1 | Should -Exist
+    }
+
     It 'Successfully uploads file on RW container' {
         {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_RW/test.txt"} | Should -Not -Throw
     }
