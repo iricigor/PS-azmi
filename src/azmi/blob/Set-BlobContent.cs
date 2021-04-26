@@ -46,11 +46,11 @@ namespace azmi
         // Single Blob parameter set from File
         //
 
-        [Parameter(Position = 0, Mandatory = true, ParameterSetName = "SingleFromFile")]
-        [Parameter(Position = 0, Mandatory = true, ParameterSetName = "SingleFromContent")]
+        [Parameter(Mandatory = true, ParameterSetName = "SingleFromFile")]
+        [Parameter(Mandatory = true, ParameterSetName = "SingleFromContent")]
         public string Blob { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, ParameterSetName = "SingleFromFile")]
+        [Parameter(Mandatory = true, ParameterSetName = "SingleFromFile")]
         public string File { get; set; }
 
         //
