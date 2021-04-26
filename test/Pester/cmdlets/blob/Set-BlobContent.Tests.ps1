@@ -239,7 +239,7 @@ Describe 'Upload filtered list of files' {
 
 Describe 'Upload blob content without file' {
 
-    # Testing parameter -Filter
+    # Testing parameter -Content
 
     It 'Uploads blob with content' {
         {Set-AzmiBlobContent -Blob "$CONTAINER_RW/test.txt" -Content $testContent -Force} | Should -Not -Throw
