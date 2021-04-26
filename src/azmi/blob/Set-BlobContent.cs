@@ -118,7 +118,7 @@ namespace azmi
             // Download
             blobClient.Upload(File, Force);
             WriteVerbose("Upload completed");
-            if (String.IsNullOrEmpty(Content))
+            if (!String.IsNullOrEmpty(Content))
             {
                 System.IO.File.Delete(File);
                 WriteVerbose($"Deleted temporary file: '{File}'");

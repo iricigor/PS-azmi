@@ -96,6 +96,10 @@ Describe "Basic Tests" {
         {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_RW/test.txt"} | Should -Not -Throw
     }
 
+    It 'Verifies local file 2nd time' {
+        $testFile1 | Should -Exist
+    }
+
     It 'Supports Verbose switch' {
         {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_RW/test.txt" -Force -Verbose} | Should -Not -Throw
     }
