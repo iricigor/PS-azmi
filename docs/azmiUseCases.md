@@ -38,7 +38,7 @@ And you do not need to setup any complicated authentication methods, passwords, 
 
 ### Use `-Content` parameter
 
-Since PR #52, it is possible to provide content of remote block directly.
+Since PR #52, it is possible to provide content of remote blob directly.
 In code above you can omit code for temporary file and just replace upload command with following:
 ```PowerShell
 Set-AzmiBlobContent -Blob $blob -Content $downloadCount
