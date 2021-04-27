@@ -8,6 +8,7 @@
         "yzhang.markdown-all-in-one",
         "zhuangtongfa.material-theme",
         "2gua.rainbow-brackets",
-        "jgclark.vscode-todo-highlight"
+        "jgclark.vscode-todo-highlight",
+        "rioukkevin.vscode-git-buttons"
     ]
 }
