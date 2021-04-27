@@ -1,6 +1,13 @@
 {
     "recommendations": [
         "ms-dotnettools.csharp",
-        "ms-vscode.powershell"
+        "ms-vscode.powershell",
+        "vscode-icons-team.vscode-icons",
+        "github.vscode-pull-request-github",
+        "streetsidesoftware.code-spell-checker",
+        "yzhang.markdown-all-in-one",
+        "zhuangtongfa.material-theme",
+        "2gua.rainbow-brackets",
+        "jgclark.vscode-todo-highlight"
     ]
 }
