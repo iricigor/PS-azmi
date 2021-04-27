@@ -53,8 +53,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Identity
-Client or application ID of managed identity used to authenticate. Example: 117dc05c-4d12-4ac2-b5f8-5e239dc8bc54
+### -File
+Path to local file to which content will be downloaded.
 
 ```yaml
 Type: String
@@ -68,8 +68,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -File
-Path to local file to which content will be downloaded.
+### -Identity
+Client or application ID of managed identity used to authenticate. Example: 117dc05c-4d12-4ac2-b5f8-5e239dc8bc54
 
 ```yaml
 Type: String

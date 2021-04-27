@@ -105,6 +105,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Exclude
+Exclude blobs from downloading that match given regular expression.
+It performs client-side filtering.
+
+```yaml
+Type: String
+Parameter Sets: Multi
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -File
 Path to local file to which content will be downloaded to. Can be relative or absolute path. Examples: /tmp/1.txt, ./1.xml.
 
@@ -126,22 +142,6 @@ Client or application ID of managed identity used to authenticate. Example: 117d
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Exclude
-Exclude blobs from downloading that match given regular expression.
-It performs client-side filtering.
-
-```yaml
-Type: String
-Parameter Sets: Multi
 Aliases:
 
 Required: False

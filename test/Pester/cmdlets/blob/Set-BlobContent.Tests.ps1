@@ -88,6 +88,10 @@ Describe 'Function import verifications'  {
 
 Describe "Basic Tests" {
 
+    It 'Verifies local file' {
+        $testFile1 | Should -Exist
+    }
+
     It 'Successfully uploads file on RW container' {
         {Set-AzmiBlobContent -File $testFile1 -Blob "$CONTAINER_RW/test.txt"} | Should -Not -Throw
     }
@@ -235,4 +239,23 @@ Describe 'Upload filtered list of files' {
         {Get-AzmiBlobContent -Container $CONTAINER_RW -Directory $subDir -DeleteAfterCopy} | Should -Not -Throw
     }
 
+}
+
+Describe 'Upload blob content without file' {
+
+    # Testing parameter -Content
+
+    It 'Uploads blob with content' {
+        {Set-AzmiBlobContent -Blob "$CONTAINER_RW/test.txt" -Content $testContent -Force} | Should -Not -Throw
+    }
+
+    It 'Verify content of uploaded file' {
+        Set-Content -Path $testFile2 -Value "" -Force | Out-Null
+        Get-AzmiBlobContent -Blob "$CONTAINER_RW/test.txt" -File $testFile2
+        $testFile2 | Should -FileContentMatch $testContent
+    }
+
+    It 'Successfully deletes uploaded file' {
+        {Get-AzmiBlobContent -Blob "$CONTAINER_RW/test.txt" -File $testFile2 -DeleteAfterCopy} | Should -Not -Throw
+    }
 }

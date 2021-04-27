@@ -41,16 +41,30 @@ namespace azmi
         [Parameter()]
         public SwitchParameter Force { get; set; }
 
-        // Single File/Blob parameter set
-        [Parameter(Position = 0, Mandatory = true, ParameterSetName = "Single")]
+
+        //
+        // Single Blob parameter set from File
+        //
+
+        [Parameter(Position = 0, Mandatory = true, ParameterSetName = "SingleFromFile")]
+        [Parameter(Position = 0, Mandatory = true, ParameterSetName = "SingleFromContent")]
         public string Blob { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, ParameterSetName = "Single")]
+        [Parameter(Position = 1, Mandatory = true, ParameterSetName = "SingleFromFile")]
         public string File { get; set; }
+
+        //
+        // Single Blob parameter set from Content
+        //
+
+        [Parameter(Mandatory = true, ParameterSetName = "SingleFromContent")]
+        public string Content { get; set; }
+
 
         //
         // Multiple files/blobs parameter set
         //
+
         [Parameter(Mandatory = true, ParameterSetName = "Multi")]
         public string Container { get; set; }
 
@@ -71,7 +85,7 @@ namespace azmi
         protected override void ProcessRecord()
         {
 
-            if (ParameterSetName == "Single")
+            if (ParameterSetName == "SingleFromFile" || ParameterSetName == "SingleFromContent")
             {
                 ProcessSingle();
             }
@@ -91,13 +105,28 @@ namespace azmi
             // Connection
             var cred = new ManagedIdentityCredential(Identity);
             var blobClient = new BlobClient(new Uri(Blob), cred);
-            // Fix path
-            File ??= Blob.Split('/').Last();
-            File = Path.GetFullPath(File, SessionState.Path.CurrentLocation.Path);
-            WriteVerbose($"Using source: '{File}'");
+            if (String.IsNullOrEmpty(Content))
+            {
+                // Fix path
+                File ??= Blob.Split('/').Last();
+                File = Path.GetFullPath(File, SessionState.Path.CurrentLocation.Path);
+                WriteVerbose($"Using source: '{File}'");
+            }
+            else
+            {
+                // create temporary file and fill content
+                File = Path.GetTempFileName();
+                System.IO.File.WriteAllText(File, Content);
+                WriteVerbose($"Using temporary file: '{File}'");
+            }
             // Download
             blobClient.Upload(File, Force);
             WriteVerbose("Upload completed");
+            if (!String.IsNullOrEmpty(Content))
+            {
+                System.IO.File.Delete(File);
+                WriteVerbose($"Deleted temporary file: '{File}'");
+            }
         }
 
         private void ProcessMulti()
